@@ -1,0 +1,6 @@
+{
+  "laxcomma" : true,
+  "asi" : false,
+  "esversion" : 6,
+  "predef": [ "-Promise" ]
+}
