@@ -26,7 +26,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
       signupUrl: '/auth/signup',
       unlinkUrl: '/auth/unlink/',
       tokenName: 'token',
-      tokenPrefix: 'satellizer',
+      tokenPrefix: 'weeklydeals',
       authHeader: 'Authorization',
       authToken: 'Bearer',
       storageType: 'localStorage',

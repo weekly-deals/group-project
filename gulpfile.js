@@ -12,7 +12,7 @@ const
 , postcss = require('gulp-postcss')
 , autoprefixer = require('autoprefixer')
 , mocha = require('gulp-mocha')
-, order = require("gulp-order")
+, order = require('gulp-order')
 , rupture = require('rupture')
 , uncss = require('gulp-uncss')
 , browserSync = require('browser-sync').create()
