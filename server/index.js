@@ -23,7 +23,7 @@ mongoose.connection.once('open', function() {
 
 app.use(helmet());
 app.use(compression());
-app.use(express.static('../dist'));
+app.use(express.static(__dirname + '/../dist'));
 app.use(cors());
 app.options('*', cors());
 app.use(bodyParser.json());

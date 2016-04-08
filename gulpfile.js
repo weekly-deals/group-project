@@ -5,7 +5,6 @@ const
 , stylus   = require('gulp-stylus')
 , concat   = require('gulp-concat')
 , uglify   = require('gulp-uglify')
-, server   = require('gulp-webserver')
 , annotate = require('gulp-ng-annotate')
 , mainBowerFiles = require('main-bower-files')
 , cleanCSS = require('gulp-clean-css')
@@ -16,14 +15,15 @@ const
 , order = require("gulp-order")
 , rupture = require('rupture')
 , uncss = require('gulp-uncss')
+, browserSync = require('browser-sync').create()
+, reload      = browserSync.reload
 , processors = [autoprefixer()];
 
-gulp.task('server', function(){
-  gulp.src('./dist')
-  .pipe(server({
-    livereload : true
-  , port       : 3001
-}));
+gulp.task('server', function() {
+    browserSync.init({
+        proxy: 'http://localhost:3001',
+        port: 3000
+    });
 });
 
 gulp.task('stylus', function(){
@@ -43,7 +43,7 @@ gulp.task('bowerCss', function(){
   .pipe(cleanCSS())
   .pipe(postcss(processors))
   .pipe(concat('lib.min.css'))
-  // .pipe(uncss({html: ['dist/**/*.html']}))
+  .pipe(uncss({html: ['dist/**/*.html']}))
   .pipe(sourcemaps.write('/maps'))
   .pipe(gulp.dest('./dist/css'));
 });
@@ -80,9 +80,9 @@ gulp.task('js', function(){
 // });
 
 gulp.task('watch', function(){
-  gulp.watch('./src/styles/**/*.styl', ['stylus']);
-  gulp.watch('./src/scripts/**/*.js', ['js']);
-  gulp.watch('./dist/**/*.html');
+  gulp.watch('./src/styles/**/*.styl', ['stylus']).on("change", reload);
+  gulp.watch('./src/scripts/**/*.js', ['js']).on("change", reload);
+  gulp.watch('./dist/**/*.html').on("change", reload);
 });
 
 gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'watch', 'server']);
