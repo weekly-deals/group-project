@@ -85,4 +85,4 @@ gulp.task('watch', function(){
   gulp.watch('./dist/**/*.html').on("change", reload);
 });
 
-gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'watch']);
+gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'watch', 'server']);
