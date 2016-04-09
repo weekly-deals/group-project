@@ -9,7 +9,8 @@ const express = require('express'),
     Promise = require('bluebird'),
     accounts = require('./endpoints/accounts.js'),
     checkRole = require('./checkRole.js'),
-    data= require('./endpoints/data.js');
+    data = require('./endpoints/data.js'),
+    protectJSON = require('./protect.js');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/weekly');
@@ -19,6 +20,7 @@ mongoose.connection.once('open', function () {
 });
 
 app.use(helmet());
+app.use(protectJSON);
 app.use(compression());
 app.use(express.static(__dirname + '/../dist'));
 app.use(cors());
