@@ -8,65 +8,13 @@ const express = require('express'),
     jwt = require('jwt-simple'),
     request = require('request'),
     moment = require('moment'),
-    qs = require('querystring'),
-    User = require('./models/user.js'),
     accounts = require('./endpoints/accounts.js'),
     helmet = require('helmet'),
     _ = require('lodash'),
-    GoogleMapsAPI = require('googlemaps'),
     app = express(),
     Promise = require('bluebird');
 
 mongoose.Promise = require('bluebird');
-
-const publicConfig = {
-    key: config.googleAPIKey,
-    secure: true
-};
-
-const gm = Promise.promisifyAll(new GoogleMapsAPI(publicConfig));
-
-// reverseGeocode('40.22607680000001,-111.6606035')
-//   .then(function(res){
-//   console.log(res);
-// });
-
-function reverseGeocode(latlng) {
-    return gm.reverseGeocodeAsync({
-        "latlng": latlng,
-        "result_type": "locality",
-        "language": "en",
-        "location_type": "APPROXIMATE"
-    }).then(function(result){
-      var ret = {
-        city: result.results[0].formatted_address.split(",").slice(0, -2).join(''),
-        crd: latlng
-      };
-      return ret;
-    });
-  }
-
-// geoCode('295 E 7800 S 84047')
-//   .then(function(res){
-//     console.log(res);
-//   });
-
-function geoCode(address){
-  return gm.geocodeAsync({
-      "address": address,
-      "components": "components=country:US",
-      "language": "en",
-  }).then(function(result){
-    var ret = {
-      loc: {
-      coordinates: [result.results[0].geometry.location.lng, result.results[0].geometry.location.lat],
-      type: "Point"
-      }
-    };
-    return ret;
-  });
-}
-
 mongoose.connect('mongodb://localhost/weekly');
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', function() {

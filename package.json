@@ -20,7 +20,6 @@
     "compression": "^1.6.1",
     "cors": "^2.7.1",
     "express": "^4.13.4",
-    "googlemaps": "^1.4.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.3",
     "gulp-concat": "^2.6.0",
