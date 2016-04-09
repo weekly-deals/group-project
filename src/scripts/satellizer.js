@@ -856,7 +856,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
       function($q, config, storage, shared) {
         return {
           request: function(request) {
-            if (request.skipAuthorization || /\.com/.test(request.url)) {
+            if (request.skipAuthorization || /\.com|https?:\/\//.test(request.url)) {
               return request;
             }
 

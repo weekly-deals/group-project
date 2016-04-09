@@ -2,10 +2,10 @@ angular.module('app')
     .factory('Account', function ($http) {
         return {
             getProfile: function () {
-                return $http.get('http://localhost:3001/api/me');
+                return $http.get('/api/me');
             },
             updateProfile: function (profileData) {
-                return $http.put('http://localhost:3001/api/me', profileData);
+                return $http.put('/api/me', profileData);
             }
         };
     });
