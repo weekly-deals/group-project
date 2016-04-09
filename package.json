@@ -4,7 +4,7 @@
   "description": "",
   "main": "./server/index.js",
   "scripts": {
-    "start": "nodemon & gulp",
+    "start": "NODE_ENV=production nodemon & gulp",
     "postinstall": "bower install"
   },
   "author": "",

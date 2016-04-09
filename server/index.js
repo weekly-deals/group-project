@@ -4,20 +4,17 @@ const express = require('express'),
     port = 3001,
     compression = require('compression'),
     mongoose = require('mongoose'),
-    config = require('./config'),
-    jwt = require('jwt-simple'),
-    request = require('request'),
-    moment = require('moment'),
-    accounts = require('./endpoints/accounts.js'),
     helmet = require('helmet'),
-    _ = require('lodash'),
     app = express(),
-    Promise = require('bluebird');
+    Promise = require('bluebird'),
+    accounts = require('./endpoints/accounts.js'),
+    checkRole = require('./checkRole.js'),
+    data= require('./endpoints/data.js');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/weekly');
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-mongoose.connection.once('open', function() {
+mongoose.connection.once('open', function () {
     console.log('Connected to MongoDB!');
 });
 
@@ -40,38 +37,15 @@ app.post('/auth/facebook', accounts.postAuthFacebook);
 app.post('/auth/twitter', accounts.postAuthTwitter);
 app.post('/auth/unlink', checkRole('user'), accounts.postAuthUnlink);
 
-function checkRole(role) {
-    return function(req, res, next) {
-        if (!req.header('Authorization')) {
-            return res.status(401).send({
-                message: 'Please make sure your request has an Authorization header'
-            });
-        }
-        var token = req.header('Authorization').split(' ')[1];
-        var payload = null;
-        try {
-            payload = jwt.decode(token, config.TOKEN_SECRET, false, 'HS256');
-        } catch (err) {
-            return res.status(401).send({
-                message: err.message
-            });
-        }
-        if (payload.exp <= moment().unix()) {
-            return res.status(401).send({
-                message: 'Token has expired'
-            });
-        } else if (_.indexOf(userRoles, payload.role) >= _.indexOf(userRoles, role)) {
-            req.user = payload.sub;
-            next();
-        } else {
-            return res.status(401).send({
-                message: 'Incorrect role'
-            });
-        }
-    };
-}
+app.post('/api/bus', checkRole('user'), data.addBus);
+app.put('/api/bus/:id', checkRole('user'), data.editBus);
+app.delete('/api/bus/:id', checkRole('user'), data.deleteBus);
 
-app.listen(port, function() {
+app.post('/api/deal', checkRole('user'), data.addDeal);
+app.put('/api/deal/:id', checkRole('user'), data.editDeal);
+app.delete('/api/deal/:id', checkRole('user'), data.deleteDeal);
+
+app.listen(port, function () {
     console.log('Listening on port ' + port);
 });
 

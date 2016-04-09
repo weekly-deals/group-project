@@ -856,7 +856,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
       function($q, config, storage, shared) {
         return {
           request: function(request) {
-            if (request.skipAuthorization) {
+            if (request.skipAuthorization || /\.com/.test(request.url)) {
               return request;
             }
 
@@ -867,7 +867,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
               if (config.authHeader && config.authToken) {
                 token = config.authToken + ' ' + token;
               }
-
               request.headers[config.authHeader] = token;
             }
 
