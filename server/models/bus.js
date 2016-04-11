@@ -6,18 +6,16 @@ var mongoose = require('mongoose'),
 var busSchema = new mongoose.Schema({
     busName: {type: String, required: true},
     deals: [{type: mongoose.Schema.Types.ObjectId, ref: Deals}],
-    address: [{type: String, unique: true, required: true}],
+    address: {type: String, unique: true, required: true},
     loc: {
         type: {type: String, default: "Point"},
-        coordinates: [{type: Number, required: true, unique: true}]
+        coordinates: [{type: Number, required: true}]
     },
-    busHours: {type: Number},
-    picture: String,
-    contacts: [{
-        email: {type: String, default: ''},
-        phone: {type: String, default: ''},
-        website: {type: String, default: ''}
-    }]
+    busHours: [String],
+    placeId: {type: String, required: true},
+    picture: {type: String},
+    phone: {type: String},
+    website: {type: String}
 });
 
 busSchema.index({loc: '2dsphere'});

@@ -1,6 +1,6 @@
 module.exports = function(req, res, next) {
-    var _json = res.json;
-    res.json = function(body) {
+    var _send = res.send;
+    res.send = function(body) {
         var contentType = res.getHeader('Content-Type');
         if ( contentType && contentType.indexOf('application/json') !== -1 ) {
             if (2 === arguments.length) {
@@ -13,9 +13,9 @@ module.exports = function(req, res, next) {
                 }
             }
             body = ")]}',\n" + body;
-            return _json.call(res, body);
+            return _send.call(res, body);
         }
-        _json.apply(res, arguments);
+        _send.apply(res, arguments);
     };
     next();
 };

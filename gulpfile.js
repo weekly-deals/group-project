@@ -27,25 +27,13 @@ gulp.task('server', function () {
     });
 });
 
-gulp.task('stylus', function () {
-    return gulp.src('./src/**/*.styl')
-        .pipe(flatten())
-        .pipe(sourcemaps.init())
-        .pipe(stylus({use: rupture()}))
-        // .pipe(cleanCSS())
-        .pipe(postcss(processors))
-        .pipe(concat('css.min.css'))
-        .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./dist/css'));
-});
-
 gulp.task('bowerCss', function () {
     return gulp.src(mainBowerFiles('**/*.css'))
         .pipe(sourcemaps.init())
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('lib.min.css'))
-        .pipe(uncss({html: ['dist/**/*.html']}))
+        .pipe(uncss({html: ['./src/**/*.html', 'dist/index.html']}))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/css'));
 });
@@ -59,6 +47,22 @@ gulp.task('bowerJs', function () {
         .pipe(gulp.dest('./dist/js'));
 });
 
+gulp.task('stylus', function () {
+    return gulp.src('./src/**/*.styl')
+        .pipe(flatten())
+        .pipe(sourcemaps.init())
+        .pipe(order([
+            "first.styl",
+            "**/*.styl"
+        ]))
+        .pipe(stylus({use: rupture()}))
+        // .pipe(cleanCSS())
+        .pipe(postcss(processors))
+        .pipe(concat('css.min.css'))
+        .pipe(sourcemaps.write('/maps'))
+        .pipe(gulp.dest('./dist/css'));
+});
+
 gulp.task('js', function () {
     return gulp.src('./src/**/*.js')
         .pipe(flatten())
@@ -68,6 +72,7 @@ gulp.task('js', function () {
         .pipe(order([
             "satellizer.js",
             "app.js",
+            'googlePlacesCtrl.js',
             "**/*.js"
         ]))
         .pipe(concat('js.min.js'))
@@ -91,7 +96,8 @@ gulp.task('html', function () {
 gulp.task('watch', function () {
     gulp.watch('./src/**/*.styl', ['stylus']).on("change", reload);
     gulp.watch('./src/**/*.js', ['js']).on("change", reload);
-    gulp.watch('./src/**/*.html').on("change", reload);
+    gulp.watch('./src/**/*.html', ['html']).on("change", reload);
+    gulp.watch('./dist/index.html').on("change", reload);
 });
 
-gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'watch', 'server', 'html']);
+gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'html', 'server', 'watch']);

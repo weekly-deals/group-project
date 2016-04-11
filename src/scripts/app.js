@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'satellizer'])
+angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
 
     .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -54,6 +54,12 @@ angular.module('app', ['ui.router', 'satellizer'])
                 resolve: {
                     loginRequired: loginRequired
                 }
+            })
+            .state('maps', {
+                url: '/maps',
+                templateUrl: 'partials/maps.html',
+                controller: 'NavbarCtrl',
+                controllerAs: 'vm'
             });
 
 
