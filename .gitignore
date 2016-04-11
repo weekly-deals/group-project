@@ -1,6 +1,7 @@
 node_modules
 dist/css
 dist/js
+dist/partials
 bower_components
 .DS_Store
 config.js

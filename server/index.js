@@ -11,7 +11,7 @@ const express = require('express'),
     accounts = require('./endpoints/accounts.js'),
     checkRole = require('./checkRole.js'),
     data = require('./endpoints/data.js'),
-    protectJSON = require('./protect.js');
+    protectJSON = require('./protectJSON.js');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/weekly');
