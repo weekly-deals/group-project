@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'satellizer'])
+angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
 
     .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 
