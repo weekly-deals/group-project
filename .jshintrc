@@ -2,5 +2,16 @@
   "laxcomma" : true,
   "asi" : false,
   "esversion" : 6,
-  "predef": [ "-Promise" ]
+  "predef": [ "-Promise" ],
+  "nonew": true,
+  "node": true,
+  "maxlen": 160,
+  "loopfunc": true,
+  "jquery": true,
+  "globals": {
+    "angular": false,
+    "app": false
+  },
+  "undef": true
 }
+
