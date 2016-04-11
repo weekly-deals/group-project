@@ -15,7 +15,7 @@ angular.module('app', ['ui.router', 'satellizer'])
         $stateProvider
             .state('home', {
                 url: '/',
-                controller: 'homeCtrl',
+                controller: 'mainCtrl',
                 templateUrl: 'partials/home.html'
             })
             .state('login', {
