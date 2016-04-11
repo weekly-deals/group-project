@@ -1,3 +1,28 @@
+main-red = #DD2E44;
+main-grey = #58595B;
+main-white = #F2F2F2;
+
+/** Ultra Light */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
+}
+
+/** Thin */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
+}
+
+/** Regular */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
@@ -7,3 +32,81 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+body
+  margin-top 250px
+
+.large-text
+    font-weight: 400
+    font-size: 60px
+.small-text
+    font-weight: 200
+    font-size: 18px
+.medium-text
+    font-weight: 400
+    font-size: 36px
+.light-text
+    font-weight: 100
+    font-size: 36px
+
+.main-container
+  background: main-red
+  height: 200vh
+
+.main-nav-bar
+  background: linear-gradient(main-red, transparent)
+
+  color: main-white
+  height: 30vh
+  position: fixed
+  width: 100%
+  top: 0
+  z-index: 20
+
+.top-nav-tabs
+  font-family: 'San Francisco'
+  font-weight: 100
+  font-size: 24
+  display: flex
+  justify-content: space-between
+
+  /*home-view*/
+.home-container
+  height: 300px
+  width: 100%
+  background: main-white
+
+.nav-filter
+  text-align: center
+
+.nav-bottom
+
+  vertical-align: text-bottom
+
+.location-filter
+  background: transparent
+  border: none
+  font-color: main-white
+  font-size: 40px
+  font-weight: 400
+  text-align: center
+  padding-right: 0px
+  margin: 0px
+  width: 300px
+
+
+.location-filter::placeholder
+  color: main-white
+
+.location-filter:focus
+  outline: none
+
+li
+  display: inline-block
+
+a
+  text-decoration: none
+  color: main-white
+
+body
+  font-family: 'San Francisco'

@@ -54,6 +54,12 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
                 resolve: {
                     loginRequired: loginRequired
                 }
+            })
+            .state('maps', {
+                url: '/maps',
+                templateUrl: 'partials/maps.html',
+                controller: 'NavbarCtrl',
+                controllerAs: 'vm'
             });
 
 
