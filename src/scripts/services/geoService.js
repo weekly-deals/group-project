@@ -31,7 +31,7 @@ angular.module('app')
 
         vm.reverseGeoCode = function (latlng) {
             var deferred = $q.defer();
-            geocoder = new google.maps.Geocoder();
+            var geocoder = new google.maps.Geocoder();
             geocoder.geocode({'location': latlng}, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     if (results[1]) {

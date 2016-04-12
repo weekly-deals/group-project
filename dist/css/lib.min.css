@@ -38,6 +38,7 @@ textarea {
 
 button,
 input,
+select,
 textarea {
   color: inherit;
   font: inherit;
@@ -48,7 +49,8 @@ button {
   overflow: visible;
 }
 
-button {
+button,
+select {
   text-transform: none;
 }
 
