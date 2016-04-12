@@ -32,12 +32,9 @@ small {
   font-size: 80%;
 }
 
-svg:not(:root) {
-  overflow: hidden;
-}
-
 button,
-input {
+input,
+select {
   color: inherit;
   font: inherit;
   margin: 0;
@@ -47,7 +44,8 @@ button {
   overflow: visible;
 }
 
-button {
+button,
+select {
   text-transform: none;
 }
 
