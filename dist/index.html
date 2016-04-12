@@ -10,8 +10,13 @@
 </head>
 <body class='main-container' ng-cloak>
 
-<div class='main-nav-bar' ng-controller="NavbarCtrl">
+<div>
+    <svg>
+        <use xlink:href="sprite.svg#icon-1f354"></use>
+    </svg>
+</div>
 
+<div class='main-nav-bar' ng-controller="NavbarCtrl">
     <div class='top-nav-tabs'>
         <ul>
             <li><a href="/#/">Home</a></li>
@@ -50,7 +55,7 @@
 
 <ui-view></ui-view>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfbbD0QS-Ez9fLWI3lR8l6UkZ1VGWDLgQ&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
 <script src="js/lib.min.js"></script>
 <script src="js/js.min.js"></script>
 </body>

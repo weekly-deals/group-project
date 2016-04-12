@@ -15,9 +15,5 @@ bower_components
 bundle.js
 config.js
 db
-dist/css
-dist/js
-dist/partials
 node_modules
 tags
-

@@ -1,0 +1,42 @@
+
+<div>
+  <div>
+    <div>Profile</div>
+    <div>
+      <legend>Edit My Profile</legend>
+      <form ng-submit="updateProfile()">
+          <img ng-src="{{user.picture || 'http://placehold.it/100x100'}}">
+          <input type="text" ng-model="user.displayName" />
+          <input type="email" ng-model="user.email" />
+        <button type="submit">Update Information</button>
+      </form>
+    </div>
+  </div>
+
+  <div >
+    <div >Accounts</div>
+      <legend>Linked Accounts</legend>
+      <div >
+        <button ng-if="user.facebook" ng-click="unlink('facebook')">
+           Unlink Facebook Account
+        </button>
+        <button ng-if="!user.facebook" ng-click="link('facebook')">
+         Link Facebook Account
+        </button>
+
+        <button ng-if="user.google" ng-click="unlink('google')">
+          Unlink Google Account
+        </button>
+        <button ng-if="!user.google" ng-click="link('google')">
+          Link Google Account
+        </button>
+
+        <button ng-if="user.twitter" ng-click="unlink('twitter')">
+          Unlink Google Account
+        </button>
+        <button ng-if="!user.twitter" ng-click="link('twitter')">
+          Link Google Account
+        </button>
+    </div>
+  </div>
+</div>

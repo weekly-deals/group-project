@@ -1,5 +1,5 @@
 angular.module('app')
-    .service('geoService', function ($http, $q) {
+    .service('geoService', function($http, $q) {
 
         var vm = this;
 
@@ -12,25 +12,25 @@ angular.module('app')
             maximumAge: minuteToMs(60)
         };
 
-        var key = "AIzaSyDfbbD0QS-Ez9fLWI3lR8l6UkZ1VGWDLgQ";
+        var key = "AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc";
 
-        vm.getCurrentPosition = function () {
+        vm.getCurrentPosition = function() {
             var deferred = $q.defer();
             if (!navigator.geolocation) {
                 deferred.reject('Geolocation not supported.');
             } else {
                 navigator.geolocation.getCurrentPosition(
-                    function (pos) {
+                    function(pos) {
                         deferred.resolve(pos.coords.latitude.toString() + ',' + pos.coords.longitude.toString());
                     },
-                    function (err) {
+                    function(err) {
                         deferred.reject(err);
                     }, options);
             }
             return deferred.promise;
         };
 
-        vm.geoCode = function (address) {
+        vm.geoCode = function(address) {
             return $http({
                 method: 'GET',
                 params: {
@@ -39,12 +39,12 @@ angular.module('app')
                     key: key
                 },
                 url: 'https://maps.googleapis.com/maps/api/geocode/json'
-            }).then(function (result) {
+            }).then(function(result) {
                 return [result.data.results[0].geometry.location.lng, result.data.results[0].geometry.location.lat];
             });
         };
 
-        vm.reverseGeoCode = function (latlng) {
+        vm.reverseGeoCode = function(latlng) {
             return $http({
                 method: 'GET',
                 params: {
@@ -55,7 +55,7 @@ angular.module('app')
                     key: key
                 },
                 url: 'https://maps.googleapis.com/maps/api/geocode/json'
-            }).then(function (result) {
+            }).then(function(result) {
                 return result.data.results[0].formatted_address.split(",").slice(0, -1).join(',');
             });
         };
@@ -65,11 +65,11 @@ angular.module('app')
         // console.log(vm.place.geometry.location.lat());
         // console.log(vm.place.geometry.location.lng());
 
-        vm.newBusiness = function (business) {
+        vm.newBusiness = function(business) {
             var newBusiness = {
                 address: business.formatted_address,
                 phone: business.formatted_phone_number,
-                loc : {
+                loc: {
                     coordinates: [Number(business.geometry.location.lng()), Number(business.geometry.location.lat())]
                 },
                 busName: business.name,
