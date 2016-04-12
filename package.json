@@ -16,7 +16,6 @@
     "main": "./server/index.js",
     "scripts": {
         "lint": "jshint **.js",
-        "postinstall": "bower install",
         "start": "nodemon & gulp"
     },
     "keywords": [
