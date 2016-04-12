@@ -1,6 +1,6 @@
 angular.module('app')
     .service('geoService', function ($http, $q) {
-
+        var busPic = null;
         var vm = this;
 
         function minuteToMs(min) {
@@ -50,7 +50,7 @@ angular.module('app')
             return deferred.promise;
         };
 
-        vm.newBusiness = function (business) {
+        vm.newBusiness = function (business, busPic) {
             var newBusiness = {
                 address: business.formatted_address,
                 phone: business.formatted_phone_number,
@@ -60,14 +60,28 @@ angular.module('app')
                 busName: business.name,
                 busHours: business.opening_hours.weekday_text,
                 placeId: business.place_id,
-                website: business.website
-
+                website: business.website,
+                picture: busPic
             };
             return $http({
                 method: 'POST',
                 data: newBusiness,
                 url: '/api/bus'
-            })
+            });
+        };
+
+        vm.storeImage = function (imageData, fileName) {
+          var imageExtension = imageData.split(';')[0].split('/');
+          imageExtension = imageExtension[imageExtension.length - 1];
+
+          var newImage = {
+            imageName: fileName,
+            imageBody: imageData,
+            imageExtension: imageExtension,
+            userEmail: 'jakecorry123@gmail.com'
+          };
+
+          return $http.post('/api/newimage', newImage);
         };
 
     });

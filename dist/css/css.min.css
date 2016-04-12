@@ -59,7 +59,7 @@ body {
   background: -webkit-linear-gradient(#dd2e44, transparent);
   background: linear-gradient(#dd2e44, transparent);
   color: #f2f2f2;
-  height: 30vh;
+  height: 40vh;
   position: fixed;
   width: 100%;
   top: 0;
@@ -82,7 +82,7 @@ body {
 .home-container {
   height: 300px;
   width: 100%;
-  background: #f2f2f2;
+  background: #dd2e44;
 }
 .nav-filter {
   text-align: center;
@@ -125,6 +125,68 @@ a {
 }
 body {
   font-family: 'San Francisco';
+}
+.cat-container {
+  width: 100%;
+  height: 60vh;
+  background-color: #dd2e44;
+  top: 35vh;
+  position: absolute;
+}
+.deal {
+  width: 25%;
+  height: 50vh;
+  margin: 5vh;
+  background: #f2f2f2;
+  display: inline-block;
+  border-radius: 5px;
+}
+.deals-container {
+  display: inline-block;
+  width: 100%;
+  overflow-x: auto;
+  height: 100%;
+}
+/*maps-view*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #ababab;
+  background-color: #ababab;
+}
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+#close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+#close:hover,
+#close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=maps/css.min.css.map */

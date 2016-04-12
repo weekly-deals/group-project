@@ -105,7 +105,7 @@ gulp.task('js', function () {
         // .pipe(uglify())
         .pipe(order([
             "app.js",
-            'googlePlacesCtrl.js',
+            'navbar.js',
             "**/*.js"
         ]))
         .pipe(concat('js.min.js'))
@@ -131,7 +131,7 @@ gulp.task('watch', function () {
     gulp.watch('./src/**/*.js', ['js']).on("change", reload);
     gulp.watch('./src/**/*.html', ['html']).on("change", reload);
     gulp.watch('./dist/index.html').on("change", reload);
-    gulp.watch('./src/icons/*.svg', ['svg'])
+    gulp.watch('./src/icons/*.svg', ['svg']);
 });
 
 gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);

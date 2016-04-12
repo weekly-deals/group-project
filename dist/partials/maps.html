@@ -1,12 +1,16 @@
-<div id="mapsview">
-    <form>
-        YOU'RE IN {{vm.city}}
+<div id='modal' class='modal'>
+  <span id='close' ng-click='vm.closeClick()'>&times;</span>
+    <form class='bus-form'>
+      <div>
+        Business Name:
         <input places-auto-complete size=80
                types="{{types}}"
                on-place-changed="vm.placeChanged()"
                placeholder="Search for a business"/> <br/>
-
-        <div ng-if="vm.place">
+        <input fileread type='file'>
+      </div>
+      <div>
+        <div ng-if="vm.place" class='business-info'>
 
             <span>{{vm.place.name}}</span><br/>
             <span>{{vm.place.formatted_address}}</span><br/>
@@ -21,13 +25,22 @@
             <span>{{vm.place.opening_hours.weekday_text[5]}}</span><br/>
 
         </div>
-        <div>
+        <div class='deal-entry-container'>
 
             <input type="text" placeholder="Deal Name"></input>
-            <input type="text" placeholder="">
-
+            <div class='day-wrapper'>
+              <div class='day-box'>M</div>
+              <div class='day-box'>Tu</div>
+              <div class='day-box'>W</div>
+              <div class='day-box'>Th</div>
+              <div class='day-box'>F</div>
+              <div class='day-box'>S</div>
+              <div class='day-box'>Su</div>
+            </div>
+            <textarea placeholder='Enter description...'></textarea>
+            <textarea placeholder='Enter details or exceptions...'></textarea>
         </div>
-
+      </div>
         <input type="submit" ng-click="vm.addBusiness()">Submit Business</input>
         {{addedBus}}
 

@@ -32,12 +32,13 @@ small {
   font-size: 80%;
 }
 
-svg:not(:root) {
-  overflow: hidden;
+textarea {
+  overflow: auto;
 }
 
 button,
-input {
+input,
+textarea {
   color: inherit;
   font: inherit;
   margin: 0;

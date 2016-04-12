@@ -12,21 +12,20 @@
 
 <div class='main-nav-bar'>
 
-    <div class='main-nav-bar' ng-controller="NavbarCtrl">
-        <svg>
-            <use xlink:href="sprite.svg#icon-1f354"></use>
-        </svg>
+    <div class='main-nav-bar' ng-controller="NavbarCtrl as vm">
+
         <div class='top-nav-tabs'>
             <ul>
                 <li><a href="/#/">Home</a></li>
-                <li ng-if="isAuthenticated()"><a ui-sref="profile">Profile</a></li>
+                <li ng-if="vm.isAuthenticated()"><a ui-sref="profile">Profile</a></li>
             </ul>
-            <ul ng-if="!isAuthenticated()">
+            <ul ng-if="!vm.isAuthenticated()">
                 <li><a ui-sref="login">Login /</a></li>
                 <li><a ui-sref="signup">Sign up</a></li>
             </ul>
-            <ul ng-if="isAuthenticated()">
-                <li><a ui-sref="logut">Logout</a></li>
+            <ul ng-if="vm.isAuthenticated()">
+                <li><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a New Deal!</span></li>/
+                <li><a ui-sref="logout">Logout</a></li>
             </ul>
         </div>
 
@@ -52,7 +51,7 @@
     </div>
 </div>
 
-
+<deal-dir></deal-dir>
 <ui-view></ui-view>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
