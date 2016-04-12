@@ -32,10 +32,6 @@ small {
   font-size: 80%;
 }
 
-svg:not(:root) {
-  overflow: hidden;
-}
-
 button,
 input {
   color: inherit;

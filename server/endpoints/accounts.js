@@ -61,7 +61,7 @@ module.exports = {
       }
       var user = new User({
         provider: 'Username & Password',
-        displayName: req.body.displayName,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password
       });
