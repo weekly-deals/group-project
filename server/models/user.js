@@ -10,7 +10,6 @@ var userSchema = new mongoose.Schema({
   birthday: Date,
   username: { type: String, unique: true, lowercase: true, required: true },
   provider: String,
-  displayName: String,
   picture: String,
   facebook: String,
   google: String,

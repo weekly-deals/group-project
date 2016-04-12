@@ -20,6 +20,7 @@ const
     , newer = require('gulp-newer')
     , flatten = require('gulp-flatten')
     , svgSprite = require('gulp-svg-sprite')
+    , inject = require('gulp-inject')
     , processors = [autoprefixer()];
 
 var config = {
@@ -46,7 +47,7 @@ var config = {
 gulp.task('svg', function () {
     return gulp.src('./src/**/*.svg')
         .pipe(flatten())
-        // .pipe(newer('./dist/sprite.svg'))
+        .pipe(newer('./dist/sprite.svg'))
         .pipe(svgSprite(config))
         .pipe(flatten())
         .pipe(gulp.dest('./dist/'));
@@ -97,6 +98,23 @@ gulp.task('stylus', function () {
         .pipe(gulp.dest('./dist/css'));
 });
 
+gulp.task('inject', function (done) {
+    gulp.src('./src/scripts/services/svgService.js')
+        .pipe(
+            inject(
+                gulp.src('*.svg', {read: false, cwd: __dirname + '/src/icons'}),
+                {
+                    starttag: '// startinject',
+                    endtag: '// endinject',
+                    transform: function (filepath, file, i, length) {
+                        return (i === 0 ? 'var svg = [' : '') + '"sprite.svg#icon-' + filepath.replace(/\/|.svg$/ig, '') + '"' + (i + 1 < length ? ',' : '];');
+                    }
+                }
+            ))
+        .pipe(gulp.dest('./src/scripts/services/'))
+        .on('end', function () { done(); });
+});
+
 gulp.task('js', function () {
     return gulp.src(['./src/**/*.js', '!./src/scripts/satellizer.js'])
         .pipe(flatten())
@@ -105,7 +123,6 @@ gulp.task('js', function () {
         // .pipe(uglify())
         .pipe(order([
             "app.js",
-            'googlePlacesCtrl.js',
             "**/*.js"
         ]))
         .pipe(concat('js.min.js'))
@@ -119,13 +136,6 @@ gulp.task('html', function () {
         .pipe(gulp.dest('./dist/partials'));
 });
 
-//disabled because while developing tests it exits gulp every time a test fails
-// so once your tests are all working enable this and add the tests function the default task
-// gulp.task('tests', function(){
-//     return gulp.src('./server/tests/*.js', {read: false})
-//         .pipe(mocha());
-// });
-
 gulp.task('watch', function () {
     gulp.watch('./src/**/*.styl', ['stylus']).on("change", reload);
     gulp.watch('./src/**/*.js', ['js']).on("change", reload);
@@ -134,4 +144,4 @@ gulp.task('watch', function () {
     gulp.watch('./src/icons/*.svg', ['svg'])
 });
 
-gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);
+gulp.task('default', ['stylus', 'inject', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);

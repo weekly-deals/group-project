@@ -10,25 +10,32 @@
 </head>
 <body class='main-container' ng-cloak>
 
+
 <div class='main-nav-bar'>
 
-    <div class='main-nav-bar' ng-controller="NavbarCtrl">
-       
+    <div class='main-nav-bar' ng-controller="NavbarCtrl as vm">
+
+        <!--<span ng-repeat="svg in vm.svgs">-->
+        <!--<svg width="100px" height="100px">-->
+        <!--<use xlink:href="{{svg}}" width="75px" height="75px"></use>-->
+        <!--</svg>-->
+        <!--</span>-->
+
         <div class='top-nav-tabs'>
             <ul>
                 <li><a href="/#/">Home</a></li>
-                <li ng-if="isAuthenticated()"><a ui-sref="profile">Profile</a></li>
+                <li ng-if="vm.isAuthenticated()"><a ui-sref="profile">Profile</a></li>
             </ul>
-            <ul ng-if="!isAuthenticated()">
+            <ul ng-if="!vm.isAuthenticated()">
                 <li><a ui-sref="login">Login /</a></li>
                 <li><a ui-sref="signup">Sign up</a></li>
             </ul>
-            <ul ng-if="isAuthenticated()">
+            <ul ng-if="vm.isAuthenticated()">
                 <li><a ui-sref="logut">Logout</a></li>
             </ul>
         </div>
 
-        <div class='nav-filter'>
+        <div class='nav-filter' ng-if="vm.hideDealBar()">
             <div class='large-text'>
                 <!-- this will be {{category}}  -->
                 All
@@ -37,15 +44,15 @@
             <div class='nav-bottom'>
                 <span class='medium-text'>deals<span>    </span></span>
                 <span class='light-text'>  in</span>
-                <input class='location-filter' type='text' placeholder="Current Location" ng-model='user.location'>
+                <input class='location-filter' type='text' ng-model='vm.city'>
                 <span class='light-text'>on<span>    </span></span>
       <span class='medium-text'>
-        <!-- this will be {{currentDay}} -->
-          Monday
+        <select ng-model="vm.selectedDay" ng-options="day.display for day in vm.days track by day.val"></select>
       </span>
             </div>
 
         </div>
+
 
     </div>
 </div>
