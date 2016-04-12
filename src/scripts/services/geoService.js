@@ -12,8 +12,6 @@ angular.module('app')
             maximumAge: minuteToMs(60)
         };
 
-        var key = "AIzaSyDfbbD0QS-Ez9fLWI3lR8l6UkZ1VGWDLgQ";
-
         vm.getCurrentPosition = function () {
             var deferred = $q.defer();
             if (!navigator.geolocation) {
@@ -21,7 +19,8 @@ angular.module('app')
             } else {
                 navigator.geolocation.getCurrentPosition(
                     function (pos) {
-                        deferred.resolve(pos.coords.latitude.toString() + ',' + pos.coords.longitude.toString());
+                        var latlng = {lat: parseFloat(pos.coords.latitude), lng: parseFloat(pos.coords.longitude)};
+                        deferred.resolve(latlng);
                     },
                     function (err) {
                         deferred.reject(err);
@@ -30,46 +29,32 @@ angular.module('app')
             return deferred.promise;
         };
 
-        vm.geoCode = function (address) {
-            return $http({
-                method: 'GET',
-                params: {
-                    address: address,
-                    components: "components=country:US",
-                    key: key
-                },
-                url: 'https://maps.googleapis.com/maps/api/geocode/json'
-            }).then(function (result) {
-                return [result.data.results[0].geometry.location.lng, result.data.results[0].geometry.location.lat];
-            });
-        };
-
         vm.reverseGeoCode = function (latlng) {
-            return $http({
-                method: 'GET',
-                params: {
-                    latlng: latlng,
-                    result_type: "locality",
-                    language: "en",
-                    location_type: "APPROXIMATE",
-                    key: key
-                },
-                url: 'https://maps.googleapis.com/maps/api/geocode/json'
-            }).then(function (result) {
-                return result.data.results[0].formatted_address.split(",").slice(0, -1).join(',');
+            var deferred = $q.defer();
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'location': latlng}, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        for (var i = 0, len = results[1].address_components.length; i < len; i++) {
+                            if (results[1].address_components[i].types.indexOf("locality") !== -1) {
+                                return deferred.resolve(results[1].address_components[i].long_name ? results[1].address_components[i].long_name : results[1].address_components[i].short_name)
+                            }
+                        }
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    deferred.reject(status);
+                }
             });
+            return deferred.promise;
         };
-
-        // console.log(business.formatted_address)
-        // console.log(JSON.stringify(vm.place));
-        // console.log(vm.place.geometry.location.lat());
-        // console.log(vm.place.geometry.location.lng());
 
         vm.newBusiness = function (business) {
             var newBusiness = {
                 address: business.formatted_address,
                 phone: business.formatted_phone_number,
-                loc : {
+                loc: {
                     coordinates: [Number(business.geometry.location.lng()), Number(business.geometry.location.lat())]
                 },
                 busName: business.name,

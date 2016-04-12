@@ -8,6 +8,11 @@
 *.so
 *.swp
 *~
+dist/js
+dist/css
+dist/partials
+sprite.svg
+sprite.symbol.html
 .DS_Store
 .idea
 .vscode
@@ -15,9 +20,5 @@ bower_components
 bundle.js
 config.js
 db
-dist/css
-dist/js
-dist/partials
 node_modules
 tags
-
