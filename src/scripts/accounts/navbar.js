@@ -23,7 +23,7 @@ angular.module('app')
                 map: vm.map,
                 title: vm.place.name
             });
-            
+
         };
 
         vm.addBusiness = function () {
@@ -35,9 +35,7 @@ angular.module('app')
         NgMap.getMap().then(function (map) {
             geoService.getCurrentPosition().then(function (latlng) {
                 vm.map = map;
-                vm.temp = latlng.split(',');
-                vm.center = new google.maps.LatLng(Number(vm.temp[0]), Number(vm.temp[1]));
-                vm.map.setCenter(vm.center);
+                vm.map.setCenter(latlng);
                 vm.map.setZoom(12);
             });
         });
