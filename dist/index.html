@@ -10,49 +10,52 @@
 </head>
 <body class='main-container' ng-cloak>
 
+<div class='main-nav-bar'>
 
-  <div class='main-nav-bar' >
-
-
-    <div class='top-nav-tabs'>
-        <ul>
-            <li><a href="/#/">Home</a></li>
-            <li ng-if="isAuthenticated()"><a ui-sref="profile">Profile</a></li>
-        </ul>
-        <ul ng-if="!isAuthenticated()">
-            <li><a ui-sref="login">Login /</a></li>
-            <li><a ui-sref="signup">Sign up</a></li>
-        </ul>
-        <ul ng-if="isAuthenticated()">
-            <li><a ui-sref="logut">Logout</a></li>
-        </ul>
-    </div>
-
-    <div class='nav-filter'>
-        <div class='large-text'>
-            <!-- this will be {{category}}  -->
-            All
+    <div class='main-nav-bar' ng-controller="NavbarCtrl">
+        <svg>
+            <use xlink:href="sprite.svg#icon-1f354"></use>
+        </svg>
+        <div class='top-nav-tabs'>
+            <ul>
+                <li><a href="/#/">Home</a></li>
+                <li ng-if="isAuthenticated()"><a ui-sref="profile">Profile</a></li>
+            </ul>
+            <ul ng-if="!isAuthenticated()">
+                <li><a ui-sref="login">Login /</a></li>
+                <li><a ui-sref="signup">Sign up</a></li>
+            </ul>
+            <ul ng-if="isAuthenticated()">
+                <li><a ui-sref="logut">Logout</a></li>
+            </ul>
         </div>
-        <span class='small-text'>another category</span>
-        <div class='nav-bottom'>
-            <span class='medium-text'>deals<span>    </span></span>
-            <span class='light-text'>  in</span>
-            <input class='location-filter' type='text' placeholder="Current Location" ng-model='user.location'>
-            <span class='light-text'>on<span>    </span></span>
+
+        <div class='nav-filter'>
+            <div class='large-text'>
+                <!-- this will be {{category}}  -->
+                All
+            </div>
+            <span class='small-text'>another category</span>
+            <div class='nav-bottom'>
+                <span class='medium-text'>deals<span>    </span></span>
+                <span class='light-text'>  in</span>
+                <input class='location-filter' type='text' placeholder="Current Location" ng-model='user.location'>
+                <span class='light-text'>on<span>    </span></span>
       <span class='medium-text'>
         <!-- this will be {{currentDay}} -->
           Monday
       </span>
+            </div>
+
         </div>
 
     </div>
-
 </div>
 
 
 <ui-view></ui-view>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfbbD0QS-Ez9fLWI3lR8l6UkZ1VGWDLgQ&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
 <script src="js/lib.min.js"></script>
 <script src="js/js.min.js"></script>
 </body>

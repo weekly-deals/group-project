@@ -17,8 +17,40 @@ const
     , uncss = require('gulp-uncss')
     , browserSync = require('browser-sync').create()
     , reload = browserSync.reload
+    , newer = require('gulp-newer')
     , flatten = require('gulp-flatten')
+    , svgSprite = require('gulp-svg-sprite')
     , processors = [autoprefixer()];
+
+var config = {
+    shape: {
+        transform: ['svgo'],
+        id: {
+            generator: 'icon-%s'
+        },
+        dimension: {
+            maxWidth: 25,
+            maxHeight: 25
+        }
+    },
+    mode: {
+        symbol: {
+            example: true,
+            inline: false,
+            bust: false,
+            sprite: ''
+        }
+    }
+};
+
+gulp.task('svg', function () {
+    return gulp.src('./src/**/*.svg')
+        .pipe(flatten())
+        // .pipe(newer('./dist/sprite.svg'))
+        .pipe(svgSprite(config))
+        .pipe(flatten())
+        .pipe(gulp.dest('./dist/'));
+});
 
 gulp.task('server', function () {
     browserSync.init({
@@ -38,8 +70,10 @@ gulp.task('bowerCss', function () {
         .pipe(gulp.dest('./dist/css'));
 });
 
+var bowerFiles = mainBowerFiles('**/*.js').concat(['./src/scripts/satellizer.js']);
+
 gulp.task('bowerJs', function () {
-    return gulp.src(mainBowerFiles('**/*.js'))
+    return gulp.src(bowerFiles)
         .pipe(sourcemaps.init())
         // .pipe(uglify())
         .pipe(concat('lib.min.js'))
@@ -64,13 +98,12 @@ gulp.task('stylus', function () {
 });
 
 gulp.task('js', function () {
-    return gulp.src('./src/**/*.js')
+    return gulp.src(['./src/**/*.js', '!./src/scripts/satellizer.js'])
         .pipe(flatten())
         .pipe(sourcemaps.init())
         // .pipe(annotate())
         // .pipe(uglify())
         .pipe(order([
-            "satellizer.js",
             "app.js",
             'googlePlacesCtrl.js',
             "**/*.js"
@@ -98,6 +131,7 @@ gulp.task('watch', function () {
     gulp.watch('./src/**/*.js', ['js']).on("change", reload);
     gulp.watch('./src/**/*.html', ['html']).on("change", reload);
     gulp.watch('./dist/index.html').on("change", reload);
+    gulp.watch('./src/icons/*.svg', ['svg'])
 });
 
-gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'html', 'server', 'watch']);
+gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);
