@@ -33,7 +33,6 @@
         "lodash": "^4.6.1",
         "moment": "^2.12.0",
         "mongoose": "^4.4.7",
-        "bower": "^1.7.9",
         "querystring": "^0.2.0"
     },
     "devDependencies": {
