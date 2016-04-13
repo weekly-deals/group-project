@@ -28,10 +28,6 @@ a:hover {
   outline: 0;
 }
 
-small {
-  font-size: 80%;
-}
-
 textarea {
   overflow: auto;
 }
