@@ -1,7 +1,7 @@
 angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
 
-    .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
-
+    .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+        
         $authProvider.facebook({
             clientId: '1670205403245071'
         });

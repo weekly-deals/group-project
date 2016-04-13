@@ -35,7 +35,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
           name: 'facebook',
           url: '/auth/facebook',
           authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-          redirectUri: window.location.origin + '/',
+          redirectUri: window.location.origin + '/auth/facebook/callback',
           requiredUrlParams: ['display', 'scope'],
           scope: ['email'],
           scopeDelimiter: ',',
@@ -47,7 +47,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
           name: 'google',
           url: '/auth/google',
           authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-          redirectUri: window.location.origin,
+          redirectUri: window.location.origin + '/auth/google/callback',
           requiredUrlParams: ['scope'],
           optionalUrlParams: ['display'],
           scope: ['profile', 'email'],
@@ -61,7 +61,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
           name: 'twitter',
           url: '/auth/twitter',
           authorizationEndpoint: 'https://api.twitter.com/oauth/authenticate',
-          redirectUri: window.location.origin,
+          redirectUri: window.location.origin + '/auth/twitter/callback',
           oauthType: '1.0',
           popupOptions: { width: 495, height: 645 }
         }
@@ -882,3 +882,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
     }]);
 
 })(window, window.angular);
+
+// url: 'https://api.sproutvideo.com/v1/videos',
+//     headers: {
+//   'SproutVideo-Api-Key' : 'bf371c5bd224d3d7a133c39f0c8efd45'
+// },
