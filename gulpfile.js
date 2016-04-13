@@ -71,7 +71,7 @@ gulp.task('bowerCss', function () {
         .pipe(gulp.dest('./dist/css'));
 });
 
-var bowerFiles = mainBowerFiles('**/*.js').concat(['./src/scripts/satellizer.js']);
+var bowerFiles = mainBowerFiles('**/*.js').concat(['src/**/satellizer.js']);
 
 gulp.task('bowerJs', function () {
     return gulp.src(bowerFiles)
@@ -83,7 +83,7 @@ gulp.task('bowerJs', function () {
 });
 
 gulp.task('stylus', function () {
-    return gulp.src('./src/**/*.styl')
+    return gulp.src('src/**/*.styl')
         .pipe(flatten())
         .pipe(sourcemaps.init())
         .pipe(order([
@@ -99,7 +99,7 @@ gulp.task('stylus', function () {
 });
 
 gulp.task('inject', function (done) {
-    gulp.src('./src/scripts/services/svgService.js')
+    gulp.src('./src/services/svgService.js')
         .pipe(
             inject(
                 gulp.src('*.svg', {read: false, cwd: __dirname + '/src/icons'}),
@@ -111,12 +111,12 @@ gulp.task('inject', function (done) {
                     }
                 }
             ))
-        .pipe(gulp.dest('./src/scripts/services/'))
+        .pipe(gulp.dest('./src/services/'))
         .on('end', function () { done(); });
 });
 
 gulp.task('js', function () {
-    return gulp.src(['./src/**/*.js', '!./src/scripts/satellizer.js'])
+    return gulp.src(['src/**/*.js', '!src/**/satellizer.js'])
         .pipe(flatten())
         .pipe(sourcemaps.init())
         // .pipe(annotate())
@@ -132,9 +132,9 @@ gulp.task('js', function () {
 });
 
 gulp.task('html', function () {
-    return gulp.src('./src/**/*.html')
+    return gulp.src('src/**/*.html')
         .pipe(flatten())
-        .pipe(gulp.dest('./dist/partials'));
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('watch', function () {
