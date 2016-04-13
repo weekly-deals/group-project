@@ -8,11 +8,7 @@
 *.so
 *.swp
 *~
-dist/js
-dist/css
-dist/partials
-sprite.svg
-sprite.symbol.html
+dist
 .DS_Store
 .idea
 .vscode
