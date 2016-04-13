@@ -21,6 +21,7 @@ const
     , flatten = require('gulp-flatten')
     , svgSprite = require('gulp-svg-sprite')
     , inject = require('gulp-inject')
+    , plumber = require('gulp-plumber')
     , processors = [autoprefixer()];
 
 var config = {
@@ -91,6 +92,7 @@ gulp.task('stylus', function () {
             "**/*.styl"
         ]))
         .pipe(stylus({use: rupture()}))
+        .pipe(plumber())
         // .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('css.min.css'))

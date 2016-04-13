@@ -34,6 +34,8 @@ html {
 }
 
 body
+  height 100%
+  wight 100%
   margin-top 300px
   font-family: 'San Francisco'
 
@@ -55,9 +57,8 @@ font(x,y)
   height: 200vh
 
 .main-nav-bar
-  background: linear-gradient(main-red, transparent)
+  background: linear-gradient(main-red, rgba(221,46,68, .7) 80%, rgba(221,46,68, .4) 90%, transparent)
   color: main-white
-  height: 30vh
   position: fixed
   width: 100%
   top: 0
@@ -67,6 +68,7 @@ font(x,y)
   font(100, 1.5)
   display: flex
   justify-content: space-between
+  padding-right 40px
 
   /*home-view*/
 .home-container
@@ -79,10 +81,14 @@ font(x,y)
 
 .nav-bottom
   margin 25px auto 0 auto
-  width 80vw
+  max-width 600px
   display flex
   flex-direction row
   justify-content space-around
+  +below(600px)
+    flex-direction column
+    input
+      margin auto
 
 .location-filter
   background: transparent
@@ -92,7 +98,6 @@ font(x,y)
   text-align: center
   padding-right: 0
   margin: 0
-  width: 300px
   &:focus
     outline none
 
@@ -105,23 +110,37 @@ a
 
 .cat-container
     width: 100%
-    height: 60vh
     background-color: main-red
-    top: 35vh
-    position: absolute
+
+.cat-title
+  position absolute
+  font(400, 2.25)
+  transform translate(50vw, -70px)
+
+.main-deals-container
+  +below(600px)
+    margin-top 450px
 
 .deal
+<<<<<<< HEAD
     width: 25vw
     height: 350px
     margin: 0 25px
+=======
+    min-width s('calc(%s/%s)', 100vw, 4)
+    height: 300px
+    margin: 25px
+>>>>>>> 2c210b432e1ae69cd7209efc1be75c716c379d0c
     background: main-white
-    display: inline-block
     border-radius: 5px
+    flex 1
 
 .deals-container
-    display: inline-block
-    width: 10000px
-    overflow-x: auto
+    margin-top 80px
+    display flex
+    flex-direction row
+    overflow-x scroll
+    overflow-y hidden
     height: 400px
 
 /*maps-view*/
