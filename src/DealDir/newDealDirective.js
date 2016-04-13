@@ -2,9 +2,9 @@ angular.module('app')
 .directive('dealDir', function(){
   return {
     retrict: 'E',
-    templateUrl: '/partials/maps.html',
+    templateUrl: '/maps.html',
     controller: 'ModalCtrl',
     controllerAs: 'vm'
 
   }
-})
+});

@@ -16,7 +16,7 @@
   "main": "./server/index.js",
   "scripts": {
     "lint": "jshint **.js",
-    "start": "NODE_ENV=production nodemon & gulp"
+    "start": "concurrently 'nodemon' 'gulp'"
   },
   "keywords": [
     "deals"
@@ -27,6 +27,7 @@
     "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
+    "concurrently": "^2.0.0",
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "gulp-inject": "^4.0.0",
