@@ -23,7 +23,7 @@
 
         <div class='top-nav-tabs'>
             <ul>
-                <li><a href="/#/">Home</a></li>
+                <li><a ui-sref="home">Home</a></li>
                 <li ng-if="vm.isAuthenticated()"><a ui-sref="profile">Profile</a></li>
             </ul>
             <ul ng-if="!vm.isAuthenticated()">
@@ -45,7 +45,7 @@
             <div class='nav-bottom'>
                 <span class='medium-text'>deals<span>    </span></span>
                 <span class='light-text'>  in</span>
-                <input class='location-filter' type='text' ng-model='vm.city'>
+                <input class='location-filter' type='text' ng-model='vm.city' pu-elastic-input>
                 <span class='light-text'>on<span>    </span></span>
       <span class='medium-text'>
         <select ng-model="vm.selectedDay" ng-options="day.display for day in vm.days track by day.val" class="options"></select>
@@ -58,7 +58,6 @@
     </div>
 </div>
 
-<deal-dir></deal-dir>
 <ui-view></ui-view>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>

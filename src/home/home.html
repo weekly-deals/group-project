@@ -1,5 +1,8 @@
-<div class='home-container' ng-repeat="cat in categories">
-<cat-directive></cat-directive>
+<div class="main-deals-container">
+  <div class='home-container' ng-repeat="cat in categories">
+    <p class="cat-title">Cat -- {{$index}}</p>
+    <cat-directive></cat-directive>
+  </div>
 </div>
 
 <br/>
