@@ -34,22 +34,23 @@ html {
 }
 body {
   margin-top: 300px;
+  font-family: 'San Francisco';
 }
 .large-text {
   font-weight: 400;
-  font-size: 60px;
+  font-size: 3.75em;
 }
 .small-text {
   font-weight: 200;
-  font-size: 18px;
+  font-size: 1.125em;
 }
 .medium-text {
   font-weight: 400;
-  font-size: 36px;
+  font-size: 2.25em;
 }
 .light-text {
   font-weight: 100;
-  font-size: 36px;
+  font-size: 2.25em;
 }
 .main-container {
   background: #dd2e44;
@@ -66,9 +67,8 @@ body {
   z-index: 20;
 }
 .top-nav-tabs {
-  font-family: 'San Francisco';
   font-weight: 100;
-  font-size: 24;
+  font-size: 1.5em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -88,30 +88,31 @@ body {
   text-align: center;
 }
 .nav-bottom {
-  vertical-align: text-bottom;
+  margin: 25px auto 0 auto;
+  width: 80vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
 }
 .location-filter {
   background: transparent;
   border: none;
   font-color: #f2f2f2;
-  font-size: 40px;
   font-weight: 400;
+  font-size: 2.5em;
   text-align: center;
-  padding-right: 0px;
-  margin: 0px;
+  padding-right: 0;
+  margin: 0;
   width: 300px;
-}
-.location-filter::-webkit-input-placeholder {
-  color: #f2f2f2;
-}
-.location-filter::-moz-placeholder {
-  color: #f2f2f2;
-}
-.location-filter:-ms-input-placeholder {
-  color: #f2f2f2;
-}
-.location-filter::placeholder {
-  color: #f2f2f2;
 }
 .location-filter:focus {
   outline: none;
@@ -122,9 +123,6 @@ li {
 a {
   text-decoration: none;
   color: #f2f2f2;
-}
-body {
-  font-family: 'San Francisco';
 }
 .cat-container {
   width: 100%;
@@ -143,7 +141,7 @@ body {
 }
 .deals-container {
   display: inline-block;
-  width: 1000000px;
+  width: 10000px;
   overflow-x: auto;
   height: 400px;
 }
@@ -152,14 +150,17 @@ body {
   display: none;
   position: fixed;
   z-index: 100;
-  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   overflow: auto;
-  background-color: #ababab;
-  background-color: #ababab;
+  background-color: #f2f2f2;
+  text-align: center;
+  margin: 5% 10%;
+  border-radius: 10px;
+  font-family: 'San Francisco';
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
 }
 .modal-content {
   margin: auto;
@@ -167,13 +168,62 @@ body {
   width: 80%;
   max-width: 700px;
 }
+.data-entry {
+  text-align: center;
+}
+.deal-entry {
+  width: 100%;
+  margin: auto;
+}
+.deal-title-input {
+  border-radius: 15px;
+  height: 30px;
+  border: none;
+  margin: 5px;
+  width: 30%;
+}
+.day-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 30%;
+  margin: 5px 35%;
+}
+.day-box {
+  color: #f2f2f2;
+  background-color: #dd2e44;
+  border-radius: 3px;
+  height: 23px;
+  width: 23px;
+}
+.deal-textarea {
+  width: 60%;
+  border-radius: 15px;
+  margin: 5px;
+  border: none;
+}
+.bus-entry {
+  width: 100%;
+}
+.bus-name-input {
+  border-radius: 15px;
+  height: 30px;
+  border: none;
+  margin: 5px;
+  width: 50%;
+}
 #close {
   position: absolute;
   top: 15px;
   right: 35px;
   color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
+  font-weight: 400;
+  font-size: 2.5em;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -184,16 +234,15 @@ body {
   cursor: pointer;
 }
 @media only screen and (max-width: 700px) {
-  .modal-content {
+  #close {
     width: 100%;
   }
 }
 .signup-form {
   width: 400px;
   margin: auto;
-  font-family: 'San Francisco';
-  font-weight: 100px;
-  font-size: 30px;
+  font-weight: 100;
+  font-size: 1.875em;
 }
 .signup-inputs {
   border: 0;
@@ -215,48 +264,42 @@ body {
   width: 400px;
   height: 60px;
   text-align: center;
-  font-family: 'San Francisco';
-  font-weight: 100px;
-  font-size: 30px;
+  font-weight: 100;
+  font-size: 1.5em;
 }
 .signup-button:focus {
   outline: none;
 }
 .password-match-error {
-  font-family: 'San Francisco';
-  font-weight: 200px;
-  font-size: 20px;
+  font-weight: 200;
+  font-size: 1.25em;
   color: #f2f2f2;
   text-align: center;
   margin-bottom: 0;
 }
 .signup-header {
-  font-family: 'San Francisco';
   font-weight: 400;
-  font-size: 60px;
+  font-size: 3.75em;
   text-align: center;
   color: #f2f2f2;
 }
 .signup-footer {
-  font-family: 'San Francisco';
   font-weight: 200;
-  font-size: 20px;
+  font-size: 1.25em;
   text-align: center;
   color: #f2f2f2;
   margin-top: 0;
 }
 .login-footer {
-  font-family: 'San Francisco';
   font-weight: 200;
-  font-size: 20px;
+  font-size: 1.25em;
   text-align: center;
   color: #f2f2f2;
   margin-top: 0;
 }
 .login-header {
-  font-family: 'San Francisco';
   font-weight: 400;
-  font-size: 60px;
+  font-size: 3.75em;
   text-align: center;
   color: #f2f2f2;
 }
@@ -265,12 +308,11 @@ body {
   border-radius: 30px;
   background: #f2f2f2;
   color: #dd2e44;
-  width: 400px;
   height: 60px;
+  width: 400px;
   text-align: center;
-  font-family: 'San Francisco';
-  font-weight: 100px;
-  font-size: 30px;
+  font-weight: 100;
+  font-size: 1.5em;
   margin-bottom: 10px;
 }
 .login-button:focus {
@@ -279,9 +321,8 @@ body {
 .login-form {
   width: 400px;
   margin: auto;
-  font-family: 'San Francisco';
-  font-weight: 100px;
-  font-size: 30px;
+  font-weight: 100;
+  font-size: 1.875em;
 }
 .login-inputs {
   border: 0;
@@ -296,9 +337,8 @@ body {
   outline: none;
 }
 .option {
-  font-family: 'San Francisco';
-  font-weight: 100px;
-  font-size: 30px;
+  font-weight: 100;
+  font-size: 1.875em;
   color: #f2f2f2;
   text-align: center;
   margin-top: 0;
