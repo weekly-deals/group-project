@@ -3,7 +3,7 @@
   "description": "group project",
   "version": "1.0.0",
   "engines": {
-    "node": "5.10.1"
+    "node": "~5.10.1"
   },
   "author": "Weekly Deals Team",
   "contributors": [
@@ -15,6 +15,7 @@
   "license": "ISC",
   "main": "./server/index.js",
   "scripts": {
+    "postinstall": "bower install",
     "lint": "jshint **.js",
     "start": "concurrently 'nodemon' 'gulp'"
   },
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "bower": "^1.7.9",
     "browser-sync": "^2.12.1",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
