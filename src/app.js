@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
+angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
 
     .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -16,11 +16,11 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
             .state('home', {
                 url: '/',
                 controller: 'mainCtrl',
-                templateUrl: 'partials/home.html'
+                templateUrl: 'home.html'
             })
             .state('login', {
                 url: '/login',
-                templateUrl: 'partials/login.html',
+                templateUrl: 'login.html',
                 controller: 'loginCtrl',
                 resolve: {
                     skipIfLoggedIn: skipIfLoggedIn
@@ -28,7 +28,7 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
             })
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'partials/signup.html',
+                templateUrl: 'signup.html',
                 controller: 'signupCtrl',
                 resolve: {
                     skipIfLoggedIn: skipIfLoggedIn
@@ -41,7 +41,7 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
             })
             .state('profile', {
                 url: '/profile',
-                templateUrl: 'partials/profile.html',
+                templateUrl: 'profile.html',
                 controller: 'profileCtrl',
                 resolve: {
                     loginRequired: loginRequired
@@ -49,7 +49,7 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
             })
             .state('addStuff', {
                 url: '/addstuff',
-                templateUrl: 'partials/addStuff.html',
+                templateUrl: 'addStuff.html',
                 controller: 'addStuff',
                 resolve: {
                     loginRequired: loginRequired
@@ -57,7 +57,7 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
             })
             // .state('maps', {
             //     url: '/maps',
-            //     templateUrl: 'partials/maps.html',
+            //     templateUrl: 'maps.html',
             //     controller: 'NavbarCtrl',
             //     controllerAs: 'vm'
             // });
