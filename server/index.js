@@ -34,8 +34,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //amazon s3
 app.post('/api/newimage', s3Ctrl.postImage);
 
-
-
 app.get('/api/me', checkRole('user'), accounts.getApiMe);
 app.put('/api/me', checkRole('user'), accounts.putApiMe);
 app.post('/auth/login', accounts.postAuthLogin);

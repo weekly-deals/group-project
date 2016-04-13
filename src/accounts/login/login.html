@@ -3,29 +3,32 @@
         <div class="login-container">
             <h2 class="login-header">Log in</h2>
             <form ng-submit="login()" name="loginForm" class="login-form">
-                <input type="text" name="email" ng-model="user.email" placeholder="Email" class="login-inputs" required autofocus>
-                <input type="password" name="password" ng-model="user.password" placeholder="Password" class="login-inputs" required>
+                <input type="text" name="email" ng-model="user.email" placeholder="Email" class="login-inputs" required
+                       autofocus>
+                <input type="password" name="password" ng-model="user.password" placeholder="Password"
+                       class="login-inputs" required>
                 <button type="submit" ng-disabled="loginForm.$invalid" class="login-button">Log in</button>
             </form>
             <br/>
             <p>
-                <p class="login-footer">Don't have an account yet?
-                    <a href="/#/signup" class="login-footer">Sign up</a>
-                </p>
+            <p class="login-footer">Don't have an account yet?
+                <a href="/#/signup" class="login-footer">Sign up</a>
+            </p>
             </p>
             <div>
                 <h6 class="option">or</h6>
-            </div >
+            </div>
             <div class="alt-login">
-            <button ng-click="authenticate('facebook')" class="login-button" id="fb">
-                Log in with Facebook
-            </button>
-            <button ng-click="authenticate('google')" class="login-button">
-                Log in with Google
-            </button>
-            <button ng-click="authenticate('twitter')" class="login-button" id="twitter">
-                Log in with Twitter
-            </button>
+                <button ng-click="authenticate('facebook')" class="login-button" id="fb">
+                    Log in with Facebook
+                </button>
+                <button ng-click="authenticate('google')" class="login-button">
+                    Log in with Google
+                </button>
+                <button ng-click="authenticate('twitter')" class="login-button" id="twitter">
+                    Log in with Twitter
+                </button>
+            </div>
         </div>
     </div>
 </div>
