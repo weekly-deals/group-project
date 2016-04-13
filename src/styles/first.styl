@@ -35,19 +35,20 @@ html {
 
 body
   margin-top 300px
+  font-family: 'San Francisco'
+
+font(x,y)
+  font-weight x
+  font-size y em
 
 .large-text
-    font-weight: 400
-    font-size: 60px
+    font(400, 3.75)
 .small-text
-    font-weight: 200
-    font-size: 18px
+    font(200, 1.125)
 .medium-text
-    font-weight: 400
-    font-size: 36px
+    font(400, 2.25)
 .light-text
-    font-weight: 100
-    font-size: 36px
+    font(100, 2.25)
 
 .main-container
   background: main-red
@@ -55,7 +56,6 @@ body
 
 .main-nav-bar
   background: linear-gradient(main-red, transparent)
-
   color: main-white
   height: 30vh
   position: fixed
@@ -64,9 +64,7 @@ body
   z-index: 20
 
 .top-nav-tabs
-  font-family: 'San Francisco'
-  font-weight: 100
-  font-size: 24
+  font(100, 1.5)
   display: flex
   justify-content: space-between
 
@@ -80,26 +78,19 @@ body
   text-align: center
 
 .nav-bottom
-
   vertical-align: text-bottom
 
 .location-filter
   background: transparent
   border: none
   font-color: main-white
-  font-size: 40px
-  font-weight: 400
+  font(400, 2.5)
   text-align: center
-  padding-right: 0px
-  margin: 0px
+  padding-right: 0
+  margin: 0
   width: 300px
-
-
-.location-filter::placeholder
-  color: main-white
-
-.location-filter:focus
-  outline: none
+  &:focus
+    outline none
 
 li
   display: inline-block
@@ -107,9 +98,6 @@ li
 a
   text-decoration: none
   color: main-white
-
-body
-  font-family: 'San Francisco'
 
 .cat-container
     width: 100%
@@ -128,7 +116,7 @@ body
 
 .deals-container
     display: inline-block
-    width: 1000000px
+    width: 10000px
     overflow-x: auto
     height: 400px
 
@@ -144,7 +132,6 @@ body
     height: 100%
     overflow: auto
     background-color: #ababab
-    background-color: #ababab
 
 .modal-content
     margin: auto
@@ -157,27 +144,20 @@ body
     top: 15px
     right: 35px
     color: #f1f1f1
-    font-size: 40px
-    font-weight: bold
+    font(400, 2.5)
     transition: 0.3s
-
-#close:hover, #close:focus
-    color: #bbb
-    text-decoration: none
-    cursor: pointer
-
-@media only screen and (max-width: 700px){
-  .modal-content{
-    width: 100%
-  }
-}
+    &:hover,&:focus
+      color: #bbb
+      text-decoration: none
+      cursor: pointer
+    +below(700px)
+      width 100%
 
 .signup-form
     width: 400px
     margin: auto
-    font-family: 'San Francisco'
-    font-weight: 100px
-    font-size: 30px
+    font(100, 1.875)
+
 .signup-inputs
     border: 0
     border-radius: 30px
@@ -186,9 +166,8 @@ body
     height: 60px
     margin-bottom: 10px
     text-align: center
-
-.signup-inputs:focus
-    outline: none
+    &:focus
+      outline: none
 
 .signup-button
     border: 0
@@ -198,47 +177,35 @@ body
     width: 400px
     height: 60px
     text-align: center
-    font-family: 'San Francisco'
-    font-weight: 100px
-    font-size: 30px
-
-.signup-button:focus
-    outline: none
+    font(100, 1.5)
+    &:focus
+      outline: none
 
 .password-match-error
-    font-family: 'San Francisco'
-    font-weight: 200px
-    font-size: 20px
+    font(200, 1.25)
     color: main-white
     text-align: center
     margin-bottom: 0
 
 .signup-header
-    font-family: 'San Francisco'
-    font-weight: 400
-    font-size: 60px
+    font(400, 3.75)
     text-align: center
     color: main-white
+
 .signup-footer
-    font-family: 'San Francisco'
-    font-weight: 200
-    font-size: 20px
+    font(200, 1.25)
     text-align: center
     color: main-white
     margin-top: 0
     
 .login-footer
-    font-family: 'San Francisco'
-    font-weight: 200 
-    font-size: 20px
+    font(200, 1.25)
     text-align: center
     color: main-white 
     margin-top: 0
     
 .login-header
-    font-family: 'San Francisco'
-    font-weight: 400 
-    font-size: 60px
+    font(400, 3.75)
     text-align: center
     color: main-white
     
@@ -250,21 +217,16 @@ body
     width: 400px
     height: 60px
     text-align: center
-    font-family: 'San Francisco'
-    font-weight: 100px
-    font-size: 30px
+    font(100, 1.5)
     margin-bottom: 10px
-    
-   
-.login-button:focus
-    outline: none
+    &:focus
+      outline: none
  
 .login-form
     width: 400px
     margin: auto
-    font-family: 'San Francisco'
-    font-weight: 100px
-    font-size: 30px
+    font(100, 1.875)
+
 .login-inputs
     border: 0
     border-radius: 30px
@@ -273,15 +235,11 @@ body
     height: 60px
     margin-bottom: 10px
     text-align: center
-    
-.login-inputs:focus
-    outline: none
-    
+    &:focus
+      outline: none
     
 .option 
-    font-family: 'San Francisco'
-    font-weight: 100px
-    font-size: 30px
+    font(100, 1.875)
     color: main-white
     text-align: center
     margin-top: 0
