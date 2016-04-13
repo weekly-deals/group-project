@@ -59,7 +59,7 @@ angular.module('app')
                 },
                 busName: business.name,
                 busHours: business.opening_hours.weekday_text,
-                placeId: business.place_id,
+                _id: business.place_id,
                 website: business.website,
                 picture: busPic
             };
@@ -68,6 +68,26 @@ angular.module('app')
                 data: newBusiness,
                 url: '/api/bus'
             });
+        };
+
+        vm.newDeal = function(deal, bus, days) {
+          console.log(bus);
+          var newDeal = {
+            dealsName: deal.name,
+            day: days,
+            description: deal.description,
+            exceptions: deal.details,
+            bus: bus.data._id,
+            loc: {
+              coordinates: [bus.data.loc.coordinates[0], bus.data.loc.coordinates[1]]
+            }
+          };
+          console.log(newDeal);
+          return $http({
+            method: "POST",
+            data: newDeal,
+            url: '/api/deal'
+          });
         };
 
         vm.storeImage = function (imageData, fileName) {
