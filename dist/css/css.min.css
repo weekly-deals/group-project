@@ -152,12 +152,12 @@ a {
   z-index: 100;
   left: 0;
   top: 0;
-  width: 80%;
+  width: 60%;
   height: 80%;
   overflow: auto;
   background-color: #f2f2f2;
   text-align: center;
-  margin: 5% 10%;
+  margin: 5% 20%;
   border-radius: 10px;
   font-family: 'San Francisco';
   box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
@@ -221,7 +221,7 @@ a {
   position: absolute;
   top: 15px;
   right: 35px;
-  color: #f1f1f1;
+  color: #bbb;
   font-weight: 400;
   font-size: 2.5em;
   -webkit-transition: 0.3s;
@@ -229,7 +229,7 @@ a {
 }
 #close:hover,
 #close:focus {
-  color: #bbb;
+  color: #58595b;
   text-decoration: none;
   cursor: pointer;
 }
