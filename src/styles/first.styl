@@ -117,22 +117,61 @@ body
     background-color: main-red
     top: 35vh
     position: absolute
-    
-.deal 
-    width: 33vh
+
+.deal
+    width: 25%
     height: 50vh
     margin: 5vh
     background: main-white
     display: inline-block
     border-radius: 5px
-    
-    
+
 .deals-container
     display: inline-block
     width: 1000000px
     overflow-x: auto
     height: 400px
-       
+
+/*maps-view*/
+.modal
+    display: none
+    position: fixed
+    z-index: 100
+    padding-top: 100px
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: auto
+    background-color: #ababab
+    background-color: #ababab
+
+.modal-content
+    margin: auto
+    display: block
+    width: 80%
+    max-width: 700px
+
+#close
+    position: absolute
+    top: 15px
+    right: 35px
+    color: #f1f1f1
+    font-size: 40px
+    font-weight: bold
+    transition: 0.3s
+
+#close:hover, #close:focus
+    color: #bbb
+    text-decoration: none
+    cursor: pointer
+
+@media only screen and (max-width: 700px){
+  .modal-content{
+    width: 100%
+  }
+}
+
 .signup-form
     width: 400px
     margin: auto
@@ -150,7 +189,7 @@ body
 
 .signup-inputs:focus
     outline: none
-    
+
 .signup-button
     border: 0
     border-radius: 30px
@@ -162,31 +201,100 @@ body
     font-family: 'San Francisco'
     font-weight: 100px
     font-size: 30px
-   
+
 .signup-button:focus
     outline: none
-    
-.password-match-error 
+
+.password-match-error
     font-family: 'San Francisco'
     font-weight: 200px
     font-size: 20px
     color: main-white
     text-align: center
     margin-bottom: 0
-       
+
 .signup-header
     font-family: 'San Francisco'
-    font-weight: 400 
+    font-weight: 400
     font-size: 60px
     text-align: center
     color: main-white
->>>>>>> f75ac061ca4b2f0108ee1fadd1150be189eb2834
-    
 .signup-footer
+    font-family: 'San Francisco'
+    font-weight: 200
+    font-size: 20px
+    text-align: center
+    color: main-white
+    margin-top: 0
+    
+.login-footer
     font-family: 'San Francisco'
     font-weight: 200 
     font-size: 20px
     text-align: center
     color: main-white 
     margin-top: 0
-        
+    
+.login-header
+    font-family: 'San Francisco'
+    font-weight: 400 
+    font-size: 60px
+    text-align: center
+    color: main-white
+    
+.login-button
+    border: 0
+    border-radius: 30px
+    background: main-white
+    color: main-red
+    width: 400px
+    height: 60px
+    text-align: center
+    font-family: 'San Francisco'
+    font-weight: 100px
+    font-size: 30px
+    margin-bottom: 10px
+    
+   
+.login-button:focus
+    outline: none
+ 
+.login-form
+    width: 400px
+    margin: auto
+    font-family: 'San Francisco'
+    font-weight: 100px
+    font-size: 30px
+.login-inputs
+    border: 0
+    border-radius: 30px
+    color: main-grey
+    width: 400px
+    height: 60px
+    margin-bottom: 10px
+    text-align: center
+    
+.login-inputs:focus
+    outline: none
+    
+    
+.option 
+    font-family: 'San Francisco'
+    font-weight: 100px
+    font-size: 30px
+    color: main-white
+    text-align: center
+    margin-top: 0
+    margin-bottom: 10px
+    padding-top: 0
+    
+.alt-login
+    margin: auto
+    width: 400px
+    
+#twitter 
+    background: #1da1f2
+    color: main-white
+#fb
+    background: #3a5795
+    color: main-white  

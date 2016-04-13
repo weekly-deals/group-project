@@ -22,7 +22,7 @@
     "deals"
   ],
   "dependencies": {
-    "aws-sdk": "^2",
+    "aws-sdk": "^2.3.3",
     "bcryptjs": "^2.3.0",
     "bluebird": "^3.3.5",
     "body-parser": "^1.15.0",

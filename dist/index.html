@@ -31,6 +31,7 @@
                 <li><a ui-sref="signup">Sign up</a></li>
             </ul>
             <ul ng-if="vm.isAuthenticated()">
+                <li><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a New Deal!</span></li>/
                 <li><a ui-sref="logout">Logout</a></li>
             </ul>
         </div>
@@ -57,7 +58,7 @@
     </div>
 </div>
 
-
+<deal-dir></deal-dir>
 <ui-view></ui-view>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
