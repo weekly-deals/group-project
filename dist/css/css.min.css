@@ -134,9 +134,9 @@ body {
   position: absolute;
 }
 .deal {
-  width: 25%;
-  height: 50vh;
-  margin: 5vh;
+  width: 25vw;
+  height: 350px;
+  margin: 0 25px;
   background: #f2f2f2;
   display: inline-block;
   border-radius: 5px;
@@ -244,6 +244,78 @@ body {
   text-align: center;
   color: #f2f2f2;
   margin-top: 0;
+}
+.login-footer {
+  font-family: 'San Francisco';
+  font-weight: 200;
+  font-size: 20px;
+  text-align: center;
+  color: #f2f2f2;
+  margin-top: 0;
+}
+.login-header {
+  font-family: 'San Francisco';
+  font-weight: 400;
+  font-size: 60px;
+  text-align: center;
+  color: #f2f2f2;
+}
+.login-button {
+  border: 0;
+  border-radius: 30px;
+  background: #f2f2f2;
+  color: #dd2e44;
+  width: 400px;
+  height: 60px;
+  text-align: center;
+  font-family: 'San Francisco';
+  font-weight: 100px;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.login-button:focus {
+  outline: none;
+}
+.login-form {
+  width: 400px;
+  margin: auto;
+  font-family: 'San Francisco';
+  font-weight: 100px;
+  font-size: 30px;
+}
+.login-inputs {
+  border: 0;
+  border-radius: 30px;
+  color: #58595b;
+  width: 400px;
+  height: 60px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.login-inputs:focus {
+  outline: none;
+}
+.option {
+  font-family: 'San Francisco';
+  font-weight: 100px;
+  font-size: 30px;
+  color: #f2f2f2;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-top: 0;
+}
+.alt-login {
+  margin: auto;
+  width: 400px;
+}
+#twitter {
+  background: #1da1f2;
+  color: #f2f2f2;
+}
+#fb {
+  background: #3a5795;
+  color: #f2f2f2;
 }
 
 /*# sourceMappingURL=maps/css.min.css.map */
