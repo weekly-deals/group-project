@@ -18,12 +18,15 @@ module.exports = {
     //we could also use a parallel middleware to retrieve them if not
     addDeal: function (req, res) {
         var deal = new Deal(req.body);
-        var bus = Bus.findByIdAndUpdate(req.body.bus, {$push: {deals: deal._id}});
+        var bus = Bus.findOneAndUpdate({_id: req.body.bus}, {$push: {deals: deal._id}});
+
         Promise.join(deal.save(), bus.exec(), function (dealResp, busResp) {
             return [dealResp, busResp]
         }).then(function (resp) {
+            // console.log(resp);
             return res.status(200).json(resp);
         }).catch(function (err) {
+            console.log(err);
             return res.status(500).json(err);
         })
     },

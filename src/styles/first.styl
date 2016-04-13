@@ -34,6 +34,8 @@ html {
 }
 
 body
+  height 100%
+  wight 100%
   margin-top 300px
   font-family: 'San Francisco'
 
@@ -55,9 +57,8 @@ font(x,y)
   height: 200vh
 
 .main-nav-bar
-  background: linear-gradient(main-red, transparent)
+  background: linear-gradient(main-red, rgba(221,46,68, .7) 80%, rgba(221,46,68, .4) 90%, transparent)
   color: main-white
-  height: 30vh
   position: fixed
   width: 100%
   top: 0
@@ -67,6 +68,7 @@ font(x,y)
   font(100, 1.5)
   display: flex
   justify-content: space-between
+  padding-right 40px
 
   /*home-view*/
 .home-container
@@ -78,7 +80,15 @@ font(x,y)
   text-align: center
 
 .nav-bottom
-  vertical-align: text-bottom
+  margin 25px auto 0 auto
+  max-width 600px
+  display flex
+  flex-direction row
+  justify-content space-around
+  +below(600px)
+    flex-direction column
+    input
+      margin auto
 
 .location-filter
   background: transparent
@@ -88,7 +98,6 @@ font(x,y)
   text-align: center
   padding-right: 0
   margin: 0
-  width: 300px
   &:focus
     outline none
 
@@ -101,23 +110,31 @@ a
 
 .cat-container
     width: 100%
-    height: 60vh
     background-color: main-red
-    top: 35vh
-    position: absolute
+
+.cat-title
+  position absolute
+  font(400, 2.25)
+  transform translate(50vw, -70px)
+
+.main-deals-container
+  +below(600px)
+    margin-top 450px
 
 .deal
-    width: 25%
-    height: 50vh
-    margin: 5vh
+    min-width s('calc(%s/%s)', 100vw, 4)
+    height: 300px
+    margin: 25px
     background: main-white
-    display: inline-block
     border-radius: 5px
+    flex 1
 
 .deals-container
-    display: inline-block
-    width: 10000px
-    overflow-x: auto
+    margin-top 80px
+    display flex
+    flex-direction row
+    overflow-x scroll
+    overflow-y hidden
     height: 400px
 
 /*maps-view*/
@@ -125,13 +142,19 @@ a
     display: none
     position: fixed
     z-index: 100
-    padding-top: 100px
     left: 0
     top: 0
-    width: 100%
-    height: 100%
+    width: 60%
+    height: 80%
     overflow: auto
-    background-color: #ababab
+    background-color: main-white
+    text-align: center
+    margin: 5% 20%
+    border-radius: 10px
+    font-family: 'San Francisco'
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+
 
 .modal-content
     margin: auto
@@ -139,15 +162,65 @@ a
     width: 80%
     max-width: 700px
 
+.data-entry
+  text-align: center
+
+.deal-entry
+  width: 100%
+  margin: auto
+
+.deal-title-input
+  border-radius 15px
+  height: 30px
+  border: none
+  margin: 5px
+  width: 30%
+
+.day-wrapper
+  display: flex
+  justify-content: space-between
+  width: 30%
+  margin: 5px 35%
+
+.day-box
+  color: main-white
+  background-color: main-red
+  border-radius 3px
+  height: 23px
+  width: 23px
+
+
+
+.deal-textarea
+  width: 60%
+  border-radius: 15px
+  margin 5px
+  border: none
+
+
+
+
+
+.bus-entry
+  width: 100%
+
+.bus-name-input
+  border-radius 15px
+  height: 30px
+  border: none
+  margin: 5px
+  width: 50%
+
+
 #close
     position: absolute
     top: 15px
     right: 35px
-    color: #f1f1f1
+    color: #bbb
     font(400, 2.5)
     transition: 0.3s
     &:hover,&:focus
-      color: #bbb
+      color: main-grey
       text-decoration: none
       cursor: pointer
     +below(700px)
@@ -193,66 +266,66 @@ a
     color: main-white
 
 .signup-footer
-    font(200, 1.25)
-    text-align: center
-    color: main-white
-    margin-top: 0
+   font(200, 1.25)
+   text-align: center
+   color: main-white
+   margin-top: 0
 
 .login-footer
-    font(200, 1.25)
-    text-align: center
-    color: main-white 
-    margin-top: 0
-    
+   font(200, 1.25)
+   text-align: center
+   color: main-white
+   margin-top: 0
+
 .login-header
-    font(400, 3.75)
-    text-align: center
-    color: main-white
-    
+   font(400, 3.75)
+   text-align: center
+   color: main-white
+
 .login-button
-    border: 0
-    border-radius: 30px
-    background: main-white
-    color: main-red
-    height: 60px
-    width: 400px
-    text-align: center
-    font(100, 1.5)
-    margin-bottom: 10px
-    &:focus
-      outline: none
- 
+   border: 0
+   border-radius: 30px
+   background: main-white
+   color: main-red
+   height: 60px
+   width: 400px
+   text-align: center
+   font(100, 1.5)
+   margin-bottom: 10px
+   &:focus
+     outline: none
+
 .login-form
-    width: 400px
-    margin: auto
-    font(100, 1.875)
+   width: 400px
+   margin: auto
+   font(100, 1.875)
 
 .login-inputs
-    border: 0
-    border-radius: 30px
-    color: main-grey
-    width: 400px
-    height: 60px
-    margin-bottom: 10px
-    text-align: center
-    &:focus
-      outline: none
-    
-.option 
-    font(100, 1.875)
-    color: main-white
-    text-align: center
-    margin-top: 0
-    margin-bottom: 10px
-    padding-top: 0
-    
+   border: 0
+   border-radius: 30px
+   color: main-grey
+   width: 400px
+   height: 60px
+   margin-bottom: 10px
+   text-align: center
+   &:focus
+     outline: none
+
+.option
+   font(100, 1.875)
+   color: main-white
+   text-align: center
+   margin-top: 0
+   margin-bottom: 10px
+   padding-top: 0
+
 .alt-login
-    margin: auto
-    width: 400px
-    
-#twitter 
-    background: #1da1f2
-    color: main-white
+   margin: auto
+   width: 400px
+
+#twitter
+   background: #1da1f2
+   color: main-white
 #fb
-    background: #3a5795
-    color: main-white  
+   background: #3a5795
+   color: main-white
