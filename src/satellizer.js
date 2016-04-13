@@ -21,7 +21,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
       httpInterceptor: function() { return true; },
       withCredentials: false,
       tokenRoot: null,
-      baseUrl: '/',
+      baseUrl: 'http://localhost:3000',
       loginUrl: '/auth/login',
       signupUrl: '/auth/signup',
       unlinkUrl: '/auth/unlink/',
@@ -62,9 +62,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
           url: '/auth/twitter',
           authorizationEndpoint: 'https://api.twitter.com/oauth/authenticate',
           redirectUri: window.location.origin,
-          oauthType: '1.0',
+          type: '1.0',
           popupOptions: { width: 495, height: 645 }
-        }
+        },
       }
     })
     .provider('$auth', ['SatellizerConfig', function(config) {
