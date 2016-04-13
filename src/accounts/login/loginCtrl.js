@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('loginCtrl', function ($scope, $location, $auth) {
+    .controller('loginCtrl', function ($scope, $location, $auth, $http) {
 
         $scope.login = function () {
             $auth.login($scope.user)
@@ -30,4 +30,5 @@ angular.module('app')
                     }
                 });
         };
+
     });
