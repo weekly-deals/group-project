@@ -11,7 +11,8 @@ const express = require('express'),
     accounts = require('./endpoints/accounts.js'),
     checkRole = require('./checkRole.js'),
     data = require('./endpoints/data.js'),
-    protectJSON = require('./protectJSON.js');
+    protectJSON = require('./protectJSON.js'),
+    s3Ctrl = require('./controllers/s3controller.js');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/weekly');
@@ -21,15 +22,19 @@ mongoose.connection.once('open', function () {
 });
 
 app.use(helmet());
-app.use(protectJSON);
+// app.use(protectJSON);
 app.use(compression());
 app.use(express.static(__dirname + '/../dist'));
 app.use(cors());
 app.options('*', cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+
+//amazon s3
+app.post('/api/newimage', s3Ctrl.postImage);
+
+
 
 app.get('/api/me', checkRole('user'), accounts.getApiMe);
 app.put('/api/me', checkRole('user'), accounts.putApiMe);
@@ -40,7 +45,7 @@ app.post('/auth/facebook', accounts.postAuthFacebook);
 app.post('/auth/twitter', accounts.postAuthTwitter);
 app.post('/auth/unlink', checkRole('user'), accounts.postAuthUnlink);
 
-app.post('/api/bus', checkRole('user'), data.addBus);
+app.post('/api/bus', data.addBus);
 app.put('/api/bus/:id', checkRole('user'), data.editBus);
 app.delete('/api/bus/:id', checkRole('user'), data.deleteBus);
 

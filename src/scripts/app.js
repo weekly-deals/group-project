@@ -55,12 +55,12 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
                     loginRequired: loginRequired
                 }
             })
-            .state('maps', {
-                url: '/maps',
-                templateUrl: 'partials/maps.html',
-                controller: 'NavbarCtrl',
-                controllerAs: 'vm'
-            });
+            // .state('maps', {
+            //     url: '/maps',
+            //     templateUrl: 'partials/maps.html',
+            //     controller: 'NavbarCtrl',
+            //     controllerAs: 'vm'
+            // });
 
 
         function skipIfLoggedIn($q, $auth) {
