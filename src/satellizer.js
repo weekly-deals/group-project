@@ -882,8 +882,3 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
     }]);
 
 })(window, window.angular);
-
-// url: 'https://api.sproutvideo.com/v1/videos',
-//     headers: {
-//   'SproutVideo-Api-Key' : 'bf371c5bd224d3d7a133c39f0c8efd45'
-// },
