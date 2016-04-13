@@ -1,6 +1,8 @@
 angular.module('app')
     .controller('homeCtrl', function ($scope, $auth, geoService) {
 
+
+
         $scope.isAuthenticated = function () {
             return $auth.isAuthenticated();
         };
