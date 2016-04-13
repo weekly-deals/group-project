@@ -74,7 +74,6 @@ angular.module('app')
 
       vm.closeClick = function() {
         var modal = document.getElementById('modal');
-
         modal.style.display = 'none';
       };
 
