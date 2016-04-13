@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'satellizer', 'ngMap'])
+angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
 
     .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 
