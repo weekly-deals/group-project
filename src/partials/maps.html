@@ -6,7 +6,8 @@
     <form class='bus-form'>
       <section class='data-entry'>
         <div class='deal-entry'>
-
+<!--added an input with cat to pass into the server nat -->
+        <input type="text" placeholder="Category Name" ng-model="vm.deal.dealCat" required autofocus>
             <input class='deal-title-input'type="text" ng-model='vm.deal.name' placeholder="  Deal Title"></input><br>
             Which day(s) is this deal available?
             <div class='day-wrapper'>
@@ -57,7 +58,7 @@
         </div>
       </section>
 
-        <input type="submit" ng-click="vm.addBusiness()">Submit Business</input>
+        <input type="submit" ng-click="vm.addBusiness(); vm.getDealInfo()">Submit Business</input>
         {{addedBus}}
       </form>
         <ng-map></ng-map>

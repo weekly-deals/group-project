@@ -63,6 +63,17 @@ angular.module('app')
                 $scope.addedBus = res;
             });
         };
+        vm.getDealInfo = function() {
+          geoService.getDeal().then(function(data) {
+            $scope.deals = data.data;
+            
+       })
+    
+   }; 
+   vm.getDealInfo();
+   
+    
+
 
       NgMap.getMap().then(function (map) {
           geoService.getCurrentPosition().then(function (latlng) {
