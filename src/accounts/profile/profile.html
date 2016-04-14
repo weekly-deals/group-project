@@ -6,8 +6,12 @@
       <legend>Edit My Profile</legend>
       <form ng-submit="updateProfile()">
           <img ng-src="{{user.picture || 'http://placehold.it/100x100'}}">
-          <input type="text" ng-model="user.displayName" />
-          <input type="email" ng-model="user.email" />
+          <input fileread type='file'> <br/>
+
+          <input type="text" ng-model="user.displayName" /> <br/>
+
+          <input type="email" ng-model="user.email" /> <br/>
+          
         <button type="submit">Update Information</button>
       </form>
     </div>
