@@ -39,9 +39,18 @@
         <div class='nav-filter' ng-if="vm.hideDealBar()">
             <div class='large-text'>
                 <!-- this will be {{category}}  -->
-                All
+                {{vm.category}}
+
             </div>
-            <span class='small-text'>another category</span>
+            <span class='small-text'>
+              another category
+              <select class='cat-selector' ng-model='vm.category'>
+                <option class='cat-option' selected>All</option>
+                <option class='cat-option'>Food</option>
+                <option class='cat-option'>Entertainment</option>
+                <option class='cat-option'>Education</option>
+              </select>
+            </span>
             <div class='nav-bottom'>
                 <span class='medium-text'>deals<span>    </span></span>
                 <span class='light-text'>  in</span>

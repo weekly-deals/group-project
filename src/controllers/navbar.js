@@ -3,6 +3,8 @@ angular.module('app')
 
         var vm = this;
 
+        vm.category = 'All';
+
         vm.hideDealBar = function () {
             return !(/maps|login|signup/.test($location.url()))
         };
