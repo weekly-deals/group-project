@@ -12,7 +12,7 @@ var busSchema = new mongoose.Schema({
         coordinates: [{type: Number, required: true}]
     },
     busHours: [String],
-    _id: {type: String, required: true},
+    placeId: {type: String, required: true},
     picture: {type: String},
     phone: {type: String},
     website: {type: String}

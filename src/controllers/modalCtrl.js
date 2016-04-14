@@ -29,9 +29,7 @@ angular.module('app')
             box.style.background = 'rgb(88, 89, 91)';
             vm.days.push(day);
           }
-          // console.log(vm.days)
           return vm.days;
-
       };
 
 
@@ -47,15 +45,24 @@ angular.module('app')
 
       };
 
-      vm.addBusiness = function () {
-          geoService.newBusiness(vm.place, geoService.busPic).then(function (res) {
-              $scope.addedBus = res;
-              geoService.newDeal(vm.deal, res, vm.days).then(function(results){
-                console.log('done');
-              });
+        // vm.addBusiness = function () {
+        //     geoService.newBusiness(vm.place, geoService.busPic).then(function (res) {
+        //         $scope.addedBus = res;
+        //         geoService.newDeal(vm.deal, res, vm.days).then(function(results){
+        //             console.log('done');
+        //         });
+        //
+        //     });
+        // };
 
-          });
-      };
+        vm.addBusiness = function () {
+            if (!vm.deal) {vm.deal = {}}
+            if (vm.days) {vm.deal.day = vm.days}
+            vm.place.picture = geoService.busPic;
+            geoService.newBusiness(vm.place, vm.deal).then(function (res) {
+                $scope.addedBus = res;
+            });
+        };
 
       NgMap.getMap().then(function (map) {
           geoService.getCurrentPosition().then(function (latlng) {
@@ -69,8 +76,7 @@ angular.module('app')
       vm.expand = function() {
         var modal = document.getElementById('modal');
         modal.style.display = 'block';
-
-      }
+      };
 
       vm.closeClick = function() {
         var modal = document.getElementById('modal');
