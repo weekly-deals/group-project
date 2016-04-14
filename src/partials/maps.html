@@ -22,6 +22,7 @@
                         <div id='6' ng-click='vm.selectDay("6")' class='day-box'>Su</div>
                     </div>
 
+
                     Tell us why this is such a good deal!
                     <br>
 
@@ -40,19 +41,21 @@
                     </div>
 
 
-                    <div ng-if="vm.place" class='business-info'>
+                    <!-- <div ng-if="vm.place" class='business-info'> -->
 
-                        <textarea class='deal-textarea' ng-model='vm.deal.details' placeholder='  Enter details or exceptions...'></textarea>
-                    </div>
-                    <div class='bus-entry'>
-                        <div>
-                            Where does this deal happen?
-                            <br>
-                            <input class='bus-name-input' places-auto-complete size=80 types="{{types}}" on-place-changed="vm.placeChanged()" placeholder="  Enter business name and search for a business" />
-                            <br/> Want to add a picture of the business?
-                            <input class='bus-pic-input' fileread type='file'>
-                        </div>
-
+                    <textarea class='deal-textarea' ng-model='vm.deal.details' placeholder='  Enter details or exceptions...'></textarea>
+                </div>
+                <div class='bus-entry'>
+                <div>
+                  Where does this deal happen?<br>
+                  <input class='bus-name-input'
+                         places-auto-complete size=80
+                         types="{{types}}"
+                         on-place-changed="vm.placeChanged()"
+                         placeholder="  Enter business name and search for a business"/> <br/>
+                  Want to add a picture of the business?
+                  <input class='bus-pic-input' fileread type='file'>
+                </div>
 
                         <span>{{vm.place.name}}</span>
                         <br/>
@@ -77,13 +80,14 @@
                         <span>{{vm.place.opening_hours.weekday_text[5]}}</span>
                         <br/>
 
-                    </div>
-                </div>
-            </section>
 
-            <input type="submit" ng-click="vm.addBusiness(); vm.getDealInfo()">Submit Business</input>
-            {{addedBus}}
-        </form>
+          </div>
+        </div>
+      </section>
+
+        <input type="submit" ng-click="vm.addBusiness(); vm.getDealInfo()">Submit Business</input>
+        {{addedBus}}
+      </form>
 
         <ng-map></ng-map>
 
