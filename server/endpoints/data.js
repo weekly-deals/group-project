@@ -9,16 +9,41 @@ mongoose.Promise = require('bluebird');
 module.exports = {
 
     addBus: function (req, res) {
-        Bus.create(req.body, function(err, resp){
-            return err ? res.status(500).json(err) : res.status(200).json(resp);
+        var newDeal = new Deal(req.body.deal);
+        Bus.findOne({placeId: req.body.bus.placeId}, function(err, exisitingBus){
+            if (exisitingBus) {
+                exisitingBus.deals.push(newDeal._id);
+                newDeal.bus = exisitingBus._id;
+                Promise.join(newDeal.save(), exisitingBus.save(), function (dealResp, busResp) {
+                    return [dealResp, busResp]
+                }).then(function (resp) {
+                    return res.status(200).json(resp);
+                }).catch(function (err) {
+                    console.log(err);
+                    return res.status(500).json(err);
+                })
+            } else {
+                var newBus = new Bus(req.body.bus);
+                newBus.deals.push(newDeal._id);
+                newDeal.bus = newBus._id;
+                Promise.join(newDeal.save(), newBus.save(), function (dealResp, busResp) {
+                    return [dealResp, busResp]
+                }).then(function (resp) {
+                    return res.status(200).json(resp);
+                }).catch(function (err) {
+                    console.log(err);
+                    return res.status(500).json(err);
+                })
+            }
         })
+
     },
     //this one below doesn't actually work, but it will look something like this
     //the user will probably have the geokeys and address we need and can add them so the deal actually will save
     //we could also use a parallel middleware to retrieve them if not
     addDeal: function (req, res) {
         var deal = new Deal(req.body);
-        var bus = Bus.findOneAndUpdate({_id: req.body.bus}, {$push: {deals: deal._id}});
+        var bus = Bus.findOneAndUpdate({placeId: req.body.bus}, {$push: {deals: deal._id}});
 
         Promise.join(deal.save(), bus.exec(), function (dealResp, busResp) {
             return [dealResp, busResp]

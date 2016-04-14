@@ -50,7 +50,8 @@ angular.module('app')
             return deferred.promise;
         };
 
-        vm.newBusiness = function (business, busPic) {
+        vm.newBusiness = function (business, deal) {
+            console.log(deal)
             var newBusiness = {
                 address: business.formatted_address,
                 phone: business.formatted_phone_number,
@@ -59,13 +60,23 @@ angular.module('app')
                 },
                 busName: business.name,
                 busHours: business.opening_hours.weekday_text,
-                _id: business.place_id,
+                placeId: business.place_id,
                 website: business.website,
                 picture: busPic
             };
+            var newDeal = {
+                dealsName: deal.name,
+                day: deal.day,
+                description: deal.description,
+                exceptions: deal.details,
+                loc: newBusiness.loc
+            };
+            var data = {};
+            data.bus = newBusiness;
+            data.deal = newDeal;
             return $http({
                 method: 'POST',
-                data: newBusiness,
+                data: data,
                 url: '/api/bus'
             });
         };
