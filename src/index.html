@@ -39,16 +39,39 @@
         <div class='nav-filter' ng-if="vm.hideDealBar()">
             <div class='large-text'>
                 <!-- this will be {{category}}  -->
-                All
+                {{vm.category}}
+
             </div>
-            <span class='small-text'>another category</span>
-            <div class='nav-bottom'>
+            <span class='small-text'>
+              another category
+              <select class='cat-selector' ng-click='vm.toggleDropdown()'></select>
+              <div class='cat-options'
+              ng-hide="vm.hideDropdown">
+                <button ng-click='vm.selectOption("All")' class='cat-option' selected>All</button><br>
+                <button ng-click='vm.selectOption("Food")' class='cat-option'>Food</button><br>
+                <button ng-click='vm.selectOption("Entertainment")' class='cat-option'>Entertainment</button><br>
+                <button ng-click='vm.selectOption("Education")' class='cat-option'>Education</button><br>
+              </div>
+
+            </span>
+            <div class='nav-bottom' ng-hide='vm.hideBotNav'>
                 <span class='medium-text'>deals<span>    </span></span>
                 <span class='light-text'>  in</span>
                 <input class='location-filter' type='text' ng-model='vm.city' pu-elastic-input>
                 <span class='light-text'>on<span>    </span></span>
-      <span class='medium-text'>
-        <select ng-model="vm.selectedDay" ng-options="day.display for day in vm.days track by day.val" class="options"></select>
+      <span class='medium-text' ng-click='vm.toggleDayDD()'>
+        {{vm.selectedDay}}
+        <select class="options"></select>
+        <div class='day-options'
+        ng-hide="vm.dayDropdown">
+          <button ng-click='vm.selectDay("Monday")' class='day-option' >M</button><br>
+          <button ng-click='vm.selectDay("Tuesday")' class='day-option' >Tu</button><br>
+          <button ng-click='vm.selectDay("Wednesday")' class='day-option' >W</button><br>
+          <button ng-click='vm.selectDay("Thursday")' class='day-option' >Th</button><br>
+          <button ng-click='vm.selectDay("Friday")' class='day-option'>F</button><br>
+          <button ng-click='vm.selectDay("Saturday")' class='day-option'>Sa</button><br>
+          <button ng-click='vm.selectDay("Sunday")' class='day-option'>Su</button><br>
+        </div>
       </span>
             </div>
 

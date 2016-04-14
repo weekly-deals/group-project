@@ -31,6 +31,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 
+
 //amazon s3
 app.post('/api/newimage', s3Ctrl.postImage);
 
