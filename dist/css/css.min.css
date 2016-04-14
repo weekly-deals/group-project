@@ -138,6 +138,7 @@ body {
   text-align: center;
   padding-right: 0;
   margin: 0;
+  height: 50px;
 }
 .location-filter:focus {
   outline: none;
@@ -151,6 +152,26 @@ body {
 }
 .cat-option {
   color: #fff;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.day-options {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.day-option {
+  color: #dd2e44;
+  border: #58595b;
+  border-radius: 5px;
+  margin: 2px;
+  background-color: #f2f2f2;
+  outline: none;
+  height: 30px;
+  width: 30px;
+  font-size: 18px;
 }
 li {
   display: inline-block;

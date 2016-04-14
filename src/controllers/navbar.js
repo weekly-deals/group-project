@@ -5,9 +5,28 @@ angular.module('app')
 
         vm.category = 'All';
 
+
+
+        vm.hideDropdown = true;
+
+        vm.toggleDropdown = function() {
+          vm.hideDropdown = !vm.hideDropdown;
+          vm.hideBotNav = !vm.hideBotNav;
+
+        }
+
+        vm.selectOption = function (cat) {
+          vm.hideDropdown = !vm.hideDropdown;
+          vm.hideBotNav = !vm.hideBotNav;
+          vm.category = cat;
+        }
+
+        vm.hideBotNav = false;
+
         vm.hideDealBar = function () {
             return !(/maps|login|signup/.test($location.url()))
         };
+
 
         vm.isAuthenticated = function () {
             return $auth.isAuthenticated();
@@ -76,7 +95,18 @@ angular.module('app')
 
         var date = new Date();
         vm.dayNum = date.getDay();
-        vm.selectedDay = vm.days[vm.dayNum];
+        vm.selectedDay = vm.days[vm.dayNum].display;
+
+        vm.dayDropdown = true;
+
+        vm.toggleDayDD = function () {
+          vm.dayDropdown = !vm.dayDropdown;
+        }
+
+
+        vm.selectDay = function (day) {
+          vm.selectedDay = day;
+        }
 
         vm.placeChanged = function () {
             vm.place = this.getPlace();
