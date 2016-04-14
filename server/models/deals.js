@@ -14,6 +14,8 @@ var dealsSchema = new mongoose.Schema({
     expired: {type: Boolean, default: false},
     exceptions: String,
     bus: {type: String, ref: 'Bus'},
+    category: String,
+    image: String,
     loc: {
         type: {type: String, default: "Point"},
         coordinates: [{type: Number, required: true, unique: true}]

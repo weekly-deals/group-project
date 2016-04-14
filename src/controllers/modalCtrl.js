@@ -85,7 +85,9 @@ angular.module('app')
 
       //Modal controls//
       vm.expand = function() {
+        console.log(document);
         var modal = document.getElementById('modal');
+        console.log(modal);
         modal.style.display = 'block';
       };
 

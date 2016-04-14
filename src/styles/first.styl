@@ -57,7 +57,7 @@ font(x,y)
   height: 200vh
 
 .main-nav-bar
-  background-color: main-red
+  background-color: transparent
   color: main-white
   position: fixed
   width: 100%
@@ -69,7 +69,7 @@ font(x,y)
   top 0
   height 325px
   width 100%
-  background: linear-gradient(main-red, main-red 80%, transparent)
+  background: linear-gradient(main-red, transparent)
   +below(600px)
     height 500px
 
@@ -107,8 +107,39 @@ font(x,y)
   text-align: center
   padding-right: 0
   margin: 0
+  height: 50px
   &:focus
     outline none
+
+.cat-selector
+  white-space: none;
+  background-color: transparent
+  border none
+  outline none
+  width 20px
+
+
+
+
+.cat-option
+  color: white
+  border none
+  background-color transparent
+  outline none
+
+.day-options
+  display flex
+
+.day-option
+  color main-red
+  border main-grey
+  border-radius 5px
+  margin 2px
+  background-color main-white
+  outline none
+  height 30px
+  width 30px
+  font-size 18px
 
 li
   display: inline-block
@@ -323,6 +354,13 @@ a
    &:focus
      outline: none
 
+.options
+   background-color: transparent
+   font(400,1.1)
+   border: 0
+   &:focus
+       outline: none
+
 .option
    font(100, 1.875)
    color: main-white
@@ -341,13 +379,3 @@ a
 #fb
     background: #3a5795
     color: main-white
-
-.options
-    background-color: main-red
-    font(400,1.1)
-    border: 0
-    &:focus
-        outline: none
-        
-.deal-header
-    width
