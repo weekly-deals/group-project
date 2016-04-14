@@ -128,7 +128,7 @@ angular.module('app')
             geoService.getCurrentPosition().then(function (latlng) {
                 vm.map = map;
                 vm.map.setCenter(latlng);
-                vm.map.setZoom(12);
+                vm.map.setZoom(10);
             });
         });
 
