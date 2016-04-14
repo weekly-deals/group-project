@@ -81,7 +81,6 @@ font(x,y)
 
   /*home-view*/
 .home-container
-  height: 375px
   width: 100%
   background: main-red
 
@@ -118,7 +117,11 @@ a
   color: main-white
 
 .cat-title
+  display flex
+  color main-white
   font(400, 2.25)
+  span
+    margin auto
 
 .deal
     min-width 300px
@@ -127,15 +130,16 @@ a
     background: main-white
     border-radius: 5px
 
+.cat-container
+  overflow hidden
+
 .deals-container
     display flex
-    align-self flex-end
     flex-direction row
     overflow-x auto
     overflow-y hidden
-    margin-bottom -10000px
-    padding-bottom 10000px
-    height: 400px
+    margin-bottom -20px
+    padding-bottom 20px
 
 /*maps-view*/
 .modal
@@ -146,13 +150,40 @@ a
     top: 0
     width: 60%
     height: 80%
-    overflow: auto
+    overflow auto
+    overflow-x hidden
     background-color: main-white
     text-align: center
     margin: 5% 20%
     border-radius: 10px
     font-family: 'San Francisco'
     box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    +below(600px)
+      margin 0
+      width 100%
+      height 100%
+
+#modal-curtain
+  display none
+  height 100%
+  width 100%
+  top 0
+  background-color rgba(50,50,50,0.92)
+  position absolute
+  z-index 99
+
+.svg-wrapper
+  overflow hidden
+
+.svgDisplay
+  display flex
+  flex-direction row
+  overflow-y hidden
+  overflow-x auto
+  margin-bottom -20px
+  padding-bottom 20px
+  svg
+    min-width 75px
 
 .modal-content
     margin: auto
@@ -214,8 +245,6 @@ a
       color: main-grey
       text-decoration: none
       cursor: pointer
-    +below(700px)
-      width 100%
 
 .signup-form
     width: 400px
