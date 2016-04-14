@@ -2,9 +2,9 @@
     <div class="cat-header">{{cat}}</div>
     <div class="deals-container">
         <div class="deal" ng-repeat="deal in deals">
-            <div class="deal-header"></div>
+            <div class="deal-header">{{deal.dealsName}}</div>
             <div class="deal-pic"></div>
-            <div class="business"></div>
+            <div class="deal-footer">{{deal.bus}}</div>
         </div>
     </div>
 </div>

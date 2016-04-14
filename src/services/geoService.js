@@ -65,6 +65,7 @@ angular.module('app')
                 picture: busPic
             };
             var newDeal = {
+                catDeal: deal.catDeal, //nat
                 dealsName: deal.name,
                 day: deal.day,
                 description: deal.description,
@@ -84,6 +85,7 @@ angular.module('app')
         vm.newDeal = function(deal, bus, days) {
           console.log(bus);
           var newDeal = {
+            dealsCat: deal.catDeal, //nat
             dealsName: deal.name,
             day: days,
             description: deal.description,
@@ -100,7 +102,13 @@ angular.module('app')
             url: '/api/deal'
           });
         };
-
+        vm.getDeal = function () {     //nat retrieve data about the deal
+            return $http({
+                method: "GET",
+                url: '/api/deal'
+            })
+        };
+        
         vm.storeImage = function (imageData, fileName) {
           var imageExtension = imageData.split(';')[0].split('/');
           imageExtension = imageExtension[imageExtension.length - 1];
@@ -114,5 +122,6 @@ angular.module('app')
 
           return $http.post('/api/newimage', newImage);
         };
+        
 
     });

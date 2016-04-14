@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 //coords must be in long, lat order, this is the opposite of what the google maps api requires
 
 var dealsSchema = new mongoose.Schema({
+    dealCat: String,
     dealsName: {type: String, required: true},
     day: [{type: Number, min: 0, max: 6, required: true}],
     dealHours: {type: Number},
