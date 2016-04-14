@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="app">
+
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
@@ -8,41 +9,43 @@
     <base href="/">
     <title>Deal.io</title>
 </head>
+
 <body class='main-container' ng-cloak>
 
 
-<div class='main-nav-bar'>
+    <div class='main-nav-bar'>
 
-    <div class='main-nav-bar' ng-controller="NavbarCtrl as vm">
+        <div class='main-nav-bar' ng-controller="NavbarCtrl as vm">
 
-        <!--<span ng-repeat="svg in vm.svgs">-->
-        <!--<svg width="100px" height="100px">-->
-        <!--<use xlink:href="{{svg}}" width="75px" height="75px"></use>-->
-        <!--</svg>-->
-        <!--</span>-->
+            <<<<<<< HEAD <!--<span ng-repeat="svg in vm.svgs">-->
+                <!--<svg width="100px" height="100px">-->
+                <!--<use xlink:href="{{svg}}" width="75px" height="75px"></use>-->
+                <!--</svg>-->
+                <!--</span>-->
 
-        <div class='top-nav-tabs'>
-            <ul>
-                <li><a ui-sref="home">Home</a></li>
-                <li ng-if="vm.isAuthenticated()"><a ui-sref="profile">Profile</a></li>
-            </ul>
-            <ul ng-if="!vm.isAuthenticated()">
-                <li><a ui-sref="login">Login /</a></li>
-                <li><a ui-sref="signup">Sign up</a></li>
-            </ul>
-            <ul ng-if="vm.isAuthenticated()">
-                <li><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a New Deal!</span></li>/
-                <li><a ui-sref="logout">Logout</a></li>
-            </ul>
-        </div>
+                <div class='top-nav-tabs'>
+                    <ul>
+                        <li><a ui-sref="home">Home</a></li>
+                        <li ng-if="vm.isAuthenticated()"><span ng-controller="profileCtrl" ng-click="showMe()">Profile</span></li>
+                    </ul>
+                    <ul ng-if="!vm.isAuthenticated()">
+                        <li><a ui-sref="login">Login /</a></li>
+                        <li><a ui-sref="signup">Sign up</a></li>
+                    </ul>
+                    <ul ng-if="vm.isAuthenticated()">
+                        <li><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a New Deal!</span></li>/
+                        <li><a ui-sref="logout">Logout</a></li>
+                    </ul>
+                </div>
 
-        <div class='nav-filter' ng-if="vm.hideDealBar()">
-            <div class='large-text'>
-                <!-- this will be {{category}}  -->
-                {{vm.category}}
 
-            </div>
-            <span class='small-text'>
+                <div class='nav-filter' ng-if="vm.hideDealBar()">
+                    <div class='large-text'>
+                        <!-- this will be {{category}}  -->
+                        {{vm.category}}
+
+                    </div>
+                    <span class='small-text'>
               another category
               <select class='cat-selector' ng-click='vm.toggleDropdown()'></select>
               <div class='cat-options'
@@ -54,12 +57,12 @@
               </div>
 
             </span>
-            <div class='nav-bottom' ng-hide='vm.hideBotNav'>
-                <span class='medium-text'>deals<span>    </span></span>
-                <span class='light-text'>  in</span>
-                <input class='location-filter' type='text' ng-model='vm.city' pu-elastic-input>
-                <span class='light-text'>on<span>    </span></span>
-      <span class='medium-text' ng-click='vm.toggleDayDD()'>
+                    <div class='nav-bottom' ng-hide='vm.hideBotNav'>
+                        <span class='medium-text'>deals<span>    </span></span>
+                        <span class='light-text'>  in</span>
+                        <input class='location-filter' type='text' ng-model='vm.city' pu-elastic-input>
+                        <span class='light-text'>on<span>    </span></span>
+                        <span class='medium-text' ng-click='vm.toggleDayDD()'>
         {{vm.selectedDay}}
         <select class="options"></select>
         <div class='day-options'
@@ -72,24 +75,28 @@
           <button ng-click='vm.selectDay("Saturday")' class='day-option'>Sa</button><br>
           <button ng-click='vm.selectDay("Sunday")' class='day-option'>Su</button><br>
         </div>
+
       </span>
-            </div>
+                    </div>
 
 
 
+
+                </div>
+        </div>
 
     </div>
-</div>
-
-</div>
-<div class="gradient">
-</div>
+    <div class="gradient">
+    </div>
 
     <deal-dir></deal-dir>
-<ui-view></ui-view>
+    <profile-dir></profile-dir>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
-<script src="js/lib.min.js"></script>
-<script src="js/js.min.js"></script>
+    <ui-view></ui-view>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
+    <script src="js/lib.min.js"></script>
+    <script src="js/js.min.js"></script>
 </body>
+
 </html>
