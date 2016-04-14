@@ -62,6 +62,17 @@ angular.module('app')
                 $scope.addedBus = res;
             });
         };
+        vm.getDealInfo = function() {
+          geoService.getDeal().then(function(data) {
+            $scope.deals = data.data;
+            
+       })
+    
+   }; 
+   vm.getDealInfo();
+   
+    
+
 
         NgMap.getMap().then(function (map) {
             geoService.getCurrentPosition().then(function (latlng) {
@@ -81,6 +92,7 @@ angular.module('app')
             modal.style.display = 'block';
             google.maps.event.trigger(vm.map, 'resize');
         };
+
 
         vm.closeClick = function () {
             var modal = document.getElementById('modal');

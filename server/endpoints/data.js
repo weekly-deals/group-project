@@ -62,6 +62,15 @@ module.exports = {
             return err ? res.status(500).json(err) : res.status(200).json(resp);
         });
     },
+    
+    getDeal: function(req, res) {                //nat get the deal from backend
+        Deal.find(function(err, deals) {
+            console.log("printing out: " + deals)
+        return res.status(200).send(deals);
+    });
+},
+
+
 
     editDeal: function (req, res) {
         Deal.findByIdAndUpdate(req.params.id, req.body, function(err, resp){

@@ -41,5 +41,12 @@ angular.module('app')
                 url: '/api/deal'
             })
         };
+        //get the deal from the backend to put it on the frontend  nat
+        // vm.retrieveDeal = function() {
+        //     return $http({
+        //         method: "GET",
+        //         url: '/api/deal'
+        //     })
+        // }
 
     });

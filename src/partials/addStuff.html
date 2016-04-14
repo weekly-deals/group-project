@@ -24,6 +24,8 @@
 <div>
     <h3>somehow add deal to existing business (must first find business to attach deal to?)</h3>
     <form ng-submit="addDeal(deal)" name="addDealForm">
+        <!--added an input with cat to pass into the server-->
+        <input type="text" placeholder="Category Name" ng-model="deal.catDeal" required autofocus>
         <input type="text" placeholder="Deal Name" ng-model="deal.dealsName" required autofocus>
         <input type="text" placeholder="Deal Day" ng-model="deal.day" required>
         <input type="text" placeholder="Business ID" ng-model="deal.bus" required>

@@ -31,6 +31,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 
+
 //amazon s3
 app.post('/api/newimage', s3Ctrl.postImage);
 
@@ -50,6 +51,7 @@ app.delete('/api/bus/:id', checkRole('user'), data.deleteBus);
 app.post('/api/deal', checkRole('user'), data.addDeal);
 app.put('/api/deal/:id', checkRole('user'), data.editDeal);
 app.delete('/api/deal/:id', checkRole('user'), data.deleteDeal);
+app.get('/api/deal', checkRole('user'), data.getDeal);  //nat endpoint to get the deal
 
 app.listen(port, function () {
     console.log('Listening on port ' + port);

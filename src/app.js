@@ -83,4 +83,17 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
             return deferred.promise;
         }
 
-    });
+    }).run(function ($templateCache) {
+  $templateCache.put('ngDropdowns/templates/dropdownSelect.html', [
+    '<div class="wrap-dd-select cat-selector">',
+      '<span class="selected cat-option">{{dropdownModel[labelField]}}</span>',
+      '<ul class="custom-dropdown">',
+        '<li ng-repeat="item in dropdownSelect"',
+        ' class="dropdown-item"',
+        ' dropdown-select-item="item"',
+        ' dropdown-item-label="labelField">',
+        '</li>',
+      '</ul>',
+    '</div>'
+  ].join(''));
+});
