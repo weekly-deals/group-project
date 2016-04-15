@@ -11,7 +11,7 @@
 <body class='main-container' id="body" ng-cloak>
 
 <div id="modal-curtain" ng-controller="ModalCtrl as vm" ng-click='vm.closeClick()'></div>
-
+<div id="promodal-curtain" ng-controller="profileCtrl" ng-click='closeClick()'></div>
 
 <div class='main-nav-bar'>
 
@@ -19,16 +19,18 @@
 
         <div class='top-nav-tabs'>
             <ul>
-                <li><a ui-sref="home">Home</a></li>
-                <li ng-if="vm.isAuthenticated()"><a ui-sref="profile">Profile</a></li>
+
+                <li><a ui-sref="home" class="style-nav">Home</a></li>
+                <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-controller="profileCtrl" ng-click="showMe()">Profile</span></li>
+
             </ul>
             <ul ng-if="!vm.isAuthenticated()">
-                <li><a ui-sref="login">Login /</a></li>
-                <li><a ui-sref="signup">Sign up</a></li>
+                <li class="style-nav"><a ui-sref="login">Login </a></li>
+                <li class="style-nav"><a ui-sref="signup">Sign up</a></li>
             </ul>
             <ul ng-if="vm.isAuthenticated()">
-                <li><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a New Deal!</span></li>/
-                <li><a ui-sref="logout">Logout</a></li>
+                <li class="style-nav"><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a Deal</span></li>
+                <li class="style-nav"><a ui-sref="logout">Logout</a></li>
             </ul>
         </div>
 
@@ -51,12 +53,12 @@
 
             </span>
             <div class='nav-bottom' ng-hide='vm.hideBotNav'>
-                <span class='medium-text'>deals<span>    </span></span>
+                <span class='medium-text'>deals</span>    </span></span>
                 <span class='light-text'>  in</span>
                 <input class='location-filter' type='text' ng-model='vm.city' pu-elastic-input>
                 <span class='light-text'>on<span>    </span></span>
       <span class='medium-text' ng-click='vm.toggleDayDD()'>
-        {{vm.selectedDay}}
+            <span class="day">{{vm.selectedDay}}</span>
         <select class="options"></select>
         <div class='day-options'
         ng-hide="vm.dayDropdown">
@@ -82,7 +84,8 @@
 </div>
 
     <deal-dir></deal-dir>
-<ui-view></ui-view>
+    <profile-dir></profile-dir>
+    <ui-view></ui-view>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
 <script src="js/lib.min.js"></script>

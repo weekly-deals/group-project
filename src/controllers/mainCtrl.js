@@ -15,6 +15,6 @@ angular.module("app").controller("mainCtrl", function($scope ) {
   
   
   $scope.categories = ["food", "entertainment", "sports", "transportation"]
-})
+});
 
 

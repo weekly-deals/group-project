@@ -49,17 +49,40 @@ body {
 .medium-text {
   font-weight: 400;
   font-size: 2.25em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
 }
 .light-text {
   font-weight: 100;
   font-size: 2.25em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+}
+.day {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
 }
 .main-container {
   background: #dd2e44;
   height: 200vh;
 }
 .main-nav-bar {
-  background-color: transparent;
+  background-color: #dd2e44;
   color: #f2f2f2;
   position: fixed;
   width: 100%;
@@ -68,16 +91,20 @@ body {
 }
 .gradient {
   position: fixed;
+  z-index: 19;
   top: 0;
-  height: 325px;
+  height: 350px;
   width: 100%;
-  background: -webkit-linear-gradient(#dd2e44, transparent);
-  background: linear-gradient(#dd2e44, transparent);
+  background: -webkit-linear-gradient(#dd2e44, #dd2e44 80%, transparent);
+  background: linear-gradient(#dd2e44, #dd2e44 80%, transparent);
 }
 @media only screen and (max-width: 600px) {
   .gradient {
     height: 500px;
   }
+}
+.style-nav {
+  margin-left: 20px;
 }
 .top-nav-tabs {
   font-weight: 100;
@@ -91,8 +118,8 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-right: 40px;
-/*home-view*/
 }
+/*home-view*/
 .home-container {
   width: 100%;
   background: #dd2e44;
@@ -107,6 +134,10 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
@@ -314,6 +345,15 @@ a {
   }
 }
 #modal-curtain {
+  display: none;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(50,50,50,0.92);
+  position: absolute;
+  z-index: 99;
+}
+#promodal-curtain {
   display: none;
   height: 100%;
   width: 100%;
@@ -541,6 +581,14 @@ a {
 #fb {
   background: #3a5795;
   color: #f2f2f2;
+}
+.profileWrap {
+  text-align: center;
+}
+.profilePic {
+  height: 300px;
+  width: 200px;
+  border-radius: 15px 5px 30px 5px;
 }
 @-webkit-keyframes fade-out {
   from {
