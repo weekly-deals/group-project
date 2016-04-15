@@ -64,10 +64,17 @@ module.exports = {
     },
     
     getDeal: function(req, res) {                //nat get the deal from backend
-        Deal.find(function(err, deals) {
-            console.log("printing out: " + deals)
-        return res.status(200).send(deals);
-    });
+        Deal
+        .find({})
+        .populate('bus')
+        .exec(function(err, resp) {
+            if(err) {
+                res.send(err);
+            } else {
+                
+                res.send(resp);
+            }
+        })
 },
 
 

@@ -46,7 +46,7 @@ var config = {
 };
 
 gulp.task('svg', function () {
-    return gulp.src('/src/**/*.svg')
+    return gulp.src('src/**/*.svg')
         .pipe(flatten())
         .pipe(newer('./dist/sprite.svg'))
         .pipe(svgSprite(config))

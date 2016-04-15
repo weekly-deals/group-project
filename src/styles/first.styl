@@ -47,10 +47,23 @@ font(x,y)
     font(400, 3.75)
 .small-text
     font(200, 1.125)
+    
+    
+    
+    
 .medium-text
     font(400, 2.25)
+    display: flex
+    align-self: flex-end
+   
+   
 .light-text
     font(100, 2.25)
+    display: flex
+    align-self: flex-end
+.day 
+    display: flex
+    align-self: flex-end  
 
 .main-container
   background: main-red
@@ -72,7 +85,8 @@ font(x,y)
   background: linear-gradient(main-red, transparent)
   +below(600px)
     height 500px
-
+.style-nav
+    margin-left: 20px
 .top-nav-tabs
   font(100, 1.5)
   display: flex
@@ -91,6 +105,7 @@ font(x,y)
   margin 25px auto 0 auto
   max-width 600px
   display flex
+  align-items: flex-end
   flex-direction row
   justify-content space-around
   +below(600px)

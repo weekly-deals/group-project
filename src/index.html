@@ -19,16 +19,16 @@
 
         <div class='top-nav-tabs'>
             <ul>
-                <li><a ui-sref="home">Home</a></li>
-                <li ng-if="vm.isAuthenticated()"><a ui-sref="profile">Profile</a></li>
+                <li class="style-nav"><a ui-sref="home">Home</a></li>
+                <li ng-if="vm.isAuthenticated()" class="style-nav"><a ui-sref="profile">Profile</a></li>
             </ul>
             <ul ng-if="!vm.isAuthenticated()">
-                <li><a ui-sref="login">Login /</a></li>
-                <li><a ui-sref="signup">Sign up</a></li>
+                <li class="style-nav"><a ui-sref="login">Login </a></li>
+                <li class="style-nav"><a ui-sref="signup">Sign up</a></li>
             </ul>
             <ul ng-if="vm.isAuthenticated()">
-                <li><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a New Deal!</span></li>/
-                <li><a ui-sref="logout">Logout</a></li>
+                <li class="style-nav"><span ng-controller="ModalCtrl as vm" ng-click='vm.expand()'>Submit a Deal</span></li>
+                <li class="style-nav"><a ui-sref="logout">Logout</a></li>
             </ul>
         </div>
 
@@ -51,12 +51,12 @@
 
             </span>
             <div class='nav-bottom' ng-hide='vm.hideBotNav'>
-                <span class='medium-text'>deals<span>    </span></span>
+                <span class='medium-text'>deals</span>    </span></span>
                 <span class='light-text'>  in</span>
                 <input class='location-filter' type='text' ng-model='vm.city' pu-elastic-input>
                 <span class='light-text'>on<span>    </span></span>
       <span class='medium-text' ng-click='vm.toggleDayDD()'>
-        {{vm.selectedDay}}
+            <span class="day">{{vm.selectedDay}}</span>
         <select class="options"></select>
         <div class='day-options'
         ng-hide="vm.dayDropdown">
