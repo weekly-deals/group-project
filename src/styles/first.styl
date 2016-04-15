@@ -18,9 +18,9 @@ main-white = #F2F2F2;
 
 /** Regular */
 @font-face {
-    font-family: "San Francisco";
-    font-weight: 400;
-    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -34,125 +34,125 @@ html {
 }
 
 body
-    height 100%
-    wight 100%
-    margin-top 300px
-    font-family: 'San Francisco'
+  height 100%
+  wight 100%
+  margin-top 300px
+  font-family: 'San Francisco'
 
 font(x,y)
-    font-weight x
-    font-size y em
+  font-weight x
+  font-size y em
 
 .large-text
-      font(400, 3.75)
+    font(400, 3.75)
 .small-text
-      font(200, 1.125)
+    font(200, 1.125)
 .medium-text
-      font(400, 2.25)
+    font(400, 2.25)
 .light-text
-      font(100, 2.25)
+    font(100, 2.25)
 
 .main-container
-    background: main-red
-    height: 200vh
+  background: main-red
+  height: 200vh
 
 .main-nav-bar
-    background-color: transparent
-    color: main-white
-    position: fixed
-    width: 100%
-    top: 0
-    z-index: 20
+  background-color: transparent
+  color: main-white
+  position: fixed
+  width: 100%
+  top: 0
+  z-index: 20
 
 .gradient
-    position fixed
-    top 0
-    height 325px
-    width 100%
-    background: linear-gradient(main-red, transparent)
-    +below(600px)
-      height 500px
+  position fixed
+  top 0
+  height 325px
+  width 100%
+  background: linear-gradient(main-red, transparent)
+  +below(600px)
+    height 500px
 
 .top-nav-tabs
-    font(100, 1.5)
-    display: flex
-    justify-content: space-between
-    padding-right 40px
+  font(100, 1.5)
+  display: flex
+  justify-content: space-between
+  padding-right 40px
 
   /*home-view*/
 .home-container
-    width: 100%
-    background: main-red
+  width: 100%
+  background: main-red
 
 .nav-filter
-    text-align: center
+  text-align: center
 
 .nav-bottom
-    margin 25px auto 0 auto
-    max-width 600px
-    display flex
-    flex-direction row
-    justify-content space-around
-    +below(600px)
-      flex-direction column
-      input
-        margin auto
+  margin 25px auto 0 auto
+  max-width 600px
+  display flex
+  flex-direction row
+  justify-content space-around
+  +below(600px)
+    flex-direction column
+    input
+      margin auto
 
 .location-filter
-    background: transparent
-    border: none
-    font-color: main-white
-    font(400, 2.5)
-    text-align: center
-    padding-right: 0
-    margin: 0
-    height: 50px
-    &:focus
-      outline none
+  background: transparent
+  border: none
+  font-color: main-white
+  font(400, 2.5)
+  text-align: center
+  padding-right: 0
+  margin: 0
+  height: 50px
+  &:focus
+    outline none
 
 .cat-selector
-    white-space: none;
-    background-color: transparent
-    border none
-    outline none
-    width 20px
+  white-space: none;
+  background-color: transparent
+  border none
+  outline none
+  width 20px
 
 
 
 
 .cat-option
-    color: white
-    border none
-    background-color transparent
-    outline none
+  color: white
+  border none
+  background-color transparent
+  outline none
 
 .day-options
-    display flex
+  display flex
 
 .day-option
-    color main-red
-    border main-grey
-    border-radius 5px
-    margin 2px
-    background-color main-white
-    outline none
-    height 30px
-    width 30px
-    font-size 18px
+  color main-red
+  border main-grey
+  border-radius 5px
+  margin 2px
+  background-color main-white
+  outline none
+  height 30px
+  width 30px
+  font-size 18px
 
 li
-    display: inline-block
+  display: inline-block
 
 a
-    text-decoration: none
-    color: main-white
+  text-decoration: none
+  color: main-white
 
 .cat-title
-    display flex
-    color main-white
-    font(400, 2.25)
-    span
-      margin auto
+  display flex
+  color main-white
+  font(400, 2.25)
+  span
+    margin auto
 
 .deal
     min-width 300px
@@ -220,6 +220,16 @@ a
       height 100%
 
 #modal-curtain
+  display none
+  height 100%
+  width 100%
+  top 0
+  background-color rgba(50,50,50,0.92)
+  position absolute
+  z-index 99
+
+
+#promodal-curtain
     display none
     height 100%
     width 100%
@@ -229,17 +239,17 @@ a
     z-index 99
 
 .svg-wrapper
-    overflow hidden
+  overflow hidden
 
 .svgDisplay
-    display flex
-    flex-direction row
-    overflow-y hidden
-    overflow-x auto
-    margin-bottom -20px
-    padding-bottom 20px
-    svg
-      min-width 75px
+  display flex
+  flex-direction row
+  overflow-y hidden
+  overflow-x auto
+  margin-bottom -20px
+  padding-bottom 20px
+  svg
+    min-width 75px
 
 .modal-content
     margin: auto
@@ -248,47 +258,47 @@ a
     max-width: 700px
 
 .data-entry
-    text-align: center
+  text-align: center
 
 .deal-entry
-    width: 100%
-    margin: auto
+  width: 100%
+  margin: auto
 
 .deal-title-input
-    border-radius 15px
-    height: 30px
-    border: none
-    margin: 5px
-    width: 30%
+  border-radius 15px
+  height: 30px
+  border: none
+  margin: 5px
+  width: 30%
 
 .day-wrapper
-    display: flex
-    justify-content: space-between
-    width: 30%
-    margin: 5px 35%
+  display: flex
+  justify-content: space-between
+  width: 30%
+  margin: 5px 35%
 
 .day-box
-    color: main-white
-    background-color: main-red
-    border-radius 3px
-    height: 23px
-    width: 23px
+  color: main-white
+  background-color: main-red
+  border-radius 3px
+  height: 23px
+  width: 23px
 
 .deal-textarea
-    width: 60%
-    border-radius: 15px
-    margin 5px
-    border: none
+  width: 60%
+  border-radius: 15px
+  margin 5px
+  border: none
 
 .bus-entry
-    width: 100%
+  width: 100%
 
 .bus-name-input
-    border-radius 15px
-    height: 30px
-    border: none
-    margin: 5px
-    width: 50%
+  border-radius 15px
+  height: 30px
+  border: none
+  margin: 5px
+  width: 50%
 
 #close
     position: absolute

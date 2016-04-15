@@ -91,8 +91,8 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-right: 40px;
-}
 /*home-view*/
+}
 .home-container {
   width: 100%;
   background: #dd2e44;
@@ -267,6 +267,15 @@ a {
   }
 }
 #modal-curtain {
+  display: none;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(50,50,50,0.92);
+  position: absolute;
+  z-index: 99;
+}
+#promodal-curtain {
   display: none;
   height: 100%;
   width: 100%;
