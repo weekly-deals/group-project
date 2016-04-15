@@ -51,7 +51,7 @@ gulp.task('svg', function () {
         .pipe(newer('./dist/sprite.svg'))
         .pipe(svgSprite(config))
         .pipe(flatten())
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('server', function () {

@@ -11,7 +11,7 @@
 <body class='main-container' id="body" ng-cloak>
 
 <div id="modal-curtain" ng-controller="ModalCtrl as vm" ng-click='vm.closeClick()'></div>
-
+<div id="promodal-curtain" ng-controller="profileCtrl" ng-click='closeClick()'></div>
 
 <div class='main-nav-bar'>
 
@@ -19,8 +19,10 @@
 
         <div class='top-nav-tabs'>
             <ul>
-                <li class="style-nav"><a ui-sref="home">Home</a></li>
-                <li ng-if="vm.isAuthenticated()" class="style-nav"><a ui-sref="profile">Profile</a></li>
+
+                <li><a ui-sref="home" class="style-nav">Home</a></li>
+                <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-controller="profileCtrl" ng-click="showMe()">Profile</span></li>
+
             </ul>
             <ul ng-if="!vm.isAuthenticated()">
                 <li class="style-nav"><a ui-sref="login">Login </a></li>
@@ -82,7 +84,8 @@
 </div>
 
     <deal-dir></deal-dir>
-<ui-view></ui-view>
+    <profile-dir></profile-dir>
+    <ui-view></ui-view>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
 <script src="js/lib.min.js"></script>
