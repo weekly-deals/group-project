@@ -13,7 +13,8 @@ angular.module('app')
        scope.show = !scope.show;
      };
 
-   }
+   },
+   controllerAs: 'vm'
  };
 
 

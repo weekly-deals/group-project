@@ -150,7 +150,7 @@ body {
   width: 20px;
 }
 .cat-option {
-  color: #fff;
+  color: inherit;
   border: none;
   background-color: transparent;
   outline: none;
@@ -172,6 +172,12 @@ body {
   width: 30px;
   font-size: 18px;
 }
+h2 {
+  margin: 0 auto;
+}
+h4 {
+  margin: 0 auto;
+}
 li {
   display: inline-block;
 }
@@ -192,39 +198,80 @@ a {
   margin: auto;
 }
 .deal {
-  min-width: 300px;
+  width: 220px;
   height: 300px;
   margin: 25px;
   background: #f2f2f2;
   border-radius: 5px;
-  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   font-family: San Francisco;
   font-color: #58595b;
   font-size: 24px;
   font-weight: ultralight;
 }
-.deal-header {
+.deal:hover {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-name: fade-out;
+          animation-name: fade-out;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  cursor: pointer;
+}
+.deal-desc {
   position: absolute;
-  top: 0;
+  text-align: center;
+  margin: auto;
+  width: 220px;
+  color: #f2f2f2;
+  z-index: 20;
+}
+.deal-desc:hover {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  cursor: pointer;
+}
+.deal-header {
   text-align: center;
   width: 100%;
   height: 20%;
   margin-top: 5%;
 }
+.deal-pic {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .deal-footer {
-  position: absolute;
-  bottom: 0;
   text-align: center;
   width: 100%;
   height: 20%;
+  margin: auto;
   margin-bottom: 3%;
 }
 .cat-container {
   overflow: hidden;
-}
-.deal {
-  height: 300px;
-  width: 300px;
 }
 .deals-container {
   display: -webkit-box;
@@ -494,6 +541,42 @@ a {
 #fb {
   background: #3a5795;
   color: #f2f2f2;
+}
+@-webkit-keyframes fade-out {
+  from {
+    background-color: #f2f2f2;
+    opacity: 1;
+  }
+  to {
+    background-color: #58595b;
+    opacity: 0.8;
+  }
+}
+@keyframes fade-out {
+  from {
+    background-color: #f2f2f2;
+    opacity: 1;
+  }
+  to {
+    background-color: #58595b;
+    opacity: 0.8;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=maps/css.min.css.map */

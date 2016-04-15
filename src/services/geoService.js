@@ -65,7 +65,8 @@ angular.module('app')
                 picture: busPic
             };
             var newDeal = {
-                catDeal: deal.catDeal, //nat
+                catDeal: deal.dealCat,
+                svg: deal.dealSvg, //nat
                 dealsName: deal.name,
                 day: deal.day,
                 description: deal.description,
@@ -108,7 +109,7 @@ angular.module('app')
                 url: '/api/deal'
             })
         };
-        
+
         vm.storeImage = function (imageData, fileName) {
           var imageExtension = imageData.split(';')[0].split('/');
           imageExtension = imageExtension[imageExtension.length - 1];
@@ -122,6 +123,6 @@ angular.module('app')
 
           return $http.post('/api/newimage', newImage);
         };
-        
+
 
     });

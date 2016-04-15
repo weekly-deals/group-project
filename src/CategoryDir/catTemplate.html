@@ -1,10 +1,18 @@
 <div class="cat-container" >
     <div class="cat-header">{{cat}}</div>
     <div class="deals-container">
-        <div class="deal" ng-repeat="deal in deals">
+        <div class="deal" ng-mouseenter='vm.showDesc(deal)' ng-mouseleave='vm.hideDesc(deal)'ng-repeat="deal in deals">
             <div class="deal-header">{{deal.dealsName}}</div>
-            <div class="deal-pic"></div>
-            <div class="deal-footer">{{deal.bus}}</div>
+            <div id='deal-desc' class='deal-desc' ng-show='deal.hideDesc'>{{deal.description}}</div>
+            <div class="deal-pic">
+                <svg class='svg' id="{{deal.svg}}" width="110px" height="110px">
+                  <use xlink:href="{{deal.svg}}" width="110px" height="110px"></use>
+                </svg>
+            </div>
+
+            <div class="deal-footer">
+              <span class='small-text'>at</span><br>{{deal.bus.busName}}
+            </div>
         </div>
     </div>
 </div>

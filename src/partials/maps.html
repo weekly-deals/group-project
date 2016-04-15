@@ -7,7 +7,6 @@
       <section class='data-entry'>
         <div class='deal-entry'>
 <!--added an input with cat to pass into the server nat -->
-        <input type="text" placeholder="Category Name" ng-model="vm.deal.dealCat" required autofocus>
             <input class='deal-title-input'type="text" ng-model='vm.deal.name' placeholder="  Deal Title"></input><br>
             Which day(s) is this deal available?
             <div class='day-wrapper'>
@@ -19,7 +18,17 @@
               <div id='5' ng-click='vm.selectDay("5")' class='day-box'>S</div>
               <div id='6' ng-click='vm.selectDay("6")' class='day-box'>Su</div>
             </div>
-
+                    <span ng-hide='vm.selectedCat'>Which category would this deal be in?<br>
+                    <div class='cat-options'
+                    ng-hide="vm.hideDropdown">
+                      <button ng-click='vm.selectCat("Food")' class='cat-option'>Food</button><br>
+                      <button ng-click='vm.selectCat("Entertainment")' class='cat-option'>Entertainment</button><br>
+                      <button ng-click='vm.selectCat("Education")' class='cat-option'>Education</button><br>
+                    </div>
+                    </span>
+                    <span ng-show='vm.selectedCat'>Current Category - {{vm.dealCat}}
+                    <select class='cat-selector' ng-click='vm.openCat()'></select>
+                  </span><br>
                     Tell us why this is such a good deal!<br>
 
                     <textarea class='deal-textarea' ng-model='vm.deal.description'
@@ -30,7 +39,7 @@
             <textarea class='deal-textarea' ng-model='vm.deal.details' placeholder='  Enter details or exceptions...'></textarea>
         </div>
         <div class='bus-entry'>
-        <div>
+        <!-- <div>
           Where does this deal happen?<br>
           <input class='bus-name-input'
                  places-auto-complete size=80
@@ -39,12 +48,12 @@
                  placeholder="  Enter business name and search for a business"/> <br/>
           Want to add a picture of the business?
           <input class='bus-pic-input' fileread type='file'>
-        </div>
+        </div> -->
 
 
                     <div class="svg-wrapper">
                         <div class="svgDisplay">
-                            <svg width="75px" height="75px" ng-repeat="svg in vm.svgs">
+                            <svg class='svg' id="{{svg}}" ng-click='vm.selectSvg(svg)' width="75px" height="75px" ng-repeat="svg in vm.svgs">
                                 <use xlink:href="{{svg}}" width="75px" height="75px"></use>
                             </svg>
                         </div>
