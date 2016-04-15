@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 var dealsSchema = new mongoose.Schema({
     dealCat: String,
+    svg: String,
     dealsName: {type: String, required: true},
     day: [{type: Number, min: 0, max: 6, required: true}],
     dealHours: {type: Number},

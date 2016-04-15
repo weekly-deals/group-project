@@ -3,6 +3,8 @@ angular.module('app')
 
         var vm = this;
 
+        vm.test = 'test';
+
         vm.types = "['establishment']";
 
         vm.days = [];
@@ -12,6 +14,20 @@ angular.module('app')
                 vm.svgs = svgs;
             })
         })();
+
+        vm.selectSvg = function(svg) {
+          var allSvgs = document.getElementsByClassName('svg');
+          for (var i = 0; i < allSvgs.length; i++) {
+            allSvgs[i].style.border = 'none';
+          }
+
+          vm.dealSvg = document.getElementById(svg)
+          if (vm.dealSvg.style.border === '1px solid black') {
+            vm.dealSvg.style.border = 'none';
+          } else {
+            vm.dealSvg.style.border = '1px solid black';
+          };
+        }
 
         geoService.getCurrentPosition().then(function (latlng) {
             geoService.reverseGeoCode(latlng).then(function (city) {
@@ -38,6 +54,17 @@ angular.module('app')
             return vm.days;
         };
 
+        vm.selectedCat = false;
+
+        vm.selectCat = function(cat) {
+          vm.dealCat = cat;
+          vm.selectedCat = !vm.selectedCat;
+        }
+
+        vm.openCat = function() {
+          vm.selectedCat = !vm.selectedCat;
+        }
+
 
         vm.placeChanged = function () {
             vm.place = this.getPlace();
@@ -57,6 +84,12 @@ angular.module('app')
             if (vm.days) {
                 vm.deal.day = vm.days
             }
+            if (vm.dealSvg) {
+              vm.deal.dealSvg = vm.dealSvg.id;
+            }
+            if (vm.dealCat) {
+              vm.deal.dealCat = vm.dealCat;
+            }
             vm.place.picture = geoService.busPic;
             geoService.newBusiness(vm.place, vm.deal).then(function (res) {
                 $scope.addedBus = res;
@@ -64,14 +97,23 @@ angular.module('app')
         };
         vm.getDealInfo = function() {
           geoService.getDeal().then(function(data) {
+
             $scope.deals = data.data;
-            
-       })
-    
-   }; 
+
+       });
+
+   };
    vm.getDealInfo();
-   
-    
+
+
+   vm.showDesc = function(deal) {
+     var desc = document.getElementById('deal-desc');
+     desc.style.opacity = '1 !important';
+     deal.hideDesc = true;
+   };
+   vm.hideDesc = function(deal) {
+     deal.hideDesc = false;
+   }
 
 
         NgMap.getMap().then(function (map) {

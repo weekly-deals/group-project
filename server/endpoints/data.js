@@ -90,6 +90,7 @@ module.exports = {
     },
 
     getDeal: function(req, res) {                //nat get the deal from backend
+
         Deal
         .find({})
         .populate('bus')
@@ -97,13 +98,13 @@ module.exports = {
             if(err) {
                 res.send(err);
             } else {
-                
+
                 res.send(resp);
             }
         })
 },
 
-  
+
     // getDeal: function (req, res) {
     //     var queries = queryMaker([-111.8999350111, 40.611059040]);
     //     Promise.all(queries).spread(function (food, ent, sports, tran) {
