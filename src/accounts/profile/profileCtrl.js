@@ -1,5 +1,8 @@
 angular.module('app')
     .controller('profileCtrl', function ($scope, $auth, Account, geoService) {
+
+
+
         $scope.getProfile = function () {
             Account.getProfile()
                 .then(function (response) {
@@ -10,9 +13,13 @@ angular.module('app')
                 });
         };
         $scope.updateProfile = function () {
+            $scope.user.picture = Account.userPic
             Account.updateProfile($scope.user)
+
                 .then(function () {
                     // toastr.success('Profile has been updated');
+                    $scope.getProfile();
+
                 })
                 .catch(function (response) {
                     // toastr.error(response.data.message, response.status);
@@ -40,4 +47,24 @@ angular.module('app')
         };
 
         $scope.getProfile();
+
+        //Modal controls//
+        $scope.showMe = function() {
+          var promodal = document.getElementById('promodal');
+          var body = document.getElementById('body');
+          var curtain = document.getElementById('promodal-curtain');
+          curtain.style.display = 'block';
+          body.style.overflow = 'hidden';
+          promodal.style.display = 'block';
+        };
+
+        $scope.closeClick = function() {
+          var promodal = document.getElementById('promodal');
+          promodal.style.display = 'none';
+          var body = document.getElementById('body');
+          body.style.overflow = 'auto';
+          var curtain = document.getElementById('promodal-curtain');
+          curtain.style.display = 'none';
+        };
+
     });
