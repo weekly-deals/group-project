@@ -89,25 +89,26 @@ module.exports = {
         });
     },
 
-    // getDeal: function(req, res) {                //nat get the deal from backend
-    //     Deal.find(function(err, deals) {
-    //         // console.log("printing out: " + deals)
-    //     return res.status(200).send(deals);
-    // });
-    getDeal: function (req, res) {
-        var queries = queryMaker([-111.8999350111, 40.611059040]);
-        Promise.all(queries).spread(function (food, ent, sports, tran) {
-            var ret = {
-                food: food,
-                ent: ent,
-                sports: sports,
-                tran: tran
-            };
-            return res.status(200).json(ret);
-        }).catch(function (err) {
-            return res.status(500).json(err);
-        })
-    },
+    getDeal: function(req, res) {                //nat get the deal from backend
+        Deal.find(function(err, deals) {
+            // console.log("printing out: " + deals)
+        return res.status(200).send(deals);
+    });
+  },
+    // getDeal: function (req, res) {
+    //     var queries = queryMaker([-111.8999350111, 40.611059040]);
+    //     Promise.all(queries).spread(function (food, ent, sports, tran) {
+    //         var ret = {
+    //             food: food,
+    //             ent: ent,
+    //             sports: sports,
+    //             tran: tran
+    //         };
+    //         return res.status(200).json(ret);
+    //     }).catch(function (err) {
+    //         return res.status(500).json(err);
+    //     })
+    // },
 
 
     editDeal: function (req, res) {
