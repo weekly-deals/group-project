@@ -6,11 +6,37 @@ const mongoose = require('mongoose'),
 
 mongoose.Promise = require('bluebird');
 
+var cats = ["food", "entertainment", "sports", "transportation"];
+function queryMaker(coords) {
+    var queries = [];
+    for (var i = 0; i < cats.length; i++) {
+        queries.push(
+            Deal.find({
+                $and: [{
+                    "loc": {
+                        $near: {
+                            $geometry: {
+                                type: "Point",
+                                coordinates: coords
+                            },
+                            $maxDistance: 1000000000
+                        }
+                    }
+                }, {
+                    dealCat: cats[i]
+                }]
+            })
+                .populate('bus')
+        )
+    }
+    return queries;
+}
+
 module.exports = {
 
     addBus: function (req, res) {
         var newDeal = new Deal(req.body.deal);
-        Bus.findOne({placeId: req.body.bus.placeId}, function(err, exisitingBus){
+        Bus.findOne({placeId: req.body.bus.placeId}, function (err, exisitingBus) {
             if (exisitingBus) {
                 exisitingBus.deals.push(newDeal._id);
                 newDeal.bus = exisitingBus._id;
@@ -58,34 +84,57 @@ module.exports = {
     //to edit a business will probably need to deal with special circumstances so we can push data into the arrays (address, loc, deals, contacts, maybe even pictures)
     //unless that just magically happens with this method which wouldn't be surprising
     editBus: function (req, res) {
-        Bus.findByIdAndUpdate(req.params.id, req.body, function(err, resp){
+        Bus.findByIdAndUpdate(req.params.id, req.body, function (err, resp) {
             return err ? res.status(500).json(err) : res.status(200).json(resp);
         });
     },
-    
+
     getDeal: function(req, res) {                //nat get the deal from backend
-        Deal.find(function(err, deals) {
-            console.log("printing out: " + deals)
-        return res.status(200).send(deals);
-    });
+        Deal
+        .find({})
+        .populate('bus')
+        .exec(function(err, resp) {
+            if(err) {
+                res.send(err);
+            } else {
+                
+                res.send(resp);
+            }
+        })
 },
+
+  
+    // getDeal: function (req, res) {
+    //     var queries = queryMaker([-111.8999350111, 40.611059040]);
+    //     Promise.all(queries).spread(function (food, ent, sports, tran) {
+    //         var ret = {
+    //             food: food,
+    //             ent: ent,
+    //             sports: sports,
+    //             tran: tran
+    //         };
+    //         return res.status(200).json(ret);
+    //     }).catch(function (err) {
+    //         return res.status(500).json(err);
+    //     })
+    // },
 
 
 
     editDeal: function (req, res) {
-        Deal.findByIdAndUpdate(req.params.id, req.body, function(err, resp){
+        Deal.findByIdAndUpdate(req.params.id, req.body, function (err, resp) {
             return err ? res.status(500).json(err) : res.status(200).json(resp);
         });
     },
 
     deleteBus: function (req, res) {
-        Bus.findByIdAndRemove(req.params.id, function(err, resp){
+        Bus.findByIdAndRemove(req.params.id, function (err, resp) {
             return err ? res.status(500).json(err) : res.status(200).json(resp);
         });
     },
 
     deleteDeal: function (req, res) {
-        Deal.findByIdAndRemove(req.params.id, function(err, resp){
+        Deal.findByIdAndRemove(req.params.id, function (err, resp) {
             return err ? res.status(500).json(err) : res.status(200).json(resp);
         });
     }

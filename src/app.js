@@ -39,14 +39,7 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
                 template: null,
                 controller: 'logoutCtrl'
             })
-            .state('profile', {
-                url: '/profile',
-                templateUrl: 'profile.html',
-                controller: 'profileCtrl',
-                resolve: {
-                    loginRequired: loginRequired
-                }
-            })
+
             .state('addStuff', {
                 url: '/addstuff',
                 templateUrl: 'addStuff.html',
