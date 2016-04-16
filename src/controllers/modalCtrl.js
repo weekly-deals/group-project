@@ -15,19 +15,19 @@ angular.module('app')
             })
         })();
 
-        vm.selectSvg = function(svg) {
-          var allSvgs = document.getElementsByClassName('svg');
-          for (var i = 0; i < allSvgs.length; i++) {
-            allSvgs[i].style.border = 'none';
-          }
+        vm.selectSvg = function (svg) {
+            var allSvgs = document.getElementsByClassName('svg');
+            for (var i = 0; i < allSvgs.length; i++) {
+                allSvgs[i].style.border = 'none';
+            }
 
-          vm.dealSvg = document.getElementById(svg)
-          if (vm.dealSvg.style.border === '1px solid black') {
-            vm.dealSvg.style.border = 'none';
-          } else {
-            vm.dealSvg.style.border = '1px solid black';
-          };
-        }
+            vm.dealSvg = document.getElementById(svg)
+            if (vm.dealSvg.style.border === '1px solid black') {
+                vm.dealSvg.style.border = 'none';
+            } else {
+                vm.dealSvg.style.border = '1px solid black';
+            }
+        };
 
         geoService.getCurrentPosition().then(function (latlng) {
             geoService.reverseGeoCode(latlng).then(function (city) {
@@ -56,14 +56,14 @@ angular.module('app')
 
         vm.selectedCat = false;
 
-        vm.selectCat = function(cat) {
-          vm.dealCat = cat;
-          vm.selectedCat = !vm.selectedCat;
-        }
+        vm.selectCat = function (cat) {
+            vm.dealCat = cat;
+            vm.selectedCat = !vm.selectedCat;
+        };
 
-        vm.openCat = function() {
-          vm.selectedCat = !vm.selectedCat;
-        }
+        vm.openCat = function () {
+            vm.selectedCat = !vm.selectedCat;
+        };
 
 
         vm.placeChanged = function () {
@@ -85,36 +85,34 @@ angular.module('app')
                 vm.deal.day = vm.days
             }
             if (vm.dealSvg) {
-              vm.deal.dealSvg = vm.dealSvg.id;
+                vm.deal.dealSvg = vm.dealSvg.id;
             }
             if (vm.dealCat) {
-              vm.deal.dealCat = vm.dealCat;
+                vm.deal.dealCat = vm.dealCat;
             }
             vm.place.picture = geoService.busPic;
             geoService.newBusiness(vm.place, vm.deal).then(function (res) {
                 $scope.addedBus = res;
             });
         };
-        vm.getDealInfo = function() {
-          geoService.getDeal().then(function(data) {
 
-            $scope.deals = data.data;
+        vm.getDealInfo = function () {
+            geoService.getDeal().then(function (data) {
+                $scope.deals = data.data;
+            });
 
-       });
+        };
+        vm.getDealInfo();
 
-   };
-   vm.getDealInfo();
+        vm.showDesc = function (deal) {
+            var desc = document.getElementById('deal-desc');
+            desc.style.opacity = '1 !important';
+            deal.hideDesc = true;
+        };
 
-
-   vm.showDesc = function(deal) {
-     var desc = document.getElementById('deal-desc');
-     desc.style.opacity = '1 !important';
-     deal.hideDesc = true;
-   };
-   vm.hideDesc = function(deal) {
-     deal.hideDesc = false;
-   }
-
+        vm.hideDesc = function (deal) {
+            deal.hideDesc = false;
+        };
 
         NgMap.getMap().then(function (map) {
             geoService.getCurrentPosition().then(function (latlng) {
@@ -134,7 +132,6 @@ angular.module('app')
             modal.style.display = 'block';
             google.maps.event.trigger(vm.map, 'resize');
         };
-
 
         vm.closeClick = function () {
             var modal = document.getElementById('modal');

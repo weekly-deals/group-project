@@ -51,7 +51,7 @@ angular.module('app')
         };
 
         vm.newBusiness = function (business, deal) {
-            console.log(deal)
+            console.log(deal);
             var newBusiness = {
                 address: business.formatted_address,
                 phone: business.formatted_phone_number,
@@ -65,7 +65,7 @@ angular.module('app')
                 picture: busPic
             };
             var newDeal = {
-                catDeal: deal.dealCat,
+                dealCat: deal.dealCat,
                 svg: deal.dealSvg, //nat
                 dealsName: deal.name,
                 day: deal.day,
@@ -73,6 +73,7 @@ angular.module('app')
                 exceptions: deal.details,
                 loc: newBusiness.loc
             };
+            
             var data = {};
             data.bus = newBusiness;
             data.deal = newDeal;
