@@ -15,7 +15,8 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
         $stateProvider
             .state('home', {
                 url: '/',
-                controller: 'mainCtrl',
+                controller: 'ModalCtrl',
+                controllerAs: 'vm',
                 templateUrl: 'home.html'
             })
             .state('login', {

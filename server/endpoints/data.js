@@ -10,6 +10,7 @@ var cats = ["food", "entertainment", "sports", "transportation"];
 function queryMaker(coords) {
     var queries = [];
     for (var i = 0; i < cats.length; i++) {
+        var reg = new RegExp(cats[i], 'i');
         queries.push(
             Deal.find({
                 $and: [{
@@ -23,10 +24,11 @@ function queryMaker(coords) {
                         }
                     }
                 }, {
-                    dealCat: cats[i]
+                    dealCat: reg
                 }]
             })
                 .populate('bus')
+                .exec()
         )
     }
     return queries;
@@ -89,38 +91,43 @@ module.exports = {
         });
     },
 
-    getDeal: function(req, res) {                //nat get the deal from backend
+//     getDeal: function(req, res) {                //nat get the deal from backend
+//
+//         Deal
+//         .find({})
+//         .populate('bus')
+//         .exec(function(err, resp) {
+//             if(err) {
+//                 res.send(err);
+//             } else {
+//
+//                 res.send(resp);
+//             }
+//         })
+// },
 
-        Deal
-        .find({})
-        .populate('bus')
-        .exec(function(err, resp) {
-            if(err) {
-                res.send(err);
-            } else {
-
-                res.send(resp);
-            }
+    getDeal: function (req, res) {
+        var queries = queryMaker([-111.8999350111, 40.611059040]);
+        Promise
+            .all(queries)
+            .spread(function(food, ent, sports, tran){
+                var ret = [
+                    {data: food,
+                    catTitle: "Food"},
+                    {data: ent,
+                    catTitle: "Entertainment"},
+                    {data: sports,
+                    catTitle: "Sports"},
+                    {data: tran,
+                    catTitle: "Transportation"}
+                ];
+                // console.log(ret);
+                return res.status(200).json(ret);
+            })
+        .catch(function (err) {
+            return res.status(500).json(err);
         })
-},
-
-
-    // getDeal: function (req, res) {
-    //     var queries = queryMaker([-111.8999350111, 40.611059040]);
-    //     Promise.all(queries).spread(function (food, ent, sports, tran) {
-    //         var ret = {
-    //             food: food,
-    //             ent: ent,
-    //             sports: sports,
-    //             tran: tran
-    //         };
-    //         return res.status(200).json(ret);
-    //     }).catch(function (err) {
-    //         return res.status(500).json(err);
-    //     })
-    // },
-
-
+    },
 
     editDeal: function (req, res) {
         Deal.findByIdAndUpdate(req.params.id, req.body, function (err, resp) {
