@@ -1,6 +1,7 @@
 <div class="cat-container" >
     <div class="deals-container">
-        <div class="deal" ng-mouseenter='showDesc(deal)' ng-mouseleave='hideDesc(deal)' ng-repeat="deal in data">
+        <img src="arrow.png" height="125px" width="125px">
+        <div class="deal" ng-mouseenter='showDesc(deal)' ng-mouseleave='hideDesc(deal)' ng-repeat="deal in data" ng-click="showDeal(deal)" >
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
             <div id='deal-desc' class='deal-desc' ng-show='deal.hideDesc'>{{deal.description}}</div>
             <div class="deal-pic">
@@ -9,9 +10,12 @@
                 </svg>
             </div>
 
+
             <div class="deal-footer" ng-show='!deal.hideDesc'>
+                {{showDetail}}
               <span class='small-text'>at</span><br>{{deal.bus.busName}}
             </div>
+            <show-deal ng-if="deal.showDetail" close="close(deal)" deal="deal"></show-deal>
         </div>
     </div>
 </div>
