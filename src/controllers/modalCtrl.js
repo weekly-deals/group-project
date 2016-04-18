@@ -97,10 +97,11 @@ angular.module('app')
         };
 
         vm.getDealInfo = function () {
-            geoService.getDeal().then(function (data) {
-                $scope.deals = data.data;
-            });
-
+            geoService.getCurrentPosition().then(function(latlng){
+                geoService.getDeal(latlng).then(function (data) {
+                    $scope.deals = data.data;
+                });
+            })
         };
         vm.getDealInfo();
 
