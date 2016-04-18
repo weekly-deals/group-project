@@ -5,7 +5,8 @@ angular.module('app')
    templateUrl: '/catTemplate.html',
    restrict: 'E',
    scope: {
-     group:'='
+     group:'=',
+     data: '='
    },
    controller: 'ModalCtrl',
    link: function(scope, element, attributes) {

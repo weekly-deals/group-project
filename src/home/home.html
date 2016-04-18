@@ -1,7 +1,7 @@
 <div class="main-deals-container">
-  <div class='home-container' ng-repeat="cat in categories">
-    <div class="cat-title"><span>{{cat}}</span></div>
+  <div class='home-container' ng-repeat="cat in deals">
+    <div ng-if="cat.data.length" class="cat-title"><span>{{cat.catTitle}}</span></div>
 
-    <cat-directive></cat-directive>
+    <cat-directive ng-if="cat.data.length" data="cat.data"></cat-directive>
   </div>
 </div>

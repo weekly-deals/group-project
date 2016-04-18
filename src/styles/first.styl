@@ -4,33 +4,40 @@ main-white = #F2F2F2;
 
 /** Ultra Light */
 @font-face {
- font-family: "San Francisco";
- font-weight: 100;
- src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
 }
 
 /** Thin */
 @font-face {
- font-family: "San Francisco";
- font-weight: 200;
- src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
 }
 
 /** Regular */
 @font-face {
- font-family: "San Francisco";
- font-weight: 400;
- src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
 @keyframes fade-out
-  from {background-color: main-white; opacity: 1}
-  to {background-color: main-grey; opacity: .8}
+  from {
+    background-color: main-white;
+  }
+  to {
+    background-color: main-grey;
+  }
 
 @keyframes fade-in
-  from {opacity: .8}
-  to {opacity: 1}
-
+  from {
+    opacity: .2
+  }
+  to {
+    opacity: 1
+  }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
@@ -49,6 +56,8 @@ body
   wight 100%
   margin-top 300px
   font-family: 'San Francisco'
+  +below(600px)
+    font-size 8px
 
 font(x, y)
   font-weight x
@@ -58,23 +67,31 @@ font(x, y)
   font(400, 3.75)
 
 .small-text
-    font(200, 1.125)
+  cursor pointer
+  font(200, 1.5)
 
 .medium-text
-    font(400, 2.25)
-    display: flex
-    align-self: flex-end
+  font(400, 2.25)
+  display: flex
+  cursor pointer
+  align-self: flex-end
+
+.medium-text2
+  font(400, 2.25)
+  display: flex
+  align-self: flex-end
+
 .light-text
-    font(100, 2.25)
-    display: flex
-    align-self: flex-end
+  font(100, 2.25)
+  display: flex
+  align-self: flex-end
+
 .day
-    display: flex
-    align-self: flex-end
+  display: flex
+  align-self: flex-end
 
 .main-container
   background: main-red
-  height: 200vh
 
 .main-nav-bar
   background-color: main-red
@@ -92,14 +109,26 @@ font(x, y)
   width 100%
   background: linear-gradient(main-red, main-red 80%, transparent)
   +below(600px)
-    height 500px
+    height 225px
+
 .style-nav
-    margin-left: 20px
+  margin-left: 20px
+
 .top-nav-tabs
-  font(100, 1.5)
+  font(100, 1.75)
   display: flex
-  justify-content: space-between
-  padding-right 40px
+  justify-content: space-around
+  a
+    margin 0
+  ul
+    padding 0
+  li
+    margin 0 60px 0 60px
+    cursor pointer
+    +below(900px)
+      margin 0 30px 0 30px
+    +below(650px)
+      margin 0 18px 0 18px
 
 /*home-view*/
 .home-container
@@ -116,10 +145,8 @@ font(x, y)
   align-items: flex-end
   flex-direction row
   justify-content space-around
-  +below(600px)
-    flex-direction column
-    input
-      margin auto
+  line-height 50px
+
 
 .location-filter
   background: transparent
@@ -139,6 +166,7 @@ font(x, y)
   border none
   outline none
   width 20px
+  cursor pointer
 
 .cat-option
   color: inherit
@@ -148,6 +176,7 @@ font(x, y)
 
 .day-options
   display flex
+  cursor pointer
 
 .day-option
   color main-red
@@ -159,6 +188,7 @@ font(x, y)
   height 30px
   width 30px
   font-size 18px
+  cursor pointer
 
 h2
   margin 0 auto
@@ -181,56 +211,59 @@ a
     margin auto
 
 .deal
-    width 220px
-    height: 300px
-    margin 25px
-    background: main-white
-    border-radius: 5px
-    display flex
-    flex-direction column
-    font-family: San Francisco
-    font-color: main-grey
-    font-size: 24px
-    font-weight: ultralight
-    &:hover
-      animation-fill-mode: forwards
-      animation-name: fade-out
-      animation-duration 1s
-      cursor pointer
+  min-width 220px
+  height: 300px
+  margin 25px
+  background: main-white
+  border-radius: 5px
+  display flex
+  flex-direction column
+  font-color: main-grey
+  font-size: 24px
+  font-weight: ultralight
+  &:hover
+    animation-fill-mode: forwards
+    animation-name: fade-out
+    animation-duration .6s
+    cursor pointer
+
+.main-deals-container
+  margin-top 325px
+  +below(600px)
+    margin-top -90px
 
 .deal-desc
-    position absolute
-    text-align center
-    margin auto
-    width 220px
-    color main-white
-    z-index 20
-    &:hover
-      animation-fill-mode: forwards
-      animation-name: fade-in
-      animation-duration 1s
-      cursor pointer
-
+  display flex
+  flex-direction column
+  text-align center
+  justify-content center
+  width 220px
+  height 300px
+  color main-white
+  z-index 20
+  &:hover
+    animation-fill-mode: forwards
+    animation-name: fade-in
+    animation-duration .6s
+    cursor pointer
 
 .deal-header
-    text-align: center
-    width: 100%
-    height: 20%
-    margin-top: 5%
-
+  text-align: center
+  width: 100%
+  height: 20%
+  margin-top: 5%
 
 .deal-pic
-    display flex
-    justify-content center
-    align-items center
-
+  display flex
+  justify-content center
+  align-items center
 
 .deal-footer
-    text-align: center
-    width: 100%
-    height: 20%
-    margin auto
-    margin-bottom: 3%
+  text-align: center
+  width: 100%
+  height: 20%
+  margin auto
+  margin-bottom: 3%
 
 .cat-container
   overflow hidden
@@ -258,7 +291,6 @@ a
   text-align: center
   margin: 5% 20%
   border-radius: 10px
-  font-family: 'San Francisco'
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   +below(600px)
     margin 0
@@ -274,15 +306,14 @@ a
   position absolute
   z-index 99
 
-
 #promodal-curtain
-    display none
-    height 100%
-    width 100%
-    top 0
-    background-color rgba(50,50,50,0.92)
-    position absolute
-    z-index 99
+  display none
+  height 100%
+  width 100%
+  top 0
+  background-color rgba(50, 50, 50, 0.92)
+  position absolute
+  z-index 99
 
 .svg-wrapper
   overflow hidden
@@ -447,6 +478,7 @@ a
   background-color: transparent
   font(400, 1.1)
   border: 0
+  cursor pointer
   &:focus
     outline: none
 
@@ -470,11 +502,10 @@ a
   background: #3a5795
   color: main-white
 
-
 .profileWrap
-    text-align: center
+  text-align: center
 
 .profilePic
-    height: 300px
-    width: 200px
-    border-radius: 15px 5px 30px 5px
+  height: 300px
+  width: 200px
+  border-radius: 15px 5px 30px 5px

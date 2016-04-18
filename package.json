@@ -17,7 +17,7 @@
   "scripts": {
     "postinstall": "bower install",
     "lint": "jshint **.js",
-    "start": "concurrently 'nodemon' 'gulp'"
+    "start": "concurrently --kill-others --raw 'nodemon' 'gulp'"
   },
   "keywords": [
     "deals"

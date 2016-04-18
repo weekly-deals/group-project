@@ -38,15 +38,33 @@ body {
   margin-top: 300px;
   font-family: 'San Francisco';
 }
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 8px;
+  }
+}
 .large-text {
   font-weight: 400;
   font-size: 3.75em;
 }
 .small-text {
+  cursor: pointer;
   font-weight: 200;
-  font-size: 1.125em;
+  font-size: 1.5em;
 }
 .medium-text {
+  font-weight: 400;
+  font-size: 2.25em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+}
+.medium-text2 {
   font-weight: 400;
   font-size: 2.25em;
   display: -webkit-box;
@@ -79,7 +97,6 @@ body {
 }
 .main-container {
   background: #dd2e44;
-  height: 200vh;
 }
 .main-nav-bar {
   background-color: #dd2e44;
@@ -100,7 +117,7 @@ body {
 }
 @media only screen and (max-width: 600px) {
   .gradient {
-    height: 500px;
+    height: 225px;
   }
 }
 .style-nav {
@@ -108,16 +125,34 @@ body {
 }
 .top-nav-tabs {
   font-weight: 100;
-  font-size: 1.5em;
+  font-size: 1.75em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-right: 40px;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+.top-nav-tabs a {
+  margin: 0;
+}
+.top-nav-tabs ul {
+  padding: 0;
+}
+.top-nav-tabs li {
+  margin: 0 60px 0 60px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 900px) {
+  .top-nav-tabs li {
+    margin: 0 30px 0 30px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .top-nav-tabs li {
+    margin: 0 18px 0 18px;
+  }
 }
 /*home-view*/
 .home-container {
@@ -146,18 +181,7 @@ body {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-}
-@media only screen and (max-width: 600px) {
-  .nav-bottom {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .nav-bottom input {
-    margin: auto;
-  }
+  line-height: 50px;
 }
 .location-filter {
   background: transparent;
@@ -179,6 +203,7 @@ body {
   border: none;
   outline: none;
   width: 20px;
+  cursor: pointer;
 }
 .cat-option {
   color: inherit;
@@ -191,6 +216,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  cursor: pointer;
 }
 .day-option {
   color: #dd2e44;
@@ -202,6 +228,7 @@ body {
   height: 30px;
   width: 30px;
   font-size: 18px;
+  cursor: pointer;
 }
 h2 {
   margin: 0 auto;
@@ -229,7 +256,7 @@ a {
   margin: auto;
 }
 .deal {
-  width: 220px;
+  min-width: 220px;
   height: 300px;
   margin: 25px;
   background: #f2f2f2;
@@ -243,7 +270,6 @@ a {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-family: San Francisco;
   font-color: #58595b;
   font-size: 24px;
   font-weight: ultralight;
@@ -253,15 +279,35 @@ a {
           animation-fill-mode: forwards;
   -webkit-animation-name: fade-out;
           animation-name: fade-out;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
   cursor: pointer;
 }
+.main-deals-container {
+  margin-top: 325px;
+}
+@media only screen and (max-width: 600px) {
+  .main-deals-container {
+    margin-top: -90px;
+  }
+}
 .deal-desc {
-  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
-  margin: auto;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 220px;
+  height: 300px;
   color: #f2f2f2;
   z-index: 20;
 }
@@ -270,8 +316,8 @@ a {
           animation-fill-mode: forwards;
   -webkit-animation-name: fade-in;
           animation-name: fade-in;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
   cursor: pointer;
 }
 .deal-header {
@@ -334,7 +380,6 @@ a {
   text-align: center;
   margin: 5% 20%;
   border-radius: 10px;
-  font-family: 'San Francisco';
   box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
 }
 @media only screen and (max-width: 600px) {
@@ -557,6 +602,7 @@ a {
   font-weight: 400;
   font-size: 1.1em;
   border: 0;
+  cursor: pointer;
 }
 .options:focus {
   outline: none;
@@ -593,26 +639,22 @@ a {
 @-webkit-keyframes fade-out {
   from {
     background-color: #f2f2f2;
-    opacity: 1;
   }
   to {
     background-color: #58595b;
-    opacity: 0.8;
   }
 }
 @keyframes fade-out {
   from {
     background-color: #f2f2f2;
-    opacity: 1;
   }
   to {
     background-color: #58595b;
-    opacity: 0.8;
   }
 }
 @-webkit-keyframes fade-in {
   from {
-    opacity: 0.8;
+    opacity: 0.2;
   }
   to {
     opacity: 1;
@@ -620,7 +662,7 @@ a {
 }
 @keyframes fade-in {
   from {
-    opacity: 0.8;
+    opacity: 0.2;
   }
   to {
     opacity: 1;
