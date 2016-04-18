@@ -2,7 +2,7 @@
     <div class="deals-container">
         <div class="deal"  ng-mouseenter='vm.showDesc(deal); vm.showButton(deal)' ng-mouseleave='vm.hideDesc(deal); vm.hideButton(deal)'ng-repeat="deal in data">
 
-        <img src="arrow.png" height="125px" width="125px">
+        <!--<img src="arrow.png" height="125px" width="125px">-->
 
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
             <button  ng-if="vm.isAuthenticated() === 'admin'"   id='edit' ng-show='deal.showButtons'>edit</button>

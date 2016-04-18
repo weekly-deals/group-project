@@ -1,9 +1,7 @@
 angular.module('app')
-<<<<<<< HEAD
-    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, adminService) {
-=======
-    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, $rootScope) {
->>>>>>> master
+
+    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, $rootScope, adminService) {
+
 
         var vm = this;
 
