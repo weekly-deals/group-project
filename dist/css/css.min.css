@@ -181,7 +181,6 @@ body {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  line-height: 50px;
 }
 .location-filter {
   background: transparent;
@@ -193,6 +192,26 @@ body {
   padding-right: 0;
   margin: 0;
   height: 50px;
+}
+.location-filter::-webkit-input-placeholder {
+  color: #f2f2f2;
+  font-weight: 400;
+  font-size: 1em;
+}
+.location-filter::-moz-placeholder {
+  color: #f2f2f2;
+  font-weight: 400;
+  font-size: 1em;
+}
+.location-filter:-ms-input-placeholder {
+  color: #f2f2f2;
+  font-weight: 400;
+  font-size: 1em;
+}
+.location-filter::placeholder {
+  color: #f2f2f2;
+  font-weight: 400;
+  font-size: 1em;
 }
 .location-filter:focus {
   outline: none;

@@ -50,6 +50,23 @@ angular.module('app')
             return deferred.promise;
         };
 
+        vm.geoCode = function (address) {
+            var deferred = $q.defer();
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'address': address}, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        return deferred.resolve({lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()})
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    deferred.reject(status);
+                }
+            });
+            return deferred.promise;
+        };
+
         vm.newBusiness = function (business, deal) {
             console.log(deal);
             var newBusiness = {

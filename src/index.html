@@ -47,9 +47,11 @@
 
             </span>
             <div class='nav-bottom' ng-hide='vm.hideBotNav'>
-                <span class='medium-text2'>deals</span>    </span></span>
+                <span class='medium-text2'>deals</span>
                 <span class='light-text'>  in</span>
-                <input class='location-filter' type='text' ng-model='vm.city' pu-elastic-input>
+                <form class="locationSearch" ng-controller="ModalCtrl" ng-submit="geoCode(city)">
+                    <input class='location-filter' type='text' ng-model='city' placeholder="Near..." pu-elastic-input>
+                </form>
                 <span class='light-text'>on<span>    </span></span>
       <span class='medium-text' ng-click='vm.toggleDayDD()'>
             <span class="day">{{vm.selectedDay}}</span>

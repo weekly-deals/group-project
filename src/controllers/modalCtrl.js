@@ -1,9 +1,7 @@
 angular.module('app')
-    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService) {
+    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, $rootScope) {
 
         var vm = this;
-
-        vm.test = 'test';
 
         vm.types = "['establishment']";
 
@@ -28,12 +26,6 @@ angular.module('app')
                 vm.dealSvg.style.border = '1px solid black';
             }
         };
-
-        geoService.getCurrentPosition().then(function (latlng) {
-            geoService.reverseGeoCode(latlng).then(function (city) {
-                vm.city = city;
-            });
-        });
 
         vm.selectDay = function (day) {
             var box = document.getElementById(day);
@@ -65,7 +57,6 @@ angular.module('app')
             vm.selectedCat = !vm.selectedCat;
         };
 
-
         vm.placeChanged = function () {
             vm.place = this.getPlace();
             vm.map.setCenter(vm.place.geometry.location);
@@ -74,7 +65,6 @@ angular.module('app')
                 map: vm.map,
                 title: vm.place.name
             });
-
         };
 
         vm.addBusiness = function () {
@@ -98,12 +88,23 @@ angular.module('app')
 
         vm.getDealInfo = function () {
             geoService.getCurrentPosition().then(function(latlng){
+                geoService.reverseGeoCode(latlng).then(function (city) {
+                    $scope.city = city;
+                });
                 geoService.getDeal(latlng).then(function (data) {
-                    $scope.deals = data.data;
+                    $rootScope.deals = data.data;
                 });
             })
         };
         vm.getDealInfo();
+
+        $scope.geoCode = function(address) {
+            geoService.geoCode(address).then(function(latlng){
+                geoService.getDeal(latlng).then(function (data) {
+                    $rootScope.deals = data.data;
+                });
+            });
+        };
 
         vm.showDesc = function (deal) {
             var desc = document.getElementById('deal-desc');

@@ -145,8 +145,6 @@ font(x, y)
   align-items: flex-end
   flex-direction row
   justify-content space-around
-  line-height 50px
-
 
 .location-filter
   background: transparent
@@ -157,6 +155,9 @@ font(x, y)
   padding-right: 0
   margin: 0
   height: 50px
+  &::placeholder
+    color: main-white
+    font(400, 1)
   &:focus
     outline none
 

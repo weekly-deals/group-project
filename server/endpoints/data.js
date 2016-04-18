@@ -20,7 +20,7 @@ function queryMaker(coords) {
                                 type: "Point",
                                 coordinates: coords
                             },
-                            $maxDistance: 1000000000
+                            $maxDistance: 10000
                         }
                     }
                 }, {
