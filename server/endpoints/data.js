@@ -20,7 +20,7 @@ function queryMaker(coords) {
                                 type: "Point",
                                 coordinates: coords
                             },
-                            $maxDistance: 1000000000
+                            $maxDistance: 10000
                         }
                     }
                 }, {
@@ -91,23 +91,8 @@ module.exports = {
         });
     },
 
-//     getDeal: function(req, res) {                //nat get the deal from backend
-//
-//         Deal
-//         .find({})
-//         .populate('bus')
-//         .exec(function(err, resp) {
-//             if(err) {
-//                 res.send(err);
-//             } else {
-//
-//                 res.send(resp);
-//             }
-//         })
-// },
-
     getDeal: function (req, res) {
-        var queries = queryMaker([-111.8999350111, 40.611059040]);
+        var queries = queryMaker([req.query.lng, req.query.lat]);
         Promise
             .all(queries)
             .spread(function(food, ent, sports, tran){

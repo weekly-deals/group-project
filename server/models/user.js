@@ -17,9 +17,10 @@ var userSchema = new mongoose.Schema({
     google: String,
     twitter: String,
     role: {type: String, default: 'user', enum: userRoles},
-    favorites: [{}]
+    favorites: [{}],
+    admin: {type: Boolean, default: false}
 });
-
+// if req.user.admin
 userSchema.pre('save', function (next) {
     var user = this;
     if (!user.isModified('password')) {

@@ -49,8 +49,8 @@ app.put('/api/bus/:id', checkRole('user'), data.editBus);
 app.delete('/api/bus/:id', checkRole('user'), data.deleteBus);
 
 app.post('/api/deal', checkRole('user'), data.addDeal);
-app.put('/api/deal/:id', checkRole('user'), data.editDeal);
-app.delete('/api/deal/:id', checkRole('user'), data.deleteDeal);
+app.put('/api/deal/:id', checkRole('admin'), data.editDeal);
+app.delete('/api/deal/:id', checkRole('admin'), data.deleteDeal);
 app.get('/api/deal', data.getDeal);  //nat endpoint to get the deal
 
 app.listen(port, function () {
