@@ -3,6 +3,77 @@ angular.module('app')
         var busPic = null;
         var vm = this;
 
+
+        vm.days = [
+            {
+                display: 'Sunday',
+                val: function () {
+                    return {day: 0};
+                }
+            },
+            {
+                display: 'Monday',
+                val: function () {
+                    return {day: 1};
+                }
+            },
+            {
+                display: 'Tuesday',
+                val: function () {
+                    return {day: 2};
+                }
+            },
+            {
+                display: 'Wednesday',
+                val: function () {
+                    return {day: 3};
+                }
+            },
+            {
+                display: 'Thursday',
+                val: function () {
+                    return {day: 4};
+                }
+            },
+            {
+                display: 'Friday',
+                val: function () {
+                    return {day: 5};
+                }
+            },
+            {
+                display: 'Saturday',
+                val: function () {
+                    return {day: 6};
+                }
+            }
+        ];
+
+        vm.getCurrentDay = function () {
+          var date = new Date();
+          vm.dayNum = date.getDay();
+          vm.currentDay = vm.days[vm.dayNum].display;
+          return vm.currentDay;
+        };
+
+        vm.selectDay = function (day, idx) {
+            vm.newDay = {
+              selectedDay: day,
+              dayIdx: idx
+            };
+            return vm.newDay;
+
+        };
+
+        vm.getSelectedDay = function () {
+          if (vm.selectedDay) {
+            return vm.selectedDay;
+          } else {
+            vm.selectedDay = vm.getCurrentDay();
+            return vm.selectedDay;
+          }
+        }
+
         function minuteToMs(min) {
             return min * 60000;
         }
@@ -73,7 +144,7 @@ angular.module('app')
                 exceptions: deal.details,
                 loc: newBusiness.loc
             };
-            
+
             var data = {};
             data.bus = newBusiness;
             data.deal = newDeal;

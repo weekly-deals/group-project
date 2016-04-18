@@ -66,6 +66,16 @@ angular.module('app')
         };
 
 
+  //filtering stuff
+
+
+        $scope.filterDeal = geoService.getSelectedDay();
+
+        // geoService.newDay.watch(idx, function() {
+        //   console.log(vm.deals);
+        // })
+
+
         vm.placeChanged = function () {
             vm.place = this.getPlace();
             vm.map.setCenter(vm.place.geometry.location);

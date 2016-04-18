@@ -86,15 +86,13 @@ font(x, y)
   display: flex
   align-self: flex-end
 
-.day
-  display: flex
-  align-self: flex-end
+/* index.html styling */
 
 .main-container
   background: main-red
 
 .main-nav-bar
-  background-color: main-red
+  background-color: transparent
   color: main-white
   position: fixed
   width: 100%
@@ -105,9 +103,9 @@ font(x, y)
   position fixed
   z-index 19
   top 0
-  height 350px
+  height 450px
   width 100%
-  background: linear-gradient(main-red, main-red 80%, transparent)
+  background: linear-gradient(main-red, transparent)
   +below(600px)
     height 225px
 
@@ -174,9 +172,18 @@ font(x, y)
   background-color transparent
   outline none
 
+.day
+  display: flex
+  align-self: flex-end
+
+.day-selector
+  display flex
+
 .day-options
   display flex
-  cursor pointer
+  align-self flex-end
+  text-align center
+
 
 .day-option
   color main-red
@@ -188,7 +195,13 @@ font(x, y)
   height 30px
   width 30px
   font-size 18px
+  line-height 20px
+  display: flex
+  align-self: center
+  align-items center
+  justify-content center
   cursor pointer
+
 
 h2
   margin 0 auto

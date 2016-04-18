@@ -44,54 +44,11 @@ angular.module('app')
 
         svgs();
 
-        vm.days = [
-            {
-                display: 'Sunday',
-                val: function () {
-                    return {day: 0};
-                }
-            },
-            {
-                display: 'Monday',
-                val: function () {
-                    return {day: 1};
-                }
-            },
-            {
-                display: 'Tuesday',
-                val: function () {
-                    return {day: 2};
-                }
-            },
-            {
-                display: 'Wednesday',
-                val: function () {
-                    return {day: 3};
-                }
-            },
-            {
-                display: 'Thursday',
-                val: function () {
-                    return {day: 4};
-                }
-            },
-            {
-                display: 'Friday',
-                val: function () {
-                    return {day: 5};
-                }
-            },
-            {
-                display: 'Saturday',
-                val: function () {
-                    return {day: 6};
-                }
-            }
-        ];
+        vm.days = geoService.days
 
         var date = new Date();
         vm.dayNum = date.getDay();
-        vm.selectedDay = vm.days[vm.dayNum].display;
+        vm.selectedDay = geoService.getCurrentDay();
 
         vm.dayDropdown = true;
 
@@ -100,8 +57,9 @@ angular.module('app')
         }
 
 
-        vm.selectDay = function (day) {
-            vm.selectedDay = day;
+        vm.selectDay = function (day, idx) {
+            vm.day = geoService.selectDay(day, idx);
+            vm.selectedDay = vm.day.selectedDay
         }
 
         vm.placeChanged = function () {
