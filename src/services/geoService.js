@@ -50,6 +50,23 @@ angular.module('app')
             return deferred.promise;
         };
 
+        vm.geoCode = function (address) {
+            var deferred = $q.defer();
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'address': address}, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        return deferred.resolve({lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()})
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    deferred.reject(status);
+                }
+            });
+            return deferred.promise;
+        };
+
         vm.newBusiness = function (business, deal) {
             console.log(deal);
             var newBusiness = {
@@ -73,7 +90,7 @@ angular.module('app')
                 exceptions: deal.details,
                 loc: newBusiness.loc
             };
-            
+
             var data = {};
             data.bus = newBusiness;
             data.deal = newDeal;
@@ -84,45 +101,46 @@ angular.module('app')
             });
         };
 
-        vm.newDeal = function(deal, bus, days) {
-          console.log(bus);
-          var newDeal = {
-            dealsCat: deal.catDeal, //nat
-            dealsName: deal.name,
-            day: days,
-            description: deal.description,
-            exceptions: deal.details,
-            bus: bus.data._id,
-            loc: {
-              coordinates: [bus.data.loc.coordinates[0], bus.data.loc.coordinates[1]]
-            }
-          };
-          console.log(newDeal);
-          return $http({
-            method: "POST",
-            data: newDeal,
-            url: '/api/deal'
-          });
+        vm.newDeal = function (deal, bus, days) {
+            console.log(bus);
+            var newDeal = {
+                dealsCat: deal.dealCat, //nat
+                dealsName: deal.name,
+                day: days,
+                description: deal.description,
+                exceptions: deal.details,
+                bus: bus.data._id,
+                loc: {
+                    coordinates: [bus.data.loc.coordinates[0], bus.data.loc.coordinates[1]]
+                }
+            };
+            console.log(newDeal);
+            return $http({
+                method: "POST",
+                data: newDeal,
+                url: '/api/deal'
+            });
         };
-        vm.getDeal = function () {     //nat retrieve data about the deal
+
+        vm.getDeal = function (longlat) {
             return $http({
                 method: "GET",
-                url: '/api/deal'
+                url: '/api/deal',
+                params: longlat
             })
         };
 
         vm.storeImage = function (imageData, fileName) {
-          var imageExtension = imageData.split(';')[0].split('/');
-          imageExtension = imageExtension[imageExtension.length - 1];
+            var imageExtension = imageData.split(';')[0].split('/');
+            imageExtension = imageExtension[imageExtension.length - 1];
 
-          var newImage = {
-            imageName: fileName,
-            imageBody: imageData,
-            imageExtension: imageExtension,
-            userEmail: 'jakecorry123@gmail.com'
-          };
-
-          return $http.post('/api/newimage', newImage);
+            var newImage = {
+                imageName: fileName,
+                imageBody: imageData,
+                imageExtension: imageExtension,
+                userEmail: 'jakecorry123@gmail.com'
+            };
+            return $http.post('/api/newimage', newImage);
         };
 
 
