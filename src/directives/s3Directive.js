@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('fileread', function (geoService) {
+.directive('fileread', function (geoService, Account) {
   return {
     restrict: 'A',
     link: function (scope, elem, attrs) {
@@ -14,6 +14,8 @@ angular.module('app')
           geoService.storeImage(fileread, fileName)
           .then(function(result){
             geoService.busPic = result.data.Location;
+            Account.userPic = result.data.Location;
+            console.log(Account.userPic)
           })
           .catch(function(err) {
             console.error(err);
