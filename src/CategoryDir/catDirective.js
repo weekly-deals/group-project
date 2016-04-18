@@ -14,6 +14,7 @@ angular.module('app')
      };
    },
    controller: function($scope){
+
      $scope.showDesc = function (deal) {
        var desc = document.getElementById('deal-desc');
        desc.style.opacity = '1 !important';
@@ -23,6 +24,9 @@ angular.module('app')
      $scope.hideDesc = function (deal) {
        deal.hideDesc = false;
      };
+
+     
+
    }
  };
 

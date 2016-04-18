@@ -164,7 +164,7 @@ body {
 }
 .nav-bottom {
   margin: 25px auto 0 auto;
-  max-width: 600px;
+  max-width: 800px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -236,6 +236,10 @@ body {
   display: -ms-flexbox;
   display: flex;
   cursor: pointer;
+  margin-bottom: -4px;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
 }
 .day-option {
   color: #dd2e44;
@@ -246,7 +250,7 @@ body {
   outline: none;
   height: 30px;
   width: 30px;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 h2 {
@@ -621,6 +625,7 @@ a {
   font-weight: 400;
   font-size: 1.1em;
   border: 0;
+  margin: -10px;
   cursor: pointer;
 }
 .options:focus {

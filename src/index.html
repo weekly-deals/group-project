@@ -53,9 +53,8 @@
                     <input class='location-filter' type='text' ng-model='city' placeholder="Near..." pu-elastic-input>
                 </form>
                 <span class='light-text'>on<span>    </span></span>
-      <span class='medium-text' ng-click='vm.toggleDayDD()'>
-            <span class="day">{{vm.selectedDay}}</span>
-        <select class="options"></select>
+      <span class='medium-text' ng-click='vm.toggleDayDD(); dayClick = !dayClick'>
+            <span ng-if="!dayClick" class="day">{{vm.selectedDay}}</span>
         <div class='day-options'
         ng-hide="vm.dayDropdown">
           <button ng-click='vm.selectDay("Monday")' class='day-option' >M</button><br>
@@ -66,6 +65,7 @@
           <button ng-click='vm.selectDay("Saturday")' class='day-option'>Sa</button><br>
           <button ng-click='vm.selectDay("Sunday")' class='day-option'>Su</button><br>
         </div>
+          <select class="options"></select>
       </span>
             </div>
 
