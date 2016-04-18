@@ -112,7 +112,7 @@ angular.module('app')
 
         vm.hideDesc = function (deal) {
             deal.hideDesc = false;
-        }
+        };
         
         $scope.geoCode = function(address) {
             geoService.geoCode(address).then(function(latlng){
@@ -124,15 +124,16 @@ angular.module('app')
        
        // nat buttons on admin
         vm.showButton = function(deal) {
+            console.log("working")
             deal.showButtons = true;
-            var edit = document.getElementById('edit');
-            var remove = document.getElementById('remove');  
+            // var edit = document.getElementById('edit');
+            // var remove = document.getElementById('remove');  
         }
        
         vm.hideButton = function (deal) {
             deal.showButtons = false;
-            var edit = document.getElementById('edit');
-            var remove = document.getElementById('remove');
+            // var edit = document.getElementById('edit');
+            // var remove = document.getElementById('remove');
         }
         
         //remove a deal nat
