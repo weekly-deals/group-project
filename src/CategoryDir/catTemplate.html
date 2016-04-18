@@ -1,12 +1,12 @@
 <div class="cat-container" >
     <div class="deals-container">
-        <div class="deal"  ng-mouseenter='vm.showDesc(deal); vm.showButton(deal)' ng-mouseleave='vm.hideDesc(deal); vm.hideButton(deal)'ng-repeat="deal in data">
+        <div class="deal" ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)' ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data">
 
-        <img src="arrow.png" height="125px" width="125px">
+        <!-- <img src="arrow.png" height="125px" width="125px"> -->
 
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
-            <button  ng-if="vm.isAuthenticated() === 'admin'"   id='edit' ng-show='deal.showButtons'>edit</button>
-            <button  ng-if="vm.isAuthenticated() === 'admin'" id="remove" ng-show='deal.showButtons' ng-click="vm.removeDeal(deal._id)">remove</button>
+            <button  ng-if="isAuthenticated() === 'admin'"   id='edit' ng-show='deal.showButtons'>edit</button>
+            <button  ng-if="isAuthenticated() === 'admin'" id="remove" ng-show='deal.showButtons' ng-click="removeDeal(deal._id)">remove</button>
             <div id='deal-desc' class='deal-desc' ng-show='deal.hideDesc'>{{deal.description}}</div>
             <div class="deal-pic">
                 <svg  ng-show='!deal.hideDesc' class='svg' id="{{deal.svg}}" width="110px" height="110px">

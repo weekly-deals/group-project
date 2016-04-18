@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('NavbarCtrl', function ($scope, $auth, NgMap, geoService, $location, svgService) {
+    .controller('NavbarCtrl', function ($rootScope, $scope, $auth, NgMap, geoService, $location, svgService) {
 
         var vm = this;
 
@@ -91,7 +91,9 @@ angular.module('app')
 
         var date = new Date();
         vm.dayNum = date.getDay();
-        vm.selectedDay = vm.days[vm.dayNum].display;
+        $rootScope.selectedDay = {
+          day: vm.days[vm.dayNum].display
+        };
 
         vm.dayDropdown = true;
 
@@ -100,8 +102,11 @@ angular.module('app')
         }
 
 
-        vm.selectDay = function (day) {
-            vm.selectedDay = day;
+        $rootScope.selectDay = function (day, idx) {
+            $rootScope.selectedDay = {
+              day: day,
+              idx: idx
+            };
         }
 
         vm.placeChanged = function () {
