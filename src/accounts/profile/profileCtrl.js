@@ -14,6 +14,7 @@ angular.module('app')
         };
         $scope.updateProfile = function () {
             $scope.user.picture = Account.userPic
+            console.log($scope.user.picture)
             Account.updateProfile($scope.user)
 
                 .then(function () {
