@@ -139,9 +139,9 @@ if ($scope.deals){
           // console.log('bye bye deal',deal);
           deal.hideDeal = true;
         }
-      })
+      });
       }
-    })
+    });
 }
 
   });
