@@ -8,7 +8,7 @@ angular.module('app')
      group:'=',
      data: '='
    },
-   controller: 'ModalCtrl',
+   controller: 'ModalCtrl as vm',
    link: function(scope, element, attributes) {
      scope.toggle = function() {
        scope.show = !scope.show;

@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService) {
+    .controller('ModalCtrl', function ($rootScope, $scope, $auth, NgMap, geoService, svgService) {
 
         var vm = this;
 
@@ -66,16 +66,6 @@ angular.module('app')
         };
 
 
-  //filtering stuff
-
-
-        $scope.filterDeal = geoService.getSelectedDay();
-
-        // geoService.newDay.watch(idx, function() {
-        //   console.log(vm.deals);
-        // })
-
-
         vm.placeChanged = function () {
             vm.place = this.getPlace();
             vm.map.setCenter(vm.place.geometry.location);
@@ -109,10 +99,12 @@ angular.module('app')
         vm.getDealInfo = function () {
             geoService.getDeal().then(function (data) {
                 $scope.deals = data.data;
+
             });
 
         };
         vm.getDealInfo();
+
 
         vm.showDesc = function (deal) {
             var desc = document.getElementById('deal-desc');
@@ -131,6 +123,28 @@ angular.module('app')
                 vm.map.setZoom(12);
             });
         });
+
+//Filtering stuff//
+
+$rootScope.$watch('selectedDay',
+  function(){
+if ($scope.deals){
+  $scope.deals.forEach(function(obj){
+    if (obj.data) {
+      obj.data.forEach(function(deal) {
+        if (deal.day.includes($rootScope.selectedDay.idx)) {
+          // console.log('included!', deal)
+          deal.hideDeal = false;
+        } else {
+          // console.log('bye bye deal',deal);
+          deal.hideDeal = true;
+        }
+      })
+      }
+    })
+}
+
+  });
 
         //Modal controls//
         vm.expand = function () {

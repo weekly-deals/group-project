@@ -131,6 +131,7 @@ body {
 }
 .top-nav-tabs ul {
   padding: 0;
+  margin: 10px;
 }
 .top-nav-tabs li {
   margin: 0 60px 0 60px;
