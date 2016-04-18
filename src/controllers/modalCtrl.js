@@ -1,9 +1,6 @@
 angular.module('app')
-<<<<<<< HEAD
-    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, adminService) {
-=======
-    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, $rootScope) {
->>>>>>> master
+    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, adminService, $rootScope) {
+
 
         var vm = this;
 
@@ -115,7 +112,7 @@ angular.module('app')
         vm.hideDesc = function (deal) {
             deal.hideDesc = false;
         }
-        
+
         $scope.geoCode = function(address) {
             geoService.geoCode(address).then(function(latlng){
                 geoService.getDeal(latlng).then(function (data) {
@@ -123,25 +120,25 @@ angular.module('app')
                 });
             });
         };
-       
+
        // nat buttons on admin
         vm.showButton = function(deal) {
             deal.showButtons = true;
             var edit = document.getElementById('edit');
-            var remove = document.getElementById('remove');  
+            var remove = document.getElementById('remove');
         }
-       
+
         vm.hideButton = function (deal) {
             deal.showButtons = false;
             var edit = document.getElementById('edit');
             var remove = document.getElementById('remove');
         }
-        
+
         //remove a deal nat
         vm.removeDeal = function(dealId) {
        adminService.deleteDeal(dealId);
    };
-        
+
         NgMap.getMap().then(function (map) {
             geoService.getCurrentPosition().then(function (latlng) {
                 vm.map = map;
