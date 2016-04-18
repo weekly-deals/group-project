@@ -106,16 +106,6 @@ angular.module('app')
             });
         };
 
-        vm.showDesc = function (deal) {
-            var desc = document.getElementById('deal-desc');
-            desc.style.opacity = '1 !important';
-            deal.hideDesc = true;
-        };
-
-        vm.hideDesc = function (deal) {
-            deal.hideDesc = false;
-        };
-
         NgMap.getMap().then(function (map) {
             geoService.getCurrentPosition().then(function (latlng) {
                 vm.map = map;
