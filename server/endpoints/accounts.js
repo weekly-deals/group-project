@@ -34,6 +34,7 @@ module.exports = {
       }
       user.displayName = req.body.displayName || user.displayName;
       user.email = req.body.email || user.email;
+      user.picture = req.body.picture || user.picture;
       user.save(function(err) {
         res.status(200).end();
       });

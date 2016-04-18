@@ -1,5 +1,8 @@
 angular.module('app')
     .factory('Account', function ($http) {
+
+        var userPic = null;
+
         return {
             getProfile: function () {
                 return $http.get('/api/me');
