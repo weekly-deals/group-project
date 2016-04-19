@@ -102,7 +102,7 @@ body {
   position: fixed;
   z-index: 19;
   top: 0;
-  height: 450px;
+  height: 350px;
   width: 100%;
   background: -webkit-linear-gradient(#dd2e44, transparent);
   background: linear-gradient(#dd2e44, transparent);
@@ -334,6 +334,8 @@ a {
   font-color: #58595b;
   font-size: 24px;
   font-weight: ultralight;
+  border: 1.8px solid #58595b;
+  padding-bottom: 18px;
 }
 .deal:hover {
   -webkit-animation-fill-mode: forwards;
@@ -428,7 +430,7 @@ a {
 }
 /*maps-view*/
 .modal {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 100;
   left: 0;
@@ -438,6 +440,7 @@ a {
   overflow: auto;
   overflow-x: hidden;
   background-color: #f2f2f2;
+  color: #000;
   text-align: center;
   margin: 5% 20%;
   border-radius: 10px;
@@ -450,46 +453,24 @@ a {
     height: 100%;
   }
 }
-#dealmod {
-  display: block;
-  position: fixed;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 60%;
-  height: 80%;
-  overflow: auto;
-  overflow-x: hidden;
-  background-color: #f2f2f2;
-  text-align: center;
-  margin: 5% 20%;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
-}
-@media only screen and (max-width: 600px) {
-  #dealmod {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
 #modal-curtain {
-  display: none;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   top: 0;
+  left: 0;
   background-color: rgba(50,50,50,0.92);
   position: absolute;
-  z-index: 99;
+  z-index: 20;
 }
-#promodal-curtain {
-  display: none;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  background-color: rgba(50,50,50,0.92);
-  position: absolute;
-  z-index: 99;
+.column-1 {
+  width: 40%;
+}
+.column-2 {
+  width: 40%;
+  display: block;
+}
+.weblink {
+  color: #00f;
 }
 .svg-wrapper {
   overflow: hidden;
