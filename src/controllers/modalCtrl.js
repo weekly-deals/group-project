@@ -1,9 +1,9 @@
 angular.module('app')
 
+
     .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, $rootScope, adminService) {
 
-
-        var vm = this;
+     var vm = this;
 
         vm.types = "['establishment']";
 
@@ -12,7 +12,7 @@ angular.module('app')
         (function svg() {
             svgService.getSvg().then(function (svgs) {
                 vm.svgs = svgs;
-            })
+            });
         })();
 
         vm.selectSvg = function (svg) {
@@ -89,6 +89,7 @@ angular.module('app')
         };
 
         vm.getDealInfo = function () {
+
             geoService.getCurrentPosition().then(function(latlng){
                 geoService.reverseGeoCode(latlng).then(function (city) {
                     $scope.city = city;
@@ -101,19 +102,9 @@ angular.module('app')
         vm.getDealInfo();
 
 
-         vm.isAuthenticated = function () {
-            return $auth.isAuthenticated();
-        };
-        vm.showDesc = function (deal) {
-            var desc = document.getElementById('deal-desc');
-            desc.style.opacity = '1 !important';
-            deal.hideDesc = true;
-        };
 
-        vm.hideDesc = function (deal) {
-            deal.hideDesc = false;
-        };
-        
+
+       
         $scope.geoCode = function(address) {
             geoService.geoCode(address).then(function(latlng){
                 geoService.getDeal(latlng).then(function (data) {
@@ -121,26 +112,7 @@ angular.module('app')
                 });
             });
         };
-       
-       // nat buttons on admin
-        vm.showButton = function(deal) {
-            console.log("working")
-            deal.showButtons = true;
-            // var edit = document.getElementById('edit');
-            // var remove = document.getElementById('remove');  
-        }
-       
-        vm.hideButton = function (deal) {
-            deal.showButtons = false;
-            // var edit = document.getElementById('edit');
-            // var remove = document.getElementById('remove');
-        }
-        
-        //remove a deal nat
-        vm.removeDeal = function(dealId) {
-       adminService.deleteDeal(dealId);
-   };
-        
+
         NgMap.getMap().then(function (map) {
             geoService.getCurrentPosition().then(function (latlng) {
                 vm.map = map;
@@ -148,6 +120,28 @@ angular.module('app')
                 vm.map.setZoom(12);
             });
         });
+
+//Filtering stuff//
+
+$rootScope.$watch('selectedDay',
+  function(){
+if ($scope.deals){
+  $scope.deals.forEach(function(obj){
+    if (obj.data) {
+      obj.data.forEach(function(deal) {
+        if (deal.day.includes($rootScope.selectedDay.idx)) {
+          // console.log('included!', deal)
+          deal.hideDeal = false;
+        } else {
+          // console.log('bye bye deal',deal);
+          deal.hideDeal = true;
+        }
+      });
+      }
+    });
+}
+
+  });
 
         //Modal controls//
         vm.expand = function () {

@@ -12,7 +12,7 @@ angular.module('app')
                     scope.show = !scope.show;
                 };
             },
-            controller: function ($scope) {
+            controller: function ($scope, $auth) {
 
                 $scope.showDesc = function (deal) {
                     var desc = document.getElementById('deal-desc');
@@ -38,6 +38,25 @@ angular.module('app')
                     curtain.style.display = 'none';
                     body.style.overflow = 'auto';
                     deal.showDetail = false;
+                };
+                // nat buttons on admin
+                 $scope.showButton = function(deal) {
+                     deal.showButtons = true;
+                     var edit = document.getElementById('edit');
+                     var remove = document.getElementById('remove');
+                 }
+
+                 $scope.hideButton = function (deal) {
+                     deal.showButtons = false;
+                     var edit = document.getElementById('edit');
+                     var remove = document.getElementById('remove');
+                 }
+                 //remove a deal nat
+                 $scope.removeDeal = function(dealId) {
+                   adminService.deleteDeal(dealId);
+                 };
+                 $scope.isAuthenticated = function () {
+                    return $auth.isAuthenticated();
                 };
 
             }
