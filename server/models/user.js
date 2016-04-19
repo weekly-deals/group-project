@@ -18,7 +18,8 @@ var userSchema = new mongoose.Schema({
     twitter: String,
     role: {type: String, default: 'user', enum: userRoles},
     favorites: [{}],
-    admin: {type: Boolean, default: false}
+    admin: {type: Boolean, default: false},
+    color: {type: String, default: '#DD2E44'}
 });
 // if req.user.admin
 userSchema.pre('save', function (next) {

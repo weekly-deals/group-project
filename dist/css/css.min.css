@@ -86,6 +86,10 @@ body {
       -ms-flex-item-align: end;
           align-self: flex-end;
 }
+.small-font {
+  font-size: 20px;
+  font-weight: 100;
+}
 /* index.html styling */
 .main-container {
   background: #dd2e44;
@@ -102,7 +106,7 @@ body {
   position: fixed;
   z-index: 19;
   top: 0;
-  height: 450px;
+  height: 35vh;
   width: 100%;
   background: -webkit-linear-gradient(#dd2e44, transparent);
   background: linear-gradient(#dd2e44, transparent);
@@ -490,6 +494,7 @@ a {
   background-color: rgba(50,50,50,0.92);
   position: absolute;
   z-index: 99;
+  opacity: 0.85;
 }
 .svg-wrapper {
   overflow: hidden;
@@ -713,13 +718,91 @@ a {
   background: #3a5795;
   color: #f2f2f2;
 }
-.profileWrap {
+.profile-wrap {
   text-align: center;
 }
 .profilePic {
-  height: 300px;
+  height: 200px;
   width: 200px;
-  border-radius: 15px 5px 30px 5px;
+  border-radius: 15px 5px 15px 5px;
+  margin: 10px;
+}
+.edit-inputs {
+  border: 0;
+  border-radius: 30px;
+  color: #58595b;
+  width: 300px;
+  height: 40px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.edit-inputs:focus {
+  outline: none;
+}
+.edit-button {
+  border: 0;
+  border-radius: 30px;
+  background: #dd2e44;
+  color: #f2f2f2;
+  width: 300px;
+  height: 40px;
+  text-align: center;
+  font-weight: 100;
+  font-size: 1.5em;
+  margin: 10px;
+}
+.edit-button:focus {
+  outline: none;
+}
+.img-input {
+  padding-left: 50px;
+  padding-top: 5px;
+  background: #58595b;
+  border-radius: 15px;
+  color: #f2f2f2;
+  margin: 5px;
+  height: 30px;
+  width: 300px;
+}
+.img-input:focus {
+  outline: none;
+}
+.edit-form {
+  display: block;
+}
+.color-btn {
+  margin: 5px auto;
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0px 5px 0px #000;
+}
+.color-btn:focus {
+  outline: none;
+}
+.color-btn:active {
+  box-shadow: 0px 1px 0px #000;
+  position: relative;
+  top: 4px;
+}
+#yellow {
+  background: #ff0;
+}
+#orange {
+  background: #ffa500;
+}
+#red {
+  background: #dd2e44;
+}
+#green {
+  background: #008000;
+}
+#blue {
+  background: #00f;
+}
+#purple {
+  background: #800080;
 }
 @-webkit-keyframes fade-out {
   from {
