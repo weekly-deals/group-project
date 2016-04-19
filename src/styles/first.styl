@@ -103,7 +103,7 @@ font(x, y)
   position fixed
   z-index 19
   top 0
-  height 450px
+  height 265px
   width 100%
   background: linear-gradient(main-red, transparent)
   +below(600px)
@@ -554,3 +554,28 @@ a
   height: 300px
   width: 200px
   border-radius: 15px 5px 30px 5px
+
+ul.pagination
+  display: inline-block
+  padding: 0
+  margin: 0
+
+ul.pagination li
+  display: inline
+
+ul.pagination li a
+  color: black
+  float: left
+  padding: 8px 16px
+  text-decoration: none
+  transition: background-color .3s
+  border: 1px solid #ddd
+  font-size: 18px
+
+ul.pagination li a.active
+  background-color: #eee
+  color: black
+  border: 1px solid #ddd
+
+ul.pagination li a:hover:not(.active)
+  background-color: #ddd

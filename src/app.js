@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
+angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput', 'angularUtils.directives.dirPagination'])
 
     .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 

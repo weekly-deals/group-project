@@ -1,6 +1,6 @@
 <div class="cat-container" >
     <div class="deals-container">
-        <div class="deal" ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)' ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data">
+        <div class="deal" ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)' ng-mouseleave='hideDesc(deal); hideButton(deal)' dir-paginate="deal in data | itemsPerPage: 4">
 
         <!-- <img src="arrow.png" height="125px" width="125px"> -->
 

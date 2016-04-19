@@ -102,7 +102,7 @@ body {
   position: fixed;
   z-index: 19;
   top: 0;
-  height: 450px;
+  height: 265px;
   width: 100%;
   background: -webkit-linear-gradient(#dd2e44, transparent);
   background: linear-gradient(#dd2e44, transparent);
@@ -720,6 +720,32 @@ a {
   height: 300px;
   width: 200px;
   border-radius: 15px 5px 30px 5px;
+}
+ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+ul.pagination li {
+  display: inline;
+}
+ul.pagination li a {
+  color: #000;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+ul.pagination li a.active {
+  background-color: #eee;
+  color: #000;
+  border: 1px solid #ddd;
+}
+ul.pagination li a:hover:not(.active) {
+  background-color: #ddd;
 }
 @-webkit-keyframes fade-out {
   from {
