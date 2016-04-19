@@ -137,11 +137,10 @@ gulp.task('html', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('./src/**/*.styl', ['stylus']).on("change", reload);
-    gulp.watch('./src/**/*.js', ['js']).on("change", reload);
-    gulp.watch('./src/**/*.html', ['html']).on("change", reload);
-    gulp.watch('./dist/index.html').on("change", reload);
-    gulp.watch('./src/icons/*.svg', ['svg']);
+    gulp.watch('src/**/*.styl', ['stylus']).on("change", reload);
+    gulp.watch('src/**/*.js', ['js']).on("change", reload);
+    gulp.watch('src/**/*.html', ['html']).on("change", reload);
+    gulp.watch('src/icons/*.svg', ['svg']);
 });
 
 gulp.task('default', ['stylus', 'inject', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);
