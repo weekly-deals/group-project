@@ -8,14 +8,13 @@ angular.module('app')
                  deal: '='
              },
             link: function (scope) {
+
                 scope.closeDetails = function(){
                     scope.show = false;
                     var body = document.getElementById('body');
                     body.style.overflow = 'auto';
-                }
-            },
-            controller: function($scope){
-                $scope.test = 'test';
+                };
+
             }
         }
     });
