@@ -67,7 +67,7 @@ gulp.task('bowerCss', function () {
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('lib.min.css'))
-        .pipe(uncss({html: ['./src/**/*.html', 'dist/index.html']}))
+        .pipe(uncss({html: ['src/**/*.html']}))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/css'));
 });
@@ -87,12 +87,9 @@ gulp.task('stylus', function () {
     return gulp.src('src/**/*.styl')
         .pipe(flatten())
         .pipe(sourcemaps.init())
-        .pipe(order([
-            "first.styl",
-            "**/*.styl"
-        ]))
         .pipe(stylus({use: rupture()}))
         .pipe(plumber())
+        .pipe(uncss({html: ['src/**/*.html']}))
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('css.min.css'))
