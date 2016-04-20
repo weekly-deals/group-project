@@ -1,5 +1,19 @@
 angular.module('app')
-    .controller('profileCtrl', function ($scope, $auth, Account, geoService) {
+    .directive('profileDir', function () {
+        return {
+            restrict: 'E',
+            templateUrl: '/profile.html',
+            scope: {
+                show: '='
+            },
+            link: function (scope) {
+                scope.closeProfile = function () {
+                    scope.show = false;
+                    var body = document.getElementById('body');
+                    body.style.overflow = 'auto';
+                }
+            },
+            controller: function ($scope, $auth, Account) {
 
       $scope.setColor = function(user) {
         if (user.color === '#DD2E44') {
@@ -53,15 +67,6 @@ angular.module('app')
             // console.log($scope.user.picture)
             Account.updateProfile($scope.user)
 
-                .then(function () {
-                    // toastr.success('Profile has been updated');
-                    $scope.getProfile();
-
-                })
-                .catch(function (response) {
-                    // toastr.error(response.data.message, response.status);
-                });
-        };
         $scope.link = function (provider) {
             $auth.link(provider)
                 .then(function () {
@@ -84,25 +89,9 @@ angular.module('app')
                 });
         };
 
+
         $scope.getProfile();
-
-        //Modal controls//
-        $scope.showMe = function() {
-          var promodal = document.getElementById('promodal');
-          var body = document.getElementById('body');
-          var curtain = document.getElementById('promodal-curtain');
-          curtain.style.display = 'block';
-          body.style.overflow = 'hidden';
-          promodal.style.display = 'block';
-        };
-
-        $scope.closeClick = function() {
-          var promodal = document.getElementById('promodal');
-          promodal.style.display = 'none';
-          var body = document.getElementById('body');
-          body.style.overflow = 'auto';
-          var curtain = document.getElementById('promodal-curtain');
-          curtain.style.display = 'none';
-        };
-
-    });
+      };
+    }
+  };
+  });

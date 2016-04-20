@@ -1,5 +1,7 @@
-<div id='promodal' class='modal'>
-    <span id='close' ng-click='closeClick()'>&times;</span>
+<div ng-if="show">
+    <div id="modal-curtain" ng-click='closeProfile()'></div>
+    <div class='modal'>
+        <span id='close' ng-click='closeProfile()'>&times;</span>
 
 <div class= 'profile-wrap modal-content'>
   <div>
@@ -55,7 +57,6 @@
         <button ng-if="!user.twitter" ng-click="link('twitter')" class="edit-button" id="twitter">
           Link Google Account
         </button><br/>
+
     </div>
-  </div>
 </div>
-</dir>

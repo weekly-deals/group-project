@@ -2,7 +2,7 @@ angular.module('app')
     .directive('catDirective', function () {
 
         return {
-            templateUrl: '/catTemplate.html',
+            templateUrl: '/catDir.html',
             restrict: 'E',
             scope: {
                 data: '='
@@ -14,6 +14,15 @@ angular.module('app')
             },
             controller: function ($scope, $auth, Account) {
 
+                $scope.showDealDetail = false;
+
+                $scope.openDealDetail = function (deal) {
+                    $scope.showDealDetail = true;
+                    var body = document.getElementById('body');
+                    body.style.overflow = 'hidden';
+                    $scope.selectedDeal = deal;
+                };
+
                 $scope.showDesc = function (deal) {
                     var desc = document.getElementById('deal-desc');
                     desc.style.opacity = '1 !important';
@@ -24,38 +33,25 @@ angular.module('app')
                     deal.hideDesc = false;
                 };
 
-                $scope.showDeal = function (deal) {
-                    var body = document.getElementById('body');
-                    var curtain = document.getElementById('modal-curtain');
-                    curtain.style.display = 'block';
-                    body.style.overflow = 'hidden';
-                    deal.showDetail = true;
-                };
-
-                $scope.close = function (deal) {
-                    var body = document.getElementById('body');
-                    var curtain = document.getElementById('modal-curtain');
-                    curtain.style.display = 'none';
-                    body.style.overflow = 'auto';
-                    deal.showDetail = false;
-                };
                 // nat buttons on admin
-                 $scope.showButton = function(deal) {
-                     deal.showButtons = true;
-                     var edit = document.getElementById('edit');
-                     var remove = document.getElementById('remove');
-                 }
+                $scope.showButton = function (deal) {
+                    deal.showButtons = true;
+                    var edit = document.getElementById('edit');
+                    var remove = document.getElementById('remove');
+                };
 
-                 $scope.hideButton = function (deal) {
-                     deal.showButtons = false;
-                     var edit = document.getElementById('edit');
-                     var remove = document.getElementById('remove');
-                 }
-                 //remove a deal nat
-                 $scope.removeDeal = function(dealId) {
-                   adminService.deleteDeal(dealId);
-                 };
-                 $scope.isAuthenticated = function () {
+                $scope.hideButton = function (deal) {
+                    deal.showButtons = false;
+                    var edit = document.getElementById('edit');
+                    var remove = document.getElementById('remove');
+                };
+
+                //remove a deal nat
+                $scope.removeDeal = function (dealId) {
+                    adminService.deleteDeal(dealId);
+                };
+
+                $scope.isAuthenticated = function () {
                     return $auth.isAuthenticated();
                 };
                 Account.getProfile().then(function(resp) {
@@ -75,12 +71,12 @@ angular.module('app')
                     changeTextColor.forEach(function(elem) {
                       elem.style.color = user.color;
                     });
+                    }
+
                   }
 
-                }
-
-        }
-      };
+            }
+        };
 
 
     });
