@@ -16,7 +16,7 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput'])
             .state('home', {
                 url: '/',
                 controller: 'ModalCtrl',
-                templateUrl: 'home.html'
+                templateUrl: 'catContainer.html'
             })
             .state('login', {
                 url: '/login',

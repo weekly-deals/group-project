@@ -45,15 +45,12 @@ angular.module('app')
                         var hide = 0;
                         if (obj.data) {
                             obj.data.forEach(function (deal) {
-                                deal.hideDeal = !deal.day.includes($rootScope.selectedDay.idx);
-                                if (!deal.day.includes($rootScope.selectedDay.idx)) {
+                                var inc = !deal.day.includes($rootScope.selectedDay.idx);
+                                deal.hideDeal = inc;
+                                if (inc) {
                                     hide ++
                                 }
-                                if (obj.data.length === hide) {
-                                    obj.hideCat = true;
-                                } else {
-                                    obj.hideCat = false;
-                                }
+                                obj.hideCat = (obj.data.length === hide)
                             });
                         }
                     });
