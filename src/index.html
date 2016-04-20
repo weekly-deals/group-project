@@ -49,7 +49,7 @@
                 <span class='light-text'>  in</span>
 
                 <form class="locationSearch" ng-controller="ModalCtrl" ng-submit="geoCode(city)">
-                    <input class='location-filter' type='text' ng-model='city' placeholder="Near..." pu-elastic-input>
+                    <input id='location-filter' type='text' ng-model='city' placeholder="Near..." pu-elastic-input autofocus><span class='blinker'></span>
                 </form>
                 <span class='light-text'>on</span>
       <span class='medium-text' ng-click='vm.toggleDayDD(); dayClick = !dayClick'>
