@@ -57,7 +57,8 @@ gulp.task('svg', function () {
 gulp.task('server', function () {
     browserSync.init({
         proxy: 'http://localhost:3001',
-        port: 3000
+        port: 3000,
+        ui: false
     });
 });
 
@@ -119,7 +120,7 @@ gulp.task('js', function () {
         .pipe(flatten())
         .pipe(sourcemaps.init())
         .pipe(annotate())
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(order([
             "app.js",
             'navbar.js',

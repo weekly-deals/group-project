@@ -3,6 +3,10 @@ angular.module('app')
     .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, adminService, $rootScope) {
 
         var vm = this;
+        vm.isAuthenticated = function() {
+            return $auth.isAuthenticated();
+        };
+        
 
         (vm.getDealInfo = function () {
             geoService.getCurrentPosition().then(function (latlng) {
@@ -10,6 +14,7 @@ angular.module('app')
                     $scope.city = city;
                 });
                geoService.getDeal(latlng).then(function (data) {
+                   console.log('22')
                      if(vm.isAuthenticated() !== "admin") {
                            $rootScope.deals = data.data;
                            $rootScope.deals.forEach(function(cat) {
@@ -20,7 +25,7 @@ angular.module('app')
                                   } 
                               })
                            })
-                        } else if (vm.isAuthenticated() === "admin") {
+                        } else {
                         $rootScope.deals = data.data;
                         
                     }
@@ -57,5 +62,5 @@ $scope.geoCode = function (address) {
                     });
                 }
 });
-    
+    });
    
