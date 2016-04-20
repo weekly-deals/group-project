@@ -1,4 +1,4 @@
-<div ng-if="show">
+<div ng-show="show">
     <div id="modal-curtain" ng-click='closeAddDeal()'></div>
 <div class="modal">
     <span id='close' ng-click='closeAddDeal()'>&times;</span>
@@ -13,13 +13,13 @@
                            placeholder="  Deal Title"/><br>
                     Which day(s) is this deal available?
                     <div class='day-wrapper'>
-                        <div id='0' ng-click='vm.selectDay("0")' class='day-box'>M</div>
-                        <div id='1' ng-click='vm.selectDay("1")' class='day-box'>Tu</div>
-                        <div id='2' ng-click='vm.selectDay("2")' class='day-box'>W</div>
-                        <div id='3' ng-click='vm.selectDay("3")' class='day-box'>Th</div>
-                        <div id='4' ng-click='vm.selectDay("4")' class='day-box'>F</div>
-                        <div id='5' ng-click='vm.selectDay("5")' class='day-box'>S</div>
-                        <div id='6' ng-click='vm.selectDay("6")' class='day-box'>Su</div>
+                        <div id='0' ng-click='vm.selectDay("0")' class='day-box change-color'>M</div>
+                        <div id='1' ng-click='vm.selectDay("1")' class='day-box change-color'>Tu</div>
+                        <div id='2' ng-click='vm.selectDay("2")' class='day-box change-color'>W</div>
+                        <div id='3' ng-click='vm.selectDay("3")' class='day-box change-color'>Th</div>
+                        <div id='4' ng-click='vm.selectDay("4")' class='day-box change-color'>F</div>
+                        <div id='5' ng-click='vm.selectDay("5")' class='day-box change-color'>S</div>
+                        <div id='6' ng-click='vm.selectDay("6")' class='day-box change-color'>Su</div>
                     </div>
                     <span ng-hide='vm.selectedCat'>Which category would this deal be in?<br>
                     <div class='cat-options'

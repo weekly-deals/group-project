@@ -2,6 +2,7 @@ main-red = #DD2E44;
 main-grey = #58595B;
 main-white = #F2F2F2;
 
+
 /** Ultra Light */
 @font-face {
   font-family: "San Francisco";
@@ -85,6 +86,10 @@ font(x, y)
   font(100, 2.25)
   display: flex
   align-self: flex-end
+
+.small-font
+  font-size 20px
+  font-weight 100
 
 /* index.html styling */
 
@@ -528,10 +533,83 @@ a
   background: #3a5795
   color: main-white
 
-.profileWrap
+.profile-wrap
   text-align: center
 
 .profilePic
-  height: 300px
+  height: 200px
   width: 200px
-  border-radius: 15px 5px 30px 5px
+  border-radius: 15px 5px 15px 5px
+  margin 10px
+
+.edit-inputs
+  border: 0
+  border-radius: 30px
+  color: main-grey
+  width: 300px
+  height: 40px
+  margin-bottom: 10px
+  text-align: center
+  &:focus
+    outline: none
+
+.edit-button
+  border: 0
+  border-radius: 30px
+  background: main-red
+  color: main-white
+  width: 300px
+  height: 40px
+  text-align: center
+  font(100, 1.5)
+  margin 10px
+  &:focus
+    outline: none
+
+.img-input
+  padding-left 50px
+  padding-top 5px
+  background main-grey
+  border-radius 15px
+  color main-white
+  margin 5px
+  height 30px
+  width 300px
+  &:focus
+    outline: none
+
+
+.edit-form
+  display block
+
+.color-btn
+  margin 5px auto
+  height 60px
+  width 60px
+  border-radius 50px
+  border none
+  box-shadow: 0px 5px 0px black;
+  &:focus
+    outline: none
+  &:active
+    box-shadow 0px 1px 0px black;
+    position relative
+    top: 4px
+
+#yellow
+  background yellow
+
+#orange
+  background orange
+
+#red
+  background main-red
+
+#green
+  background green
+
+#blue
+  background blue
+
+#purple
+  background purple

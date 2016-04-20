@@ -8,9 +8,10 @@
     <base href="/">
     <title>Deal.io</title>
 </head>
-<body class='main-container' id="body" ng-cloak>
 
-<div class="gradient">
+<body class='main-container change-color' id="body" ng-cloak>
+
+<div class="gradient gradient-change">
 
     <div class='main-nav-bar' ng-controller="NavbarCtrl as vm">
 
@@ -55,13 +56,13 @@
             <span ng-if="!dayClick" class="day">{{selectedDay.day}}</span>
             <div class='day-options'
             ng-hide="vm.dayDropdown">
-              <button ng-click='selectDay("Monday", 0)' class='day-option' >M</button><br>
-              <button ng-click='selectDay("Tuesday", 1)' class='day-option' >Tu</button><br>
-              <button ng-click='selectDay("Wednesday", 2)' class='day-option' >W</button><br>
-              <button ng-click='selectDay("Thursday", 3)' class='day-option' >Th</button><br>
-              <button ng-click='selectDay("Friday", 4)' class='day-option'>F</button><br>
-              <button ng-click='selectDay("Saturday", 5)' class='day-option'>Sa</button><br>
-              <button ng-click='selectDay("Sunday", 6)' class='day-option'>Su</button><br>
+              <button ng-click='selectDay("Monday", 0)' class='day-option change-text-color' >M</button><br>
+              <button ng-click='selectDay("Tuesday", 1)' class='day-option change-text-color' >Tu</button><br>
+              <button ng-click='selectDay("Wednesday", 2)' class='day-option change-text-color' >W</button><br>
+              <button ng-click='selectDay("Thursday", 3)' class='day-option change-text-color' >Th</button><br>
+              <button ng-click='selectDay("Friday", 4)' class='day-option change-text-color'>F</button><br>
+              <button ng-click='selectDay("Saturday", 5)' class='day-option change-text-color'>Sa</button><br>
+              <button ng-click='selectDay("Sunday", 6)' class='day-option change-text-color'>Su</button><br>
         </div>
           <select class="options"></select>
       </span>
