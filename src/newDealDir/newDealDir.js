@@ -2,7 +2,7 @@ angular.module('app')
     .directive('dealDir', function () {
         return {
             restrict: 'E',
-            templateUrl: '/dealDir.html',
+            templateUrl: '/newDealDir.html',
             scope: {
                 show: '='
             },
