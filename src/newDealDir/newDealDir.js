@@ -46,7 +46,8 @@ angular.module('app')
                         allSvgs[i].style.border = 'none';
                     }
 
-                    vm.dealSvg = document.getElementById(svg)
+                    vm.dealSvg = document.getElementById(svg);
+                    
                     if (vm.dealSvg.style.border === '1px solid black') {
                         vm.dealSvg.style.border = 'none';
                     } else {

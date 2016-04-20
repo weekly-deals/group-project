@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, adminService, $rootScope) {
+    .controller('ModalCtrl', function ($scope, geoService, $rootScope) {
 
         var vm = this;
 
@@ -41,7 +41,6 @@ angular.module('app')
                         }
                     });
                 }
-
             });
 
     });
