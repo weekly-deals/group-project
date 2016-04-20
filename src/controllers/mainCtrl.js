@@ -1,20 +1,24 @@
-angular.module("app").controller("mainCtrl", function($scope ) {
-  $scope.deals = [1];
+
+// NOT USING IT SO FAR
+
+
+// angular.module("app").controller("mainCtrl", function($scope ) {
+//   $scope.deals = [1];
   
-  //get data from the backend
+//   //get data from the backend
   
-//   var getDeal = function() {
-//        addStuffService.retrieveDeal().then(function(data) {
+// //   var getDeal = function() {
+// //        addStuffService.retrieveDeal().then(function(data) {
          
-//            $scope.deals = data.data;
-//        })
-//    } 
-//    getDeal();
+// //            $scope.deals = data.data;
+// //        })
+// //    } 
+// //    getDeal();
   
-// var dealData = getDeal();   nat
+// // var dealData = getDeal();   nat
   
   
-  $scope.categories = ["food", "entertainment", "sports", "transportation"]
-});
+//   $scope.categories = ["food", "entertainment", "sports", "transportation"]
+// });
 
 

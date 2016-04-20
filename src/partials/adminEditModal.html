@@ -1,6 +1,6 @@
-<div id='modal' class='modal'>
+<div id='modal-edit' class='admin-edit-modal'>
 
-  <span id='close' ng-click='vm.closeClick()'>&times;</span>
+  <!--<span id='close' ng-click='vm.closeClick()'>&times;</span>-->
 <div id="mapsview">
     <h4>Have a local deal we don't know about?</h4>
     <h2>Submit it here!</h2>
@@ -87,10 +87,10 @@
                 </div>
             </section>
 
-            <input type="submit" ng-click="vm.addBusiness(); vm.getDealInfo()">Submit Business</input>
+            <input type="submit" ng-click="vm.updateBusiness(bus._id, place); vm.updateDealInfo(deal._id, deal)">Update</input>
         </form>
 
-        <ng-map scrollwheel="false"></ng-map>
+        <!--<ng-map scrollwheel="false"></ng-map>-->
 
     </div>
 </div>

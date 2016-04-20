@@ -28,6 +28,11 @@ angular.module('app')
                 vm.dealSvg.style.border = '1px solid black';
             }
         };
+        
+          vm.isAuthenticated = function () {
+            return $auth.isAuthenticated();
+        };
+
 
         vm.selectDay = function (day) {
             var box = document.getElementById(day);
@@ -82,10 +87,16 @@ angular.module('app')
             if (vm.dealCat) {
                 vm.deal.dealCat = vm.dealCat;
             }
+            if (vm.isAuthenticated() === "user") {
+               alert("Thanks for submitting a deal, we will add it to the list shortly after reviewing it");
+            }
+            
             vm.place.picture = geoService.busPic;
             geoService.newBusiness(vm.place, vm.deal).then(function (res) {
                 $scope.addedBus = res;
+                
             });
+             
         };
 
         vm.getDealInfo = function () {
@@ -94,11 +105,32 @@ angular.module('app')
                 geoService.reverseGeoCode(latlng).then(function (city) {
                     $scope.city = city;
                 });
+                
+                
+                
+                //renders the deals on the screen
+                
+                
                 geoService.getDeal(latlng).then(function (data) {
-                    $rootScope.deals = data.data;
-                });
-            })
-        };
+                   
+                     if(vm.isAuthenticated() === "user") {
+                           $rootScope.deals = data.data;
+                           $rootScope.deals.forEach(function(cat) {
+                              cat.data.forEach(function(deal) {
+                                  if(deal.pending === true) {
+                                      cat.data.splice(cat.data.indexOf(deal), 1);
+                                      console.log("Here is the deal ", deal)
+                                  } 
+                              })
+                           })
+                        } else if (vm.isAuthenticated() === "admin") {
+                        $rootScope.deals = data.data;
+                        
+                    }
+                   
+                    }); 
+            })  
+            };
         vm.getDealInfo();
 
 
@@ -162,5 +194,8 @@ if ($scope.deals){
             var curtain = document.getElementById('modal-curtain');
             curtain.style.display = 'none';
         };
+        
 
     });
+    
+   

@@ -423,6 +423,7 @@ a {
           flex-direction: row;
   overflow-x: auto;
   overflow-y: hidden;
+  margin-top: 60px;
   margin-bottom: -20px;
   padding-bottom: 20px;
 }
@@ -445,6 +446,30 @@ a {
 }
 @media only screen and (max-width: 600px) {
   .modal {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.admin-edit-modal {
+  display: none;
+}
+position: fixed {
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 80%;
+  overflow: auto;
+  overflow-x: hidden;
+  background-color: #f2f2f2;
+  text-align: center;
+  margin: 5% 20%;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
+}
+@media only screen and (max-width: 600px) {
+  position: fixed {
     margin: 0;
     width: 100%;
     height: 100%;
