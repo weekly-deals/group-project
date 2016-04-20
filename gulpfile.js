@@ -57,8 +57,7 @@ gulp.task('svg', function () {
 gulp.task('server', function () {
     browserSync.init({
         proxy: 'http://localhost:3001',
-        port: 3000,
-        ui: false
+        port: 3000
     });
 });
 

@@ -1,7 +1,9 @@
 angular.module('app')
-    .controller('ModalCtrl', function ($scope, geoService, $rootScope, $interval, $window) {
+    .controller('ModalCtrl', function ($scope, geoService, $rootScope, $interval) {
 
         document.querySelector('.location-filter').focus();
+
+        var backup = {};
 
         geoService.getCurrentPosition().then(function (latlng) {
             geoService.reverseGeoCode(latlng).then(function (city) {
@@ -13,17 +15,15 @@ angular.module('app')
                     } else {
                         $scope.city = city.slice(0, $scope.city.length + 1);
                     }
-                    console.log($scope.city);
                 };
-
                 var delayRand = function () {
-                    return Math.random() * (200 - 125) + 125
+                    return Math.random() * (200 - 125) + 125;
                 };
-
                 $interval(print, delayRand(), city.length)
             });
             geoService.getDeal(latlng).then(function (data) {
                 $rootScope.deals = data.data;
+                backup.deals = data.data;
             });
         });
 
@@ -31,6 +31,7 @@ angular.module('app')
             geoService.geoCode(address).then(function (latlng) {
                 geoService.getDeal(latlng).then(function (data) {
                     $rootScope.deals = data.data;
+                    backup.deals = data.data;
                 });
             });
         };
@@ -41,19 +42,21 @@ angular.module('app')
             function () {
                 if ($scope.deals) {
                     $scope.deals.forEach(function (obj) {
+                        var hide = 0;
                         if (obj.data) {
                             obj.data.forEach(function (deal) {
-                                if (deal.day.includes($rootScope.selectedDay.idx)) {
-                                    // console.log('included!', deal)
-                                    deal.hideDeal = false;
+                                deal.hideDeal = !deal.day.includes($rootScope.selectedDay.idx);
+                                if (!deal.day.includes($rootScope.selectedDay.idx)) {
+                                    hide ++
+                                }
+                                if (obj.data.length === hide) {
+                                    obj.hideCat = true;
                                 } else {
-                                    // console.log('bye bye deal',deal);
-                                    deal.hideDeal = true;
+                                    obj.hideCat = false;
                                 }
                             });
                         }
                     });
                 }
             });
-
     });
