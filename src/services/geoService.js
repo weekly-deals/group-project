@@ -8,7 +8,8 @@ angular.module('app')
         }
 
         var options = {
-            timeout: 4000,
+            timeout: 6000,
+            enableHighAccuracy: false,
             maximumAge: minuteToMs(60)
         };
 
