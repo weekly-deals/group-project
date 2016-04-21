@@ -1,5 +1,5 @@
 <div class="main-deals-container">
-    <div class='home-container' ng-repeat="cat in deals">
+    <div class='home-container change-color' ng-repeat="cat in deals">
         <div ng-if="cat.data.length" class="cat-title"><span>{{cat.catTitle}}</span></div>
         <cat-directive ng-if="cat.data.length" data="cat.data"></cat-directive>
         <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>

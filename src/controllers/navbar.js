@@ -5,6 +5,21 @@ angular.module('app')
 
         vm.category = 'All';
 
+        vm.showProfile = false;
+
+        vm.openProfile = function () {
+            vm.showProfile = true;
+            var body = document.getElementById('body');
+            body.style.overflow = 'hidden';
+        };
+
+        vm.showAddDeal = false;
+
+        vm.openAddDeal = function () {
+            vm.showAddDeal = true;
+            var body = document.getElementById('body');
+            body.style.overflow = 'hidden';
+        };
 
         vm.hideDropdown = true;
 
@@ -36,13 +51,11 @@ angular.module('app')
             })
         });
 
-        function svgs() {
+        (function svgs() {
             svgService.getSvg().then(function (res) {
                 vm.svgs = res;
             })
-        }
-
-        svgs();
+        })();
 
         vm.days = [
             {
@@ -92,22 +105,22 @@ angular.module('app')
         var date = new Date();
         vm.dayNum = date.getDay();
         $rootScope.selectedDay = {
-          day: vm.days[vm.dayNum].display
+            day: vm.days[vm.dayNum].display
         };
 
         vm.dayDropdown = true;
 
         vm.toggleDayDD = function () {
             vm.dayDropdown = !vm.dayDropdown;
-        }
+        };
 
 
         $rootScope.selectDay = function (day, idx) {
             $rootScope.selectedDay = {
-              day: day,
-              idx: idx
+                day: day,
+                idx: idx
             };
-        }
+        };
 
         vm.placeChanged = function () {
             vm.place = this.getPlace();

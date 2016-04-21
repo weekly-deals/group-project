@@ -67,7 +67,7 @@ gulp.task('bowerCss', function () {
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('lib.min.css'))
-        .pipe(uncss({html: ['./src/**/*.html', 'dist/index.html']}))
+        .pipe(uncss({html: ['src/**/*.html']}))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/css'));
 });
@@ -77,7 +77,7 @@ var bowerFiles = mainBowerFiles('**/*.js').concat(['src/**/satellizer.js']);
 gulp.task('bowerJs', function () {
     return gulp.src(bowerFiles)
         .pipe(sourcemaps.init())
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(concat('lib.min.js'))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/js'));
@@ -87,13 +87,10 @@ gulp.task('stylus', function () {
     return gulp.src('src/**/*.styl')
         .pipe(flatten())
         .pipe(sourcemaps.init())
-        .pipe(order([
-            "first.styl",
-            "**/*.styl"
-        ]))
         .pipe(stylus({use: rupture()}))
         .pipe(plumber())
-        // .pipe(cleanCSS())
+        .pipe(uncss({html: ['src/**/*.html']}))
+        .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('css.min.css'))
         .pipe(sourcemaps.write('/maps'))
@@ -121,8 +118,8 @@ gulp.task('js', function () {
     return gulp.src(['src/**/*.js', '!src/**/satellizer.js'])
         .pipe(flatten())
         .pipe(sourcemaps.init())
-        // .pipe(annotate())
-        // .pipe(uglify())
+        .pipe(annotate())
+        .pipe(uglify())
         .pipe(order([
             "app.js",
             'navbar.js',
@@ -140,11 +137,10 @@ gulp.task('html', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('./src/**/*.styl', ['stylus']).on("change", reload);
-    gulp.watch('./src/**/*.js', ['js']).on("change", reload);
-    gulp.watch('./src/**/*.html', ['html']).on("change", reload);
-    gulp.watch('./dist/index.html').on("change", reload);
-    gulp.watch('./src/icons/*.svg', ['svg']);
+    gulp.watch('src/**/*.styl', ['stylus']).on("change", reload);
+    gulp.watch('src/**/*.js', ['js']).on("change", reload);
+    gulp.watch('src/**/*.html', ['html']).on("change", reload);
+    gulp.watch('src/icons/*.svg', ['svg']);
 });
 
 gulp.task('default', ['stylus', 'inject', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);

@@ -38,23 +38,7 @@ angular.module('app', ['ui.router', 'satellizer', 'ngMap', 'puElasticInput', 'an
                 url: '/logout',
                 template: null,
                 controller: 'logoutCtrl'
-            })
-
-            .state('addStuff', {
-                url: '/addstuff',
-                templateUrl: 'addStuff.html',
-                controller: 'addStuff',
-                resolve: {
-                    loginRequired: loginRequired
-                }
-            })
-            // .state('maps', {
-            //     url: '/maps',
-            //     templateUrl: 'maps.html',
-            //     controller: 'NavbarCtrl',
-            //     controllerAs: 'vm'
-            // });
-
+            });
 
         function skipIfLoggedIn($q, $auth) {
             var deferred = $q.defer();
