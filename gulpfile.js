@@ -22,6 +22,7 @@ const
     , svgSprite = require('gulp-svg-sprite')
     , inject = require('gulp-inject')
     , plumber = require('gulp-plumber')
+    , watch = require('gulp-watch')
     , processors = [autoprefixer()];
 
 var config = {
@@ -70,7 +71,8 @@ gulp.task('bowerCss', function () {
         .pipe(concat('lib.min.css'))
         // .pipe(uncss({html: ['src/**/*.html']}))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(reload({stream: true, match: '**/*.css'}));
 });
 
 var bowerFiles = mainBowerFiles('**/*.js').concat(['src/**/satellizer.js']);
@@ -81,7 +83,8 @@ gulp.task('bowerJs', function () {
         .pipe(uglify())
         .pipe(concat('lib.min.js'))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./dist/js'));
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(reload({stream: true, match: '**/*.js'}));
 });
 
 gulp.task('stylus', function () {
@@ -95,7 +98,8 @@ gulp.task('stylus', function () {
         .pipe(postcss(processors))
         .pipe(concat('css.min.css'))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(reload({stream: true, match: '**/*.css'}));
 });
 
 gulp.task('inject', function (done) {
@@ -115,7 +119,7 @@ gulp.task('inject', function (done) {
         .on('end', function () { done(); });
 });
 
-gulp.task('js', function () {
+gulp.task('js', ['inject'], function () {
     return gulp.src(['src/**/*.js', '!src/**/satellizer.js'])
         .pipe(flatten())
         .pipe(sourcemaps.init())
@@ -128,20 +132,23 @@ gulp.task('js', function () {
         ]))
         .pipe(concat('js.min.js'))
         .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./dist/js'));
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(reload({stream: true, match: '**/*.js'}));
 });
 
 gulp.task('html', function () {
     return gulp.src('src/**/*.html')
         .pipe(flatten())
-        .pipe(gulp.dest('./dist'));
+        .pipe(newer('./dist'))
+        .pipe(gulp.dest('./dist'))
+        .pipe(reload({stream: true, match: '**/*.html'}));
 });
 
 gulp.task('watch', function () {
-    gulp.watch('src/**/*.styl', ['stylus']).on("change", reload);
-    gulp.watch('src/**/*.js', ['js']).on("change", reload);
-    gulp.watch('src/**/*.html', ['html']).on("change", reload);
-    gulp.watch('src/icons/*.svg', ['svg']);
+    gulp.watch('src/**/*.styl', ['stylus']);
+    gulp.watch('src/**/*.js', ['js']);
+    gulp.watch('src/**/*.html', ['html']);
+    gulp.watch('src/icons/*.svg', ['svg', 'js']).on('change', reload);
 });
 
-gulp.task('default', ['stylus', 'inject', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);
+gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);

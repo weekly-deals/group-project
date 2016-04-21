@@ -2,7 +2,6 @@ main-red = #DD2E44;
 main-grey = #58595B;
 main-white = #F2F2F2;
 
-
 /** Ultra Light */
 @font-face {
   font-family: "San Francisco";
@@ -40,6 +39,9 @@ main-white = #F2F2F2;
     opacity: 1
   }
 
+@keyframes blink
+  to{ opactiy: .0 }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
@@ -57,7 +59,7 @@ body
   wight 100%
   margin-top 300px
   font-family: 'San Francisco'
-  +below(600px)
+  +below(675px)
     font-size 8px
 
 font(x, y)
@@ -113,6 +115,9 @@ font(x, y)
   background: linear-gradient(main-red, transparent)
   +below(600px)
     height 225px
+  &.gradient-change
+    +below(600px)
+      height 225px
 
 .style-nav
   margin-left: 20px
@@ -131,13 +136,25 @@ font(x, y)
     cursor pointer
     +below(900px)
       margin 0 30px 0 30px
-    +below(650px)
+    +below(675px)
       margin 0 18px 0 18px
+
+.leftArrow
+  position absolute
+  transform rotate(180deg)
+  left -17px
+  cursor pointer
+  z-index 18
+
+.rightArrow
+  position absolute
+  right -20px
+  cursor pointer
+  z-index 18
 
 /*home-view*/
 .home-container
   width: 100%
-  background: main-red
 
 .nav-filter
   text-align: center
@@ -167,6 +184,10 @@ font(x, y)
   +below(600px)
     height 25px
 
+.blinker
+  animation: blink 1s infinite
+  font-size 36px
+
 .cat-selector
   white-space: none;
   background-color: transparent
@@ -180,6 +201,8 @@ font(x, y)
   border none
   background-color transparent
   outline none
+  border-radius 5px
+  margin 5px
 
 .day
   display: flex
@@ -216,7 +239,6 @@ font(x, y)
     width 20px
     font-size 12px
     margin-bottom 6px
-
 
 h2
   margin 0 auto
@@ -259,7 +281,7 @@ a
     cursor pointer
 
 .main-deals-container
-  margin-top 325px
+  margin 325px 0 0 0
   +below(600px)
     margin-top -90px
 // .details
@@ -394,15 +416,17 @@ a
   text-align: center
 
 .deal-entry
-  width: 100%
+  width: 80%
   margin: auto
+  border-radius 10px
+
 
 .deal-title-input
   border-radius 15px
   height: 30px
   border: none
   margin: 5px
-  width: 30%
+  width: 220px
 
 .day-wrapper
   display: flex
@@ -416,6 +440,8 @@ a
   border-radius 3px
   height: 23px
   width: 23px
+  margin 5px
+  cursor pointer
 
 .deal-textarea
   width: 60%
@@ -603,7 +629,6 @@ a
   width 300px
   &:focus
     outline: none
-
 
 .edit-form
   display block
