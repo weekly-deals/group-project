@@ -5,14 +5,45 @@ angular.module('app')
             templateUrl: '/catDir.html',
             restrict: 'E',
             scope: {
-                data: '='
+                data: '=',
+                ind: '='
             },
-            link: function (scope, element, attributes) {
+            link: function (scope) {
                 scope.toggle = function () {
                     scope.show = !scope.show;
                 };
             },
-            controller: function ($scope, $auth, Account) {
+            controller: function ($scope, $auth, $window) {
+
+                $scope.$watch(function () {
+                    return $window.innerWidth;
+                }, function (value) {
+                    $scope.windowWidth = value;
+                    var num = Math.ceil($scope.windowWidth / 290) - 1;
+                    $scope.dealMin = 0;
+                    $scope.dealdisplayNum = num > 1 ? num : 1;
+                });
+
+                //290px width each box
+                //need to take into account breakpoints at 675px and 600px
+
+                $scope.pix = function (ind) {
+                    if (ind === 0) {
+                        return (ind + 1) * 470 + 'px'
+                    } else {
+                        return (ind + 1) * 442 + 'px'
+                    }
+                };
+
+                $scope.scroll = function (dir, data, e) {
+                    e.stopPropagation();
+                    console.log(data.length);
+                    if (dir === 'right') {
+                        $scope.dealMin += $scope.dealdisplayNum
+                    } else {
+                        $scope.dealMin -= $scope.dealdisplayNum
+                    }
+                };
 
                 $scope.showDealDetail = false;
 

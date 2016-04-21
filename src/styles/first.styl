@@ -112,6 +112,9 @@ font(x, y)
   background: linear-gradient(main-red, transparent)
   +below(600px)
     height 225px
+  &.gradient-change
+    +below(600px)
+      height 225px
 
 .style-nav
   margin-left: 20px
@@ -136,12 +139,15 @@ font(x, y)
 .leftArrow
   position absolute
   transform rotate(180deg)
-  top 470px
+  left -17px
+  cursor pointer
+  z-index 18
 
 .rightArrow
   position absolute
-  right 0
-  top 470px
+  right -20px
+  cursor pointer
+  z-index 18
 
 /*home-view*/
 .home-container
@@ -225,7 +231,6 @@ font(x, y)
     font-size 12px
     margin-bottom 6px
 
-
 h2
   margin 0 auto
 
@@ -266,7 +271,7 @@ a
     cursor pointer
 
 .main-deals-container
-  margin-top 325px
+  margin 325px 25px 0 20px
   +below(600px)
     margin-top -90px
 
