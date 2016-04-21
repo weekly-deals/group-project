@@ -68,7 +68,7 @@ gulp.task('bowerCss', function () {
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('lib.min.css'))
-        .pipe(uncss({html: ['src/**/*.html']}))
+        // .pipe(uncss({html: ['src/**/*.html']}))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/css'));
 });

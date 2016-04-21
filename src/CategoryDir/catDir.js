@@ -49,6 +49,7 @@ angular.module('app')
                 //remove a deal nat
                 $scope.removeDeal = function (dealId) {
                     adminService.deleteDeal(dealId);
+                    location.reload();
                 };
 
                 $scope.isAuthenticated = function () {
@@ -75,10 +76,9 @@ angular.module('app')
 
                   };
                         $scope.aproveDeal = function(deal) {
-                    console.log(deal)
-                    deal.pending = false;
-                    adminService.aproveDeal(deal._id, deal);
-                };
+                            deal.pending = false;
+                            adminService.aproveDeal(deal._id, deal);
+                    };
                 
                 $scope.expandEdit = function () {
                     var modalEdit = document.getElementById('modal-edit');
