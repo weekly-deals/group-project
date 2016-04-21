@@ -1,13 +1,19 @@
 angular.module('app')
-    .controller('ModalCtrl', function ($scope, geoService, $rootScope, $interval, NgMap) {
+    .controller('ModalCtrl', function ($scope, $auth, NgMap, geoService, svgService, adminService, $rootScope, $interval) {
+
+        var vm = this;
+        
+        vm.isAuthenticated = function() {
+            return $auth.isAuthenticated();
+        };
 
         document.querySelector('.location-filter').focus();
 
         var backup = {};
-
-        geoService.getCurrentPosition().then(function (latlng) {
-            geoService.reverseGeoCode(latlng).then(function (city) {
-                var count = 1;
+        
+        function printCity(city){
+                    document.querySelector('.location-filter').focus();
+            var count = 1;
                 var print = function () {
                     if (count) {
                         count--;
@@ -20,18 +26,37 @@ angular.module('app')
                     return Math.random() * (200 - 125) + 125;
                 };
                 $interval(print, delayRand(), city.length)
+        }
+        
+        function removePending(data) {
+                     if(vm.isAuthenticated() !== "admin") {
+                           $rootScope.deals = data.data;
+                           $rootScope.deals.forEach(function(cat) {
+                              cat.data.forEach(function(deal) {
+                                  if(deal.pending === true) {
+                                      cat.data.splice(cat.data.indexOf(deal), 1);
+                                      console.log("Here is the deal ", deal)
+                                  } 
+                              })
+                           })
+                        } else {
+                        $rootScope.deals = data.data;
+                    }
+        }
+
+        geoService.getCurrentPosition().then(function (latlng) {
+            geoService.reverseGeoCode(latlng).then(function (city) {
+                printCity(city);
             });
             geoService.getDeal(latlng).then(function (data) {
-                $rootScope.deals = data.data;
-                backup.deals = data.data;
+           removePending(data);
             });
         });
 
         $scope.geoCode = function(address) {
             geoService.geoCode(address).then(function(latlng){
                 geoService.getDeal(latlng).then(function (data) {
-                    $rootScope.deals = data.data;
-                    backup.deals = data.data;
+                               removePending(data);
                 });
             });
         };
@@ -53,7 +78,9 @@ angular.module('app')
                         }
                     });
                 }
-            });
+
+});
+
 
         NgMap.getMap().then(function (map) {
             geoService.getCurrentPosition().then(function (latlng) {
@@ -62,4 +89,6 @@ angular.module('app')
                 vm.map.setZoom(12);
             });
         });
+
     });
+   

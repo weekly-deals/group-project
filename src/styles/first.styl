@@ -262,6 +262,7 @@ a
 
 .deal
   min-width 220px
+  max-width: 220px
   height: 300px
   margin 25px
   background: main-white
@@ -283,7 +284,10 @@ a
   margin 325px 0 0 0
   +below(600px)
     margin-top -90px
-
+// .details
+//   min-width 100%
+//   max-width: 100%
+//   height: 200px
 .deal-desc
   display flex
   flex-direction column
@@ -313,6 +317,7 @@ a
 .deal-footer
   text-align: center
   width: 100%
+  word-wrap: break-word    //nat
   height: 20%
   margin auto
   margin-bottom: 3%
@@ -325,11 +330,13 @@ a
   flex-direction row
   overflow-x auto
   overflow-y hidden
+  margin-top 60px
   margin-bottom -20px
   padding-bottom 20px
 
 /*maps-view*/
 .modal
+  color: black
   display: block
   position: fixed
   z-index: 100
@@ -340,7 +347,26 @@ a
   overflow auto
   overflow-x hidden
   background-color: main-white
-  color black
+  text-align: center
+  margin: 5% 20%
+  border-radius: 10px
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  +below(600px)
+    margin 0
+    width 100%
+    height 100%
+    
+.admin-edit-modal  //nat
+  display: none
+  position: fixed
+  z-index: 100
+  left: 0
+  top: 0
+  width: 60%
+  height: 80%
+  overflow auto
+  overflow-x hidden
+  background-color: main-white
   text-align: center
   margin: 5% 20%
   border-radius: 10px
@@ -638,3 +664,15 @@ a
 
 #purple
   background purple
+  
+.admin-buttons
+    height: 10%
+    width: 100%
+    
+.admin-ear
+    display: inline-block
+    height: 20px
+    width: 20px
+.admin-buttons-details
+    display: flex
+    flex-direction: column
