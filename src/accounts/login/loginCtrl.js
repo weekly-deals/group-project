@@ -1,11 +1,12 @@
 angular.module('app')
-    .controller('loginCtrl', function ($scope, $location, $auth, $http) {
+    .controller('loginCtrl', function ($scope, $location, $auth, $window) {
 
         $scope.login = function () {
             $auth.login($scope.user)
                 .then(function () {
                     // toastr.success('You have successfully signed in!');
                     $location.path('/');
+                    $window.location.reload();
                 })
                 .catch(function (error) {
                     // toastr.error(error.data.message, error.status);

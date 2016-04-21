@@ -35,7 +35,7 @@ angular.module('app')
         vm.hideBotNav = false;
 
         vm.hideDealBar = function () {
-            return !(/maps|login|signup/.test($location.url()))
+            return !(/login|signup/.test($location.url()))
         };
 
 
@@ -114,7 +114,6 @@ angular.module('app')
             vm.dayDropdown = !vm.dayDropdown;
         };
 
-
         $rootScope.selectDay = function (day, idx) {
             $rootScope.selectedDay = {
                 day: day,
@@ -122,28 +121,10 @@ angular.module('app')
             };
         };
 
-        vm.placeChanged = function () {
-            vm.place = this.getPlace();
-            vm.map.setCenter(vm.place.geometry.location);
-            vm.marker = new google.maps.Marker({
-                position: vm.place.geometry.location,
-                map: vm.map,
-                title: vm.place.name
-            });
-        };
-
         vm.addBusiness = function () {
             geoService.newBusiness(vm.place).then(function (res) {
                 $scope.addedBus = res;
             });
         };
-
-        NgMap.getMap().then(function (map) {
-            geoService.getCurrentPosition().then(function (latlng) {
-                vm.map = map;
-                vm.map.setCenter(latlng);
-                vm.map.setZoom(10);
-            });
-        });
 
     });
