@@ -85,16 +85,16 @@ angular.module('app')
                 };
 
                 $scope.isAuthenticated = function () {
-                    console.log($auth.isAuthenticated())
+                    // console.log($auth.isAuthenticated())
                     return $auth.isAuthenticated();
                 };
 
-               
+
                         $scope.aproveDeal = function(deal) {
                             deal.pending = false;
                             adminService.aproveDeal(deal._id, deal);
                     };
-                
+
         //         $scope.expandEdit = function () {
         //             var modalEdit = document.getElementById('modal-edit');
         //             var bodyEdit = document.getElementById('body');
@@ -106,7 +106,7 @@ angular.module('app')
         // };
 
             }
-            
+
         };
 
 

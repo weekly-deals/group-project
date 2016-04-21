@@ -47,7 +47,7 @@ angular.module('app')
                     }
 
                     vm.dealSvg = document.getElementById(svg);
-                    
+
                     if (vm.dealSvg.style.border === '1px solid black') {
                         vm.dealSvg.style.border = 'none';
                     } else {
@@ -85,20 +85,18 @@ angular.module('app')
                 };
 
                 vm.selectDay = function (day) {
-                  console.log(day);
                     var box = document.getElementById(day);
                     if (!box.style.backgroundColor) {
                         box.style.background = '#58595B';
                         // box.style.border = '1px solid rgb(221, 46, 68)';
                         vm.days.push(day);
                     } else if (box.style.backgroundColor === 'rgb(88, 89, 91)') {
-                        box.style.background = $scope.currentColor;
+                        box.style.background = 'rgb(221, 46, 68)';
                         var idx = vm.days.indexOf(day);
                         if (idx !== -1) {
                             vm.days.splice(idx, 1);
                         }
                     } else if (box.style.backgroundColor === 'rgb(221, 46, 68)' || 'orange' || 'blue' || 'green' || 'purple' || 'yellow') {
-                        $scope.currentColor = box.style.background;
                         box.style.background = 'rgb(88, 89, 91)';
                         vm.days.push(day);
                     }
