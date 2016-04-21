@@ -3,23 +3,32 @@
 
         <div class="deal"  ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)' ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data">
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
-            <svg   ng-if="isAuthenticated() === 'admin'"   id='edit' ng-show='deal.showButtons' ng-click='expandEdit()'>
-                <use xlink:href="#icon-shapes"></use>
-            </svg>
-            <svg  ng-if="isAuthenticated() === 'admin'" id="remove" ng-show='deal.showButtons' ng-click="removeDeal(deal._id)">
-                <use xlink:href="sprite.svg#icon-signs" width="15px" height="15px"></use>
-            </svg>
-            
-            <svg  ng-if="isAuthenticated() === 'admin'" id="approve" ng-show='deal.showButtons' ng-click='aproveDeal(deal)'>
-                <use xlink:href="#icon-tool" width="15px" height="15px"></use>
-            </svg>
-            <div class='details' ng-click="openDealDetail(deal)">
-                <div id='deal-desc' class='deal-desc' ng-show='deal.hideDesc'>{{deal.description}}</div>
+            <section class="admin-buttons-details">
+            <div class="admin-buttons">
+                <div  ng-if="isAuthenticated() === 'admin'"   id='edit' ng-show='deal.showButtons' ng-click='aproveDeal(deal)'>
+                    <svg class="admin-ear">
+                    <use xlink:href="sprite.svg#icon-shapes" width="20px" height="20px"></use>
+                    </svg>
+                </div>
+                <div  ng-if="isAuthenticated() === 'admin'" id="remove" ng-show='deal.showButtons' ng-click="removeDeal(deal._id)">
+                    <svg class="admin-ear">
+                    <use xlink:href="sprite.svg#icon-signs" width="20px" height="20px"></use>
+                    </svg>
+                </div>
+                <div ng-if="isAuthenticated() === 'admin'" id="approve" ng-show='deal.showButtons' ng-click='expandEdit()' >
+                    <svg class="admin-ear">
+                    <use xlink:href="sprite.svg#icon-tool" width="20px" height="20px"></use>
+                    </svg>
+                </div>
+            </div>
+          <div class='details' ng-click="openDealDetail(deal)">
+            <div id='deal-desc' class='deal-desc' ng-show='deal.hideDesc'>{{deal.description}}</div>
             <div class="deal-pic">
                 <svg  ng-show='!deal.hideDesc' class='svg' id="{{deal.svg}}" width="110px" height="110px">
                   <use xlink:href="{{deal.svg}}" width="110px" height="110px"></use>
                 </svg>
             </div>
+            </section>
 
 
             <div class="deal-footer" ng-show='!deal.hideDesc'>

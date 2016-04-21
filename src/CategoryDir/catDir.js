@@ -85,6 +85,7 @@ angular.module('app')
                 };
 
                 $scope.isAuthenticated = function () {
+                    console.log($auth.isAuthenticated())
                     return $auth.isAuthenticated();
                 };
 
@@ -94,15 +95,15 @@ angular.module('app')
                             adminService.aproveDeal(deal._id, deal);
                     };
                 
-                $scope.expandEdit = function () {
-                    var modalEdit = document.getElementById('modal-edit');
-                    var bodyEdit = document.getElementById('body');
-                    var curtainEdit = document.getElementById('modal-curtain');
-                    curtainEdit.style.display = 'block';
-                    bodyEdit.style.overflow = 'hidden';
-                    modalEdit.style.display = 'block';
-            // google.maps.event.trigger(vm.map, 'resize');
-        };
+        //         $scope.expandEdit = function () {
+        //             var modalEdit = document.getElementById('modal-edit');
+        //             var bodyEdit = document.getElementById('body');
+        //             var curtainEdit = document.getElementById('modal-curtain');
+        //             curtainEdit.style.display = 'block';
+        //             bodyEdit.style.overflow = 'hidden';
+        //             modalEdit.style.display = 'block';
+        //     // google.maps.event.trigger(vm.map, 'resize');
+        // };
 
             }
             
