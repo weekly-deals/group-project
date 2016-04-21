@@ -27,16 +27,14 @@ angular.module('app')
             });
         });
 
-        $scope.geoCode = function (address) {
-            geoService.geoCode(address).then(function (latlng) {
+        $scope.geoCode = function(address) {
+            geoService.geoCode(address).then(function(latlng){
                 geoService.getDeal(latlng).then(function (data) {
                     $rootScope.deals = data.data;
                     backup.deals = data.data;
                 });
             });
         };
-
-//Filtering stuff//
 
         $rootScope.$watch('selectedDay',
             function () {
@@ -56,4 +54,12 @@ angular.module('app')
                     });
                 }
             });
+
+        NgMap.getMap().then(function (map) {
+            geoService.getCurrentPosition().then(function (latlng) {
+                vm.map = map;
+                vm.map.setCenter(latlng);
+                vm.map.setZoom(12);
+            });
+        });
     });
