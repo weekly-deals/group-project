@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('ModalCtrl', function ($scope, geoService, $rootScope, $interval) {
+    .controller('ModalCtrl', function ($scope, geoService, $rootScope, $interval, NgMap) {
 
         document.querySelector('.location-filter').focus();
 
