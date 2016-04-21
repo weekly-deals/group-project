@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/lib.min.css">
+    <link rel="stylesheet" type="text/css" href="css/css.min.css">
+    <base href="/">
+    <title>Deal.io</title>
+</head>
+
+<body class='main-container change-color' id="body" ng-cloak>
+
+<div class="gradient gradient-change">
+
+    <div class='main-nav-bar' ng-controller="NavbarCtrl as vm">
+
+        <div class='top-nav-tabs'>
+            <ul>
+                <li><a ui-sref="home" class="style-nav">Home</a></li>
+                <li ng-if="vm.isAuthenticated() === 'user'" class="style-nav"><span ng-click="vm.openProfile()">Profile</span></li>
+                <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="login">Login </a></li>
+                <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="signup">Sign up</a></li>
+                <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-click="vm.openAddDeal()">Submit a Deal</span></li>
+                <li ng-if="vm.isAuthenticated()" class="style-nav"><a ui-sref="logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class='nav-filter' ng-if="vm.hideDealBar()">
+            <div class='large-text'>
+                <!-- this will be {{category}}  -->
+                {{vm.category}}
+
+            </div>
+            <span ng-click='vm.toggleDropdown()' class='small-text'>
+              another category
+              <select class='cat-selector'></select>
+              <div class='cat-options'
+                   ng-hide="vm.hideDropdown">
+                <button ng-click='vm.selectOption("All")' class='cat-option' selected>All</button><br>
+                <button ng-click='vm.selectOption("Food")' class='cat-option'>Food</button><br>
+                <button ng-click='vm.selectOption("Entertainment")' class='cat-option'>Entertainment</button><br>
+                <button ng-click='vm.selectOption("Education")' class='cat-option'>Education</button><br>
+                
+              </div>
+
+            </span>
+            <div class='nav-bottom' ng-hide='vm.hideBotNav'>
+                <span class='medium-text2'>deals</span>
+                <span class='light-text'>  in</span>
+
+                <form name="cityForm" class="locationSearch" ng-controller="ModalCtrl" ng-submit="geoCode(city)">
+                    <input name="cityInput" class='location-filter' type='text' ng-model='city' pu-elastic-input>
+
+                </form>
+                <span class='light-text'>on</span>
+      <span class='medium-text' ng-click='vm.toggleDayDD(); dayClick = !dayClick'>
+            <span ng-if="!dayClick" class="day">{{selectedDay.day}}</span>
+            <div class='day-options'
+            ng-hide="vm.dayDropdown">
+              <button ng-click='selectDay("Monday", 0)' class='day-option change-text-color' >M</button><br>
+              <button ng-click='selectDay("Tuesday", 1)' class='day-option change-text-color' >Tu</button><br>
+              <button ng-click='selectDay("Wednesday", 2)' class='day-option change-text-color' >W</button><br>
+              <button ng-click='selectDay("Thursday", 3)' class='day-option change-text-color' >Th</button><br>
+              <button ng-click='selectDay("Friday", 4)' class='day-option change-text-color'>F</button><br>
+              <button ng-click='selectDay("Saturday", 5)' class='day-option change-text-color'>Sa</button><br>
+              <button ng-click='selectDay("Sunday", 6)' class='day-option change-text-color'>Su</button><br>
+        </div>
+          <select class="options"></select>
+      </span>
+            </div>
+
+
+        </div>
+        <deal-dir show="vm.showAddDeal"></deal-dir>
+        <profile-dir show="vm.showProfile"></profile-dir>
+    </div>
+
+  </div>
+
+
+
+</div>
+<ui-view></ui-view>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOreIswD8rCeAp8GmTzd_s-f7pH_M6nnc&libraries=places"></script>
+<script src="js/lib.min.js"></script>
+<script src="js/js.min.js"></script>
+</body>
+</html>
