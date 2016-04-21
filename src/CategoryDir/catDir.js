@@ -12,7 +12,7 @@ angular.module('app')
                     scope.show = !scope.show;
                 };
             },
-            controller: function ($scope, $auth, Account) {
+            controller: function ($scope, $auth, Account, adminService) {
 
                 $scope.showDealDetail = false;
 

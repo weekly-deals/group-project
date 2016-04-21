@@ -40,6 +40,9 @@ main-white = #F2F2F2;
     opacity: 1
   }
 
+@keyframes blink
+  to{ opactiy: .0 }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
@@ -150,7 +153,7 @@ font(x, y)
   flex-direction row
   justify-content space-around
 
-.location-filter
+#location-filter
   background: transparent
   border: none
   font-color: main-white
@@ -167,6 +170,10 @@ font(x, y)
   +below(600px)
     height 25px
 
+.blinker
+  animation: blink 1s infinite
+  font-size 36px
+
 .cat-selector
   white-space: none;
   background-color: transparent
@@ -180,6 +187,8 @@ font(x, y)
   border none
   background-color transparent
   outline none
+  border-radius 5px
+  margin 5px
 
 .day
   display: flex
@@ -368,15 +377,17 @@ a
   text-align: center
 
 .deal-entry
-  width: 100%
+  width: 80%
   margin: auto
+  border-radius 10px
+
 
 .deal-title-input
   border-radius 15px
   height: 30px
   border: none
   margin: 5px
-  width: 30%
+  width: 220px
 
 .day-wrapper
   display: flex
@@ -390,6 +401,8 @@ a
   border-radius 3px
   height: 23px
   width: 23px
+  margin 5px
+  cursor pointer
 
 .deal-textarea
   width: 60%
