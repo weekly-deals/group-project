@@ -118,7 +118,7 @@ gulp.task('inject', function (done) {
         .on('end', function () { done(); });
 });
 
-gulp.task('js', function () {
+gulp.task('js', ['inject'], function () {
     return gulp.src(['src/**/*.js', '!src/**/satellizer.js'])
         .pipe(flatten())
         .pipe(sourcemaps.init())
@@ -147,7 +147,7 @@ gulp.task('watch', function () {
     gulp.watch('src/**/*.styl', ['stylus']);
     gulp.watch('src/**/*.js', ['js']);
     gulp.watch('src/**/*.html', ['html']);
-    gulp.watch('src/icons/*.svg', ['svg']).on('change', reload);
+    gulp.watch('src/icons/*.svg', ['svg', 'js']).on('change', reload);
 });
 
-gulp.task('default', ['stylus', 'inject', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);
+gulp.task('default', ['stylus', 'js', 'bowerJs', 'bowerCss', 'html', 'svg', 'server', 'watch']);
