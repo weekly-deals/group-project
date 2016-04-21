@@ -80,7 +80,7 @@ var bowerFiles = mainBowerFiles('**/*.js').concat(['src/**/satellizer.js']);
 gulp.task('bowerJs', function () {
     return gulp.src(bowerFiles)
         .pipe(sourcemaps.init())
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(concat('lib.min.js'))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/js'))
