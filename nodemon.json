@@ -10,7 +10,7 @@
     "js": "node"
   },
   "watch": [
-    "/server/**"
+    "./server/**"
   ],
   "env": {
     "NODE_ENV": "development"

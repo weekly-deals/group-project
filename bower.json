@@ -21,7 +21,6 @@
     "angular-ui-router": "^0.2.18",
     "normalize-css": "normalize.css#^3.0.3",
     "ngmap": "^1.17.3",
-    "angular-elastic-input": "^2.2.0",
-    "angularUtils-pagination": "angular-utils-pagination#^0.11.1"
+    "angular-elastic-input": "^2.2.0"
   }
 }
