@@ -29,6 +29,15 @@ angular.module('app')
         };
 
         vm.selectOption = function (cat) {
+          var y = 0;
+          if (cat === 'Food') {
+            y = 100;
+          } else if (cat === 'Entertainment') {
+            y = 450;
+          } else if (cat === 'Transportation') {
+            y = 1600;
+          }
+            window.scrollTo(0, y);
             vm.category = cat;
         };
 
@@ -51,11 +60,12 @@ angular.module('app')
             })
         });
 
-        (function svgs() {
+        function svgs() {
             svgService.getSvg().then(function (res) {
                 vm.svgs = res;
             })
-        })();
+        }
+        svgs();
 
         vm.days = [
             {

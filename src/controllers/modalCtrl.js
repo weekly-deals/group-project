@@ -3,6 +3,8 @@ angular.module('app')
 
         document.querySelector('.location-filter').focus();
 
+        var vm = this;
+
         var backup = {};
 
         geoService.getCurrentPosition().then(function (latlng) {

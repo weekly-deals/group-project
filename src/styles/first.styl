@@ -266,12 +266,12 @@ a
   margin 25px
   background: main-white
   border-radius: 5px
+  box-shadow 0 0 10px main-grey
   display flex
   flex-direction column
   font-color: main-grey
   font-size: 24px
   font-weight: ultralight
-  border 1.8px solid #58595B
   padding-bottom 18px
   &:hover
     animation-fill-mode: forwards
@@ -336,7 +336,7 @@ a
   left: 0
   top: 0
   width: 60%
-  height: 80%
+  height: 90%
   overflow auto
   overflow-x hidden
   background-color: main-white
@@ -368,17 +368,18 @@ a
   color: blue
 
 .svg-wrapper
-  overflow hidden
+  width 100%
+  display block
+  margin auto
+  background white
+  border-radius 10px
+
 
 .svgDisplay
-  display flex
-  flex-direction row
-  overflow-y hidden
-  overflow-x auto
+  display block
   margin-bottom -20px
   padding-bottom 20px
-  svg
-    min-width 75px
+
 
 .modal-content
   margin: auto
@@ -425,6 +426,7 @@ a
 
 .bus-entry
   width: 100%
+  margin 15px
 
 .bus-name-input
   border-radius 15px
@@ -559,8 +561,15 @@ a
   background: #3a5795
   color: main-white
 
+
+.profile-title
+  font(400, 1.5)
+  margin 20px
+
 .profile-wrap
   text-align: center
+  margin auto
+  margin-top 10px
 
 .profilePic
   height: 200px
@@ -578,6 +587,9 @@ a
   text-align: center
   &:focus
     outline: none
+
+#user-name-input
+  width: 200px
 
 .edit-button
   border: 0
@@ -621,20 +633,24 @@ a
     position relative
     top: 4px
 
-#yellow
-  background yellow
+.pop-out-btn
+  box-shadow inset 0 0 10px gray
+
+
+#light-blue
+  background #00aecc
 
 #orange
-  background orange
+  background #fa9d58
 
 #red
   background main-red
 
 #green
-  background green
+  background #4bbf6b
 
 #blue
-  background blue
+  background #0079bf
 
 #purple
-  background purple
+  background #89609e
