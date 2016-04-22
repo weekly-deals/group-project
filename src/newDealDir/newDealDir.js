@@ -42,11 +42,15 @@ angular.module('app')
 
                 vm.days = [];
 
-                (function svg() {
+                function svg() {
                     svgService.getSvg().then(function (svgs) {
+                        svgs.splice((svgs.length-2), 1); //splicing out unwanted svgs (e.g. edit, delete, approve svgs)
+                        svgs.splice((svgs.length-7), 2);
+
                         vm.svgs = svgs;
                     });
-                })();
+                }
+                svg();
 
                 vm.selectSvg = function (svg) {
                     var allSvgs = document.getElementsByClassName('svg');

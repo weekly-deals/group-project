@@ -23,7 +23,7 @@
                     <span class='cat-options' ng-hide="vm.hideDropdown">
                       <button ng-click='vm.selectCat("Food")' class='cat-option change-color'>Food</button>
                       <button ng-click='vm.selectCat("Entertainment")' class='cat-option change-color'>Entertainment</button>
-                      <button ng-click='vm.selectCat("Education")' class='cat-option change-color'>Education</button>
+                      <button ng-click='vm.selectCat("Transportation")' class='cat-option change-color'>Transportation</button>
                     </span>
                     </span>
                     <span ng-show='vm.selectedCat'>Current Category: {{vm.dealCat}}
@@ -33,16 +33,18 @@
                     <br>
 
                     <textarea class='deal-textarea' ng-model='vm.deal.description' placeholder='  Enter description...'></textarea>
-                    <br> Let us know about any special hours or exceptions!
+                    <br> Let us know about any special hours or exceptions! <br>
 
-                    <textarea class='deal-textarea' ng-model='vm.deal.details' placeholder='  Enter hours or exceptions...'></textarea>
-
-                    <div class="svg-wrapper">
-                        <div class="svgDisplay">
-                            <svg class='svg' id="{{svg}}" ng-click='vm.selectSvg(svg)' width="75px" height="75px" ng-repeat="svg in vm.svgs">
-                                <use xlink:href="{{svg}}" width="75px" height="75px"></use>
-                            </svg>
-                        </div>
+                    <textarea class='deal-textarea' ng-model='vm.deal.details'
+                              placeholder='  Enter hours or exceptions...'></textarea>
+                        <br>Choose an emoji for your deal!
+                        <div class="svg-wrapper">
+                            <div class="svgDisplay">
+                                <svg class='svg' id="{{svg}}" ng-click='vm.selectSvg(svg)' width="2em" height="2em"
+                                     ng-repeat="svg in vm.svgs">
+                                    <use xlink:href="{{svg}}" width="2em" height="2em"></use>
+                                </svg>
+                            </div>
                     </div>
                 </div>
 
