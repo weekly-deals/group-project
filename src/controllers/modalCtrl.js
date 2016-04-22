@@ -34,7 +34,6 @@ angular.module('app')
                     cat.data.forEach(function (deal) {
                         if (deal.pending === true) {
                             cat.data.splice(cat.data.indexOf(deal), 1);
-                            console.log("Here is the deal ", deal)
                         }
                     })
                 })
