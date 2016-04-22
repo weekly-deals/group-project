@@ -62,6 +62,14 @@ angular.module('app')
                     var body = document.getElementById('body');
                     body.style.overflow = 'hidden';
                     $scope.selectedDeal = deal;
+                    var leftArrows = document.getElementsByClassName('leftArrow');
+                    var rightArrows = document.getElementsByClassName('rightArrow');
+                    Array.prototype.forEach.call(leftArrows, function (e) {
+                        e.style.display = 'none';
+                    });
+                    Array.prototype.forEach.call(rightArrows, function (e) {
+                        e.style.display = 'none';
+                    });
                 };
 
                 $scope.showDesc = function (deal) {
