@@ -17,11 +17,10 @@ angular.module('app')
 
             },
             controller: function ($scope, adminService) {
-                $scope.updatedDeal = {};
-                $scope.updateDeal
-             = function(dealId, updatedData) {
-                    console.log(updatedData);
-                    adminService.updateDeal(dealId, updatedData);
+             $scope.updateDeal
+             = function(dealId, deal) {
+                    
+                    adminService.updateDeal(dealId, deal);
                 }
             }
         }

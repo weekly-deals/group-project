@@ -64,6 +64,7 @@ angular.module('app')
                     $scope.selectedDeal = deal;
                 };
 
+
                 $scope.showDesc = function (deal) {
                     var desc = document.getElementById('deal-desc');
                     desc.style.opacity = '1 !important';
@@ -74,40 +75,47 @@ angular.module('app')
                     deal.hideDesc = false;
                 };
 
-                // nat buttons on admin
+
                 $scope.showButton = function (deal) {
                     deal.showButtons = true;
-                    var edit = document.getElementById('edit');
-                    var remove = document.getElementById('remove');
+                    // var edit = document.getElementById('edit');
+                    // var remove = document.getElementById('remove');
                 };
 
                 $scope.hideButton = function (deal) {
                     deal.showButtons = false;
-                    var edit = document.getElementById('edit');
-                    var remove = document.getElementById('remove');
+                    // var edit = document.getElementById('edit');
+                    // var remove = document.getElementById('remove');
                 };
 
-                //remove a deal nat
                 $scope.removeDeal = function (dealId) {
                     adminService.deleteDeal(dealId);
                     location.reload();
                 };
 
                 $scope.isAuthenticated = function () {
-                    // console.log($auth.isAuthenticated())
                     return $auth.isAuthenticated();
                 };
 
 
-                        $scope.aproveDeal = function(deal) {
-                            deal.pending = false;
-                            adminService.aproveDeal(deal._id, deal);
-                    };
+                $scope.aproveDeal = function (deal) {
+                    deal.pending = false;
+                    adminService.aproveDeal(deal._id, deal);
+                };
 
-                
+               
+
+
+                $scope.showDealEdit = false;
+
                 $scope.expandEdit = function (deal) {
-                    $scope.openDealDetail(deal)
-        };
+                    $scope.showDealEdit = true;
+                    var body = document.getElementById('body');
+                    body.style.overflow = 'hidden';
+                    $scope.selectedDeal = deal;
+
+                };
+
 
 
             }
