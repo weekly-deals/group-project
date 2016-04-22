@@ -1,5 +1,5 @@
 <div class="main-deals-container">
-    <div class='home-container change-color' ng-repeat="cat in deals track by $index">
+    <div class='home-container change-color' ng-repeat="cat in deals track by $index" du-smooth-scroll="{{cat.catTitle}}">
         <div ng-if="cat.data.length && !cat.hideCat" class="cat-title"><span>{{cat.catTitle}}</span></div>
         <cat-directive ng-if="cat.data.length" data="cat.data" ind="$index" title="cat.catTitle"></cat-directive>
     </div>
