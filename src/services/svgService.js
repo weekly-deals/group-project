@@ -30,10 +30,13 @@ var svg = ["sprite.svg#icon-airplane",
 "sprite.svg#icon-pizza",
 "sprite.svg#icon-pumpkin",
 "sprite.svg#icon-sax",
+"sprite.svg#icon-shapes",
+"sprite.svg#icon-signs",
 "sprite.svg#icon-spaghetti",
 "sprite.svg#icon-sushi",
 "sprite.svg#icon-theater",
 "sprite.svg#icon-tiger",
+"sprite.svg#icon-tool",
 "sprite.svg#icon-train"];
 // endinject
 

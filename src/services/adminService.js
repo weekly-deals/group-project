@@ -8,5 +8,14 @@ angular.module('app')
         })
         
     };
-        
+    
+    this.aproveDeal = function(dealId, data) {
+        console.log(data)
+        $http({
+            method: "PUT",
+            url: "/api/deal/" + dealId,
+            data: data
     })
+        
+    }
+    });

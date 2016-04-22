@@ -6,7 +6,7 @@ const mongoose = require('mongoose'),
 
 mongoose.Promise = require('bluebird');
 
-var cats = ["food", "entertainment", "sports", "transportation"];
+var cats = ["food", "entertainment", "education"];
 function queryMaker(coords) {
     var queries = [];
     for (var i = 0; i < cats.length; i++) {
@@ -20,7 +20,7 @@ function queryMaker(coords) {
                                 type: "Point",
                                 coordinates: coords
                             },
-                            $maxDistance: 10000
+                            $maxDistance: 40000
                         }
                     }
                 }, {
@@ -95,16 +95,14 @@ module.exports = {
         var queries = queryMaker([req.query.lng, req.query.lat]);
         Promise
             .all(queries)
-            .spread(function(food, ent, sports, tran){
+            .spread(function(food, ent, edu, pending){
                 var ret = [
                     {data: food,
                     catTitle: "Food"},
                     {data: ent,
                     catTitle: "Entertainment"},
-                    {data: sports,
-                    catTitle: "Sports"},
-                    {data: tran,
-                    catTitle: "Transportation"}
+                    {data: edu,
+                    catTitle: "Education"},
                 ];
                 // console.log(ret);
                 return res.status(200).json(ret);

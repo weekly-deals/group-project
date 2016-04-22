@@ -1,15 +1,15 @@
 <div ng-if="show">
     <div id="modal-curtain" ng-click='closeAddDeal()'></div>
-<div class="modal">
-    <span id='close' ng-click='closeAddDeal()'>&times;</span>
-    <div id="mapsview">
-        <h2 class='deal-header'>Submit the Deal you want to share here!</h2>
+    <div class="modal">
+        <span id='close' ng-click='closeAddDeal()'>&times;</span>
+        <div id="mapsview" class='modal-content'>
+            <h2 class='deal-header'>Submit the Deal you want to share here!</h2>
             <section class='data-entry'>
                 <div class='deal-entry'>
                     <!--added an input with cat to pass into the server nat -->
-                    Deal Name: <input class='deal-title-input' type="text" ng-model='vm.deal.name'
-                           placeholder="  2 or 3 word title for your deal"/><br>
-                    Please select the day(s) that this deal is available.
+                    Deal Name:
+                    <input class='deal-title-input' type="text" ng-model='vm.deal.name' placeholder="  2 or 3 word title for your deal" />
+                    <br> Please select the day(s) that this deal is available.
                     <div class='day-wrapper'>
                         <div id='0' width='25px' height='25px' ng-click='vm.selectDay("0")' class='day-box change-color'>M</div>
                         <div id='1' width='25px' height='25px' ng-click='vm.selectDay("1")' class='day-box change-color'>Tu</div>
@@ -28,12 +28,12 @@
                     </span>
                     <span ng-show='vm.selectedCat'>Current Category: {{vm.dealCat}}
                     <select class='cat-selector' ng-click='vm.openCat()'></select>
-                  </span><br>
-                        Tell us why this is such a good deal!<br>
+                  </span>
+                    <br> Tell us why this is such a good deal!
+                    <br>
 
-                    <textarea class='deal-textarea' ng-model='vm.deal.description'
-                              placeholder='  Enter description...'></textarea>
-                    <br> Let us know about any special hours or exceptions!
+                    <textarea class='deal-textarea' ng-model='vm.deal.description' placeholder='  Enter description...'></textarea>
+                    <br> Let us know about any special hours or exceptions! <br>
 
                     <textarea class='deal-textarea' ng-model='vm.deal.details'
                               placeholder='  Enter hours or exceptions...'></textarea>
@@ -45,25 +45,23 @@
                                     <use xlink:href="{{svg}}" width="2em" height="2em"></use>
                                 </svg>
                             </div>
-                        </div>
                     </div>
-
-
-          <form class='bus-form'>
-
-                <div class='bus-entry'>
-                    <div>
-                        Search for the business that offers this deal:
-
-                        <input class='bus-name-input' places-auto-complete size=80 types="{{types}}"
-                               on-place-changed="vm.placeChanged()"
-                               placeholder="  Enter business name and search for a business"/>
-                        <br/> Can you find a picture
-                        <input class='bus-pic-input' fileread type='file'>
-                    </div>
-
-
                 </div>
+
+
+                <form class='bus-form'>
+
+                    <div class='bus-entry'>
+                        <div>
+                            Search for the business that offers this deal:
+
+                            <input class='bus-name-input' places-auto-complete size=80 types="{{types}}" on-place-changed="vm.placeChanged()" placeholder="  Enter business name and search for a business" />
+                            <br/> Can you find a picture
+                            <input class='bus-pic-input' fileread type='file'>
+                        </div>
+
+
+                    </div>
 
 
                     <div ng-if="vm.place" class='business-info'>
@@ -95,8 +93,8 @@
                     </div>
 
 
-                <input type="submit" ng-click="vm.addBusiness(); vm.getDealInfo()">Submit Business</input>
-            </form>
+                    <input type="submit" ng-click="vm.addBusiness(); vm.getDealInfo()">Submit Business</input>
+                </form>
             </section>
             <ng-map scrollwheel="false"></ng-map>
         </div>

@@ -13,7 +13,8 @@ angular.module('app')
                     scope.show = !scope.show;
                 };
             },
-            controller: function ($scope, $auth, $window) {
+
+            controller: function ($scope, $auth, $window, Account, adminService) {
 
                 $scope.$watch(function () {
                     return $window.innerWidth;
@@ -80,13 +81,32 @@ angular.module('app')
                 //remove a deal nat
                 $scope.removeDeal = function (dealId) {
                     adminService.deleteDeal(dealId);
+                    location.reload();
                 };
 
                 $scope.isAuthenticated = function () {
+                    // console.log($auth.isAuthenticated())
                     return $auth.isAuthenticated();
                 };
 
+
+                        $scope.aproveDeal = function(deal) {
+                            deal.pending = false;
+                            adminService.aproveDeal(deal._id, deal);
+                    };
+
+        //         $scope.expandEdit = function () {
+        //             var modalEdit = document.getElementById('modal-edit');
+        //             var bodyEdit = document.getElementById('body');
+        //             var curtainEdit = document.getElementById('modal-curtain');
+        //             curtainEdit.style.display = 'block';
+        //             bodyEdit.style.overflow = 'hidden';
+        //             modalEdit.style.display = 'block';
+        //     // google.maps.event.trigger(vm.map, 'resize');
+        // };
+
             }
+
         };
 
 

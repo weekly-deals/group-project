@@ -198,7 +198,7 @@ font(x, y)
 
 .cat-option
   color: inherit
-  border none
+  border 1px solid main-red
   background-color transparent
   outline none
   border-radius 5px
@@ -262,6 +262,7 @@ a
 
 .deal
   min-width 220px
+  max-width: 220px
   height: 300px
   margin 25px
   background: main-white
@@ -283,7 +284,10 @@ a
   margin 325px 0 0 0
   +below(600px)
     margin-top -90px
-
+// .details
+//   min-width 100%
+//   max-width: 100%
+//   height: 200px
 .deal-desc
   display flex
   flex-direction column
@@ -313,6 +317,7 @@ a
 .deal-footer
   text-align: center
   width: 100%
+  word-wrap: break-word    //nat
   height: 20%
   margin auto
   margin-bottom: 3%
@@ -325,11 +330,13 @@ a
   flex-direction row
   overflow-x auto
   overflow-y hidden
+  margin-top 60px
   margin-bottom -20px
   padding-bottom 20px
 
 /*maps-view*/
 .modal
+  color: black
   display: block
   position: fixed
   z-index: 100
@@ -340,7 +347,26 @@ a
   overflow auto
   overflow-x hidden
   background-color: main-white
-  color black
+  text-align: center
+  margin: 5% 20%
+  border-radius: 10px
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  +below(600px)
+    margin 0
+    width 100%
+    height 100%
+
+.admin-edit-modal  //nat
+  display: none
+  position: fixed
+  z-index: 100
+  left: 0
+  top: 0
+  width: 60%
+  height: 80%
+  overflow auto
+  overflow-x hidden
+  background-color: main-white
   text-align: center
   margin: 5% 20%
   border-radius: 10px
@@ -387,6 +413,7 @@ a
   width: 80%
   max-width: 700px
 
+
 .data-entry
   text-align: center
 
@@ -406,17 +433,29 @@ a
 .day-wrapper
   display: flex
   justify-content: space-between
-  width: 30%
-  margin: 5px 35%
+  margin: 2px
 
 .day-box
   color: main-white
   background-color: main-red
-  border-radius 3px
-  height: 23px
-  width: 23px
-  margin 5px
+  margin 0 5px 0 0
+  border main-grey
+  border-radius 5px
+  margin 2px
+  outline none
+  min-height 30px
+  min-width 30px
+  line-height 20px
+  display: flex
+  align-self: center
+  align-items center
+  justify-content center
   cursor pointer
+  +below(600px)
+    min-height 20px
+    min-width 20px
+    font-size 12px
+    margin-bottom 6px
 
 .deal-textarea
   width: 60%
@@ -654,3 +693,16 @@ a
 
 #purple
   background #89609e
+
+
+.admin-buttons
+    height: 10%
+    width: 100%
+
+.admin-ear
+    display: inline-block
+    height: 20px
+    width: 20px
+.admin-buttons-details
+    display: flex
+    flex-direction: column
