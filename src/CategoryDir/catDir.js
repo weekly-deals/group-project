@@ -37,27 +37,18 @@ angular.module('app')
                     }
                 };
 
-                var scrollLog = {};
+                //each deal is 270px wide including all border and margin
                 $scope.scroll = function (dir, elem, e) {
                     var scrollDiv = angular.element(document.getElementById(elem));
                     e.stopPropagation();
-                    if (!scrollLog.elem && !scrollDiv.scrollLeft()) {
-                        scrollLog.elem = 0;
-                    } else if (scrollDiv.scrollLeft()) {
-                        scrollLog.elem = scrollDiv.scrollLeft();
-                    }
                     if (dir === 'right') {
-                        scrollLog.elem += ($scope.windowWidth - 50);
-                        scrollDiv.scrollLeft(+scrollLog.elem, 425);
-                        if (scrollLog.elem >= scrollDiv[0].scrollWidth - 50) {
-                            scrollLog.elem = 0;
-                            scrollDiv.scrollLeft(scrollLog.elem, 425);
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() + $scope.windowWidth - 25), 425);
+                        if (scrollDiv.scrollLeft() >= scrollDiv[0].scrollWidth - $scope.windowWidth - 25) {
+                            scrollDiv.scrollLeft(+0, 425);
                         }
                     } else {
-                        scrollLog.elem -= ($scope.windowWidth - 50);
-                        scrollDiv.scrollLeft(+scrollLog.elem, 425);
-                        if (scrollLog.elem <= -($scope.windowWidth * 0.85)) {
-                            scrollLog.elem = scrollDiv[0].scrollWidth - ($scope.windowWidth);
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() - $scope.windowWidth + 25), 425);
+                        if (scrollDiv.scrollLeft() <= 25) {
                             scrollDiv.scrollLeft(scrollDiv[0].scrollWidth, 425);
                         }
                     }
