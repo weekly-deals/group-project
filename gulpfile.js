@@ -58,7 +58,8 @@ gulp.task('svg', function () {
 gulp.task('server', function () {
     browserSync.init({
         proxy: 'http://localhost:3001',
-        port: 3000
+        port: 3000,
+        ui: false
     });
 });
 
@@ -68,7 +69,7 @@ gulp.task('bowerCss', function () {
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('lib.min.css'))
-        .pipe(uncss({html: ['src/**/*.html']}))
+        // .pipe(uncss({html: ['src/**/*.html']}))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/css'))
         .pipe(reload({stream: true, match: '**/*.css'}));
@@ -79,7 +80,7 @@ var bowerFiles = mainBowerFiles('**/*.js').concat(['src/**/satellizer.js']);
 gulp.task('bowerJs', function () {
     return gulp.src(bowerFiles)
         .pipe(sourcemaps.init())
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(concat('lib.min.js'))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/js'))
