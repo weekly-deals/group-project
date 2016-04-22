@@ -1,7 +1,7 @@
 <div class="cat-container" >
-    <div class="deals-container">
+    <div class="deals-container" id="{{title}}">
         <div class="deal" ng-click="openDealDetail(deal)" ng-hide='deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)' ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data track by $index">
-            <!--<img ng-style="{'top': pix(ind)}" ng-click="scroll('left', data, $event)" src="arrow.png" class="leftArrow" height="125px" width="125px">-->
+            <img ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow" height="275px" width="125px">
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
             <button  ng-if="isAuthenticated() === 'admin'"   id='edit' ng-show='deal.showButtons'>edit</button>
             <button  ng-if="isAuthenticated() === 'admin'" id="remove" ng-show='deal.showButtons' ng-click="removeDeal(deal._id)">remove</button>
@@ -17,8 +17,7 @@
                 {{showDetail}}
               <span class='small-text'>at</span><br>{{deal.bus.busName}}
             </div>
-            <!--|| ($index < dealMin || $index > dealMin + dealdisplayNum)-->
-            <!--<img ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', data, $event)" class="rightArrow" height="125px" width="125px">-->
+            <img ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', title, $event)" class="rightArrow" height="275px" width="125px">
         </div>
         <deal-detail-dir show="showDealDetail" deal="selectedDeal"></deal-detail-dir>
     </div>

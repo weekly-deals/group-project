@@ -3,8 +3,6 @@ angular.module('app')
 
         document.querySelector('.location-filter').focus();
 
-        var backup = {};
-
         geoService.getCurrentPosition().then(function (latlng) {
             geoService.reverseGeoCode(latlng).then(function (city) {
                 var count = 1;
@@ -23,7 +21,6 @@ angular.module('app')
             });
             geoService.getDeal(latlng).then(function (data) {
                 $rootScope.deals = data.data;
-                backup.deals = data.data;
             });
         });
 
@@ -31,7 +28,6 @@ angular.module('app')
             geoService.geoCode(address).then(function(latlng){
                 geoService.getDeal(latlng).then(function (data) {
                     $rootScope.deals = data.data;
-                    backup.deals = data.data;
                 });
             });
         };
@@ -55,11 +51,4 @@ angular.module('app')
                 }
             });
 
-        NgMap.getMap().then(function (map) {
-            geoService.getCurrentPosition().then(function (latlng) {
-                vm.map = map;
-                vm.map.setCenter(latlng);
-                vm.map.setZoom(12);
-            });
-        });
     });

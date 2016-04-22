@@ -40,6 +40,7 @@ module.exports = {
         var newDeal = new Deal(req.body.deal);
         Bus.findOne({placeId: req.body.bus.placeId}, function (err, exisitingBus) {
             if (exisitingBus) {
+                exisitingBus.picture = req.body.bus.picture;
                 exisitingBus.deals.push(newDeal._id);
                 newDeal.bus = exisitingBus._id;
                 Promise.join(newDeal.save(), exisitingBus.save(), function (dealResp, busResp) {
@@ -64,7 +65,6 @@ module.exports = {
                 })
             }
         })
-
     },
     //this one below doesn't actually work, but it will look something like this
     //the user will probably have the geokeys and address we need and can add them so the deal actually will save
