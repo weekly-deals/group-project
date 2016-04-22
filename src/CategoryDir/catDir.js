@@ -6,7 +6,8 @@ angular.module('app')
             restrict: 'E',
             scope: {
                 data: '=',
-                ind: '='
+                ind: '=',
+                title: '='
             },
             link: function (scope) {
                 scope.toggle = function () {
@@ -16,33 +17,41 @@ angular.module('app')
 
             controller: function ($scope, $auth, $window, Account, adminService) {
 
-                $scope.$watch(function () {
-                    return $window.innerWidth;
-                }, function (value) {
-                    $scope.windowWidth = value;
-                    var num = Math.ceil($scope.windowWidth / 290) - 1;
-                    $scope.dealMin = 0;
-                    $scope.dealdisplayNum = num > 1 ? num : 1;
+                $scope.windowWidth = $window.innerWidth;
+                angular.element($window).bind('resize', function () {
+                    $scope.windowWidth = $window.innerWidth;
                 });
 
-                //290px width each box
-                //need to take into account breakpoints at 675px and 600px
-
                 $scope.pix = function (ind) {
-                    if (ind === 0) {
-                        return (ind + 1) * 470 + 'px'
+                    if ($scope.windowWidth > 675) {
+                        if (ind === 0) {
+                            return (ind + 1) * 392 + 'px'
+                        } else {
+                            return (ind + 1) * 402 + 'px'
+                        }
                     } else {
-                        return (ind + 1) * 442 + 'px'
+                        if (ind === 0) {
+                            return (ind + 1) * 260 + 'px'
+                        } else {
+                            return (ind + 1) * 325 + 'px'
+                        }
                     }
                 };
 
-                $scope.scroll = function (dir, data, e) {
+                //each deal is 270px wide including all border and margin
+                $scope.scroll = function (dir, elem, e) {
+                    var scrollDiv = angular.element(document.getElementById(elem));
                     e.stopPropagation();
-                    console.log(data.length);
                     if (dir === 'right') {
-                        $scope.dealMin += $scope.dealdisplayNum
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() + $scope.windowWidth - 25), 425);
+                        if (scrollDiv.scrollLeft() >= scrollDiv[0].scrollWidth - $scope.windowWidth - 25) {
+                            scrollDiv.scrollLeft(+0, 425);
+                        }
                     } else {
-                        $scope.dealMin -= $scope.dealdisplayNum
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() - $scope.windowWidth + 25), 425);
+                        if (scrollDiv.scrollLeft() <= 25) {
+                            scrollDiv.scrollLeft(scrollDiv[0].scrollWidth, 425);
+                        }
                     }
                 };
 

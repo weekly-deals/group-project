@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
     birthday: Date,
     username: {type: String, unique: true, lowercase: true},
     provider: String,
-    picture: String,
+    picture: {type: String, default: ''},
     facebook: String,
     google: String,
     twitter: String,
