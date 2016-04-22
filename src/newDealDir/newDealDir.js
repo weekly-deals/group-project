@@ -12,6 +12,14 @@ angular.module('app')
                     scope.show = false;
                     var body = document.getElementById('body');
                     body.style.overflow = 'auto';
+                    var leftArrows = document.getElementsByClassName('leftArrow');
+                    var rightArrows = document.getElementsByClassName('rightArrow');
+                    Array.prototype.forEach.call(leftArrows, function (e) {
+                        e.style.display = 'block';
+                    });
+                    Array.prototype.forEach.call(rightArrows, function (e) {
+                        e.style.display = 'block';
+                    });
                 }
             },
             controller: function (NgMap, geoService, svgService, $scope) {
@@ -34,11 +42,15 @@ angular.module('app')
 
                 vm.days = [];
 
-                (function svg() {
+                function svg() {
                     svgService.getSvg().then(function (svgs) {
+                        svgs.splice((svgs.length-2), 1); //splicing out unwanted svgs (e.g. edit, delete, approve svgs)
+                        svgs.splice((svgs.length-7), 2);
+
                         vm.svgs = svgs;
                     });
-                })();
+                }
+                svg();
 
                 vm.selectSvg = function (svg) {
                     var allSvgs = document.getElementsByClassName('svg');
@@ -47,7 +59,7 @@ angular.module('app')
                     }
 
                     vm.dealSvg = document.getElementById(svg);
-                    
+
                     if (vm.dealSvg.style.border === '1px solid black') {
                         vm.dealSvg.style.border = 'none';
                     } else {
@@ -85,20 +97,18 @@ angular.module('app')
                 };
 
                 vm.selectDay = function (day) {
-                  console.log(day);
                     var box = document.getElementById(day);
                     if (!box.style.backgroundColor) {
                         box.style.background = '#58595B';
                         // box.style.border = '1px solid rgb(221, 46, 68)';
                         vm.days.push(day);
                     } else if (box.style.backgroundColor === 'rgb(88, 89, 91)') {
-                        box.style.background = $scope.currentColor;
+                        box.style.background = 'rgb(221, 46, 68)';
                         var idx = vm.days.indexOf(day);
                         if (idx !== -1) {
                             vm.days.splice(idx, 1);
                         }
                     } else if (box.style.backgroundColor === 'rgb(221, 46, 68)' || 'orange' || 'blue' || 'green' || 'purple' || 'yellow') {
-                        $scope.currentColor = box.style.background;
                         box.style.background = 'rgb(88, 89, 91)';
                         vm.days.push(day);
                     }

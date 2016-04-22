@@ -11,6 +11,14 @@ angular.module('app')
             vm.showProfile = true;
             var body = document.getElementById('body');
             body.style.overflow = 'hidden';
+            var leftArrows = document.getElementsByClassName('leftArrow');
+            var rightArrows = document.getElementsByClassName('rightArrow');
+            Array.prototype.forEach.call(leftArrows, function (e) {
+                e.style.display = 'none';
+            });
+            Array.prototype.forEach.call(rightArrows, function (e) {
+                e.style.display = 'none';
+            });
         };
 
         vm.showAddDeal = false;
@@ -18,6 +26,14 @@ angular.module('app')
         vm.openAddDeal = function () {
             vm.showAddDeal = true;
             var body = document.getElementById('body');
+            var leftArrows = document.getElementsByClassName('leftArrow');
+            var rightArrows = document.getElementsByClassName('rightArrow');
+            Array.prototype.forEach.call(leftArrows, function (e) {
+                e.style.display = 'none';
+            });
+            Array.prototype.forEach.call(rightArrows, function (e) {
+                e.style.display = 'none';
+            });
             body.style.overflow = 'hidden';
         };
 
@@ -29,6 +45,15 @@ angular.module('app')
         };
 
         vm.selectOption = function (cat) {
+          var y = 0;
+          if (cat === 'Food') {
+            y = 100;
+          } else if (cat === 'Entertainment') {
+            y = 450;
+          } else if (cat === 'Transportation') {
+            y = 1600;
+          }
+            window.scrollTo(0, y);
             vm.category = cat;
         };
 

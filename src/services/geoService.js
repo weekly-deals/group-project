@@ -1,5 +1,6 @@
 angular.module('app')
     .service('geoService', function ($http, $q) {
+        
         var busPic = null;
         var vm = this;
 
@@ -69,7 +70,6 @@ angular.module('app')
         };
 
         vm.newBusiness = function (business, deal) {
-            console.log(deal);
             var newBusiness = {
                 address: business.formatted_address,
                 phone: business.formatted_phone_number,
@@ -80,7 +80,7 @@ angular.module('app')
                 busHours: business.opening_hours.weekday_text,
                 placeId: business.place_id,
                 website: business.website,
-                picture: busPic
+                picture: business.picture
             };
             var newDeal = {
                 dealCat: deal.dealCat,
@@ -103,7 +103,6 @@ angular.module('app')
         };
 
         vm.newDeal = function (deal, bus, days) {
-            console.log(bus);
             var newDeal = {
                 dealsCat: deal.dealCat, //nat
                 dealsName: deal.name,
@@ -115,7 +114,6 @@ angular.module('app')
                     coordinates: [bus.data.loc.coordinates[0], bus.data.loc.coordinates[1]]
                 }
             };
-            console.log(newDeal);
             return $http({
                 method: "POST",
                 data: newDeal,

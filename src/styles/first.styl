@@ -113,11 +113,12 @@ font(x, y)
   height 350px
   width 100%
   background: linear-gradient(main-red, transparent)
-  +below(600px)
+  +below(675px)
     height 225px
-  &.gradient-change
-    +below(600px)
-      height 225px
+
+.gradient-change
+  +below(675px)
+    height 225px
 
 .style-nav
   margin-left: 20px
@@ -144,13 +145,15 @@ font(x, y)
   transform rotate(180deg)
   left -17px
   cursor pointer
-  z-index 18
+  z-index 45
+  padding 75px 0 75px 0
 
 .rightArrow
   position absolute
   right -20px
   cursor pointer
-  z-index 18
+  z-index 45
+  padding 75px 0 75px 0
 
 /*home-view*/
 .home-container
@@ -181,8 +184,8 @@ font(x, y)
     font(400, 1)
   &:focus
     outline none
-  +below(600px)
-    height 25px
+  +below(675px)
+    margin-bottom -25px
 
 .blinker
   animation: blink 1s infinite
@@ -198,7 +201,7 @@ font(x, y)
 
 .cat-option
   color: inherit
-  border none
+  border 1px solid main-red
   background-color transparent
   outline none
   border-radius 5px
@@ -267,12 +270,12 @@ a
   margin 25px
   background: main-white
   border-radius: 5px
+  box-shadow 0 0 10px main-grey
   display flex
   flex-direction column
   font-color: main-grey
   font-size: 24px
   font-weight: ultralight
-  border 1.8px solid #58595B
   padding-bottom 18px
   &:hover
     animation-fill-mode: forwards
@@ -282,7 +285,7 @@ a
 
 .main-deals-container
   margin 325px 0 0 0
-  +below(600px)
+  +below(675px)
     margin-top -90px
 // .details
 //   min-width 100%
@@ -330,20 +333,18 @@ a
   flex-direction row
   overflow-x auto
   overflow-y hidden
-  margin-top 60px
-  margin-bottom -20px
+  margin-bottom -45px
   padding-bottom 20px
 
 /*maps-view*/
 .modal
+  position: absolute
   color: black
-  display: block
-  position: fixed
   z-index: 100
   left: 0
   top: 0
-  width: 60%
-  height: 80%
+  width: 60vw
+  height: 80vh
   overflow auto
   overflow-x hidden
   background-color: main-white
@@ -355,7 +356,7 @@ a
     margin 0
     width 100%
     height 100%
-    
+
 .admin-edit-modal  //nat
   display: none
   position: fixed
@@ -373,8 +374,8 @@ a
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   +below(600px)
     margin 0
-    width 100%
-    height 100%
+    width 100vw
+    height 100vh
 
 #modal-curtain
   height 200vh
@@ -394,23 +395,25 @@ a
   color: blue
 
 .svg-wrapper
-  overflow hidden
+  width 100%
+  display block
+  margin auto
+  background white
+  border-radius 10px
+
 
 .svgDisplay
-  display flex
-  flex-direction row
-  overflow-y hidden
-  overflow-x auto
+  display block
   margin-bottom -20px
   padding-bottom 20px
-  svg
-    min-width 75px
+
 
 .modal-content
   margin: auto
   display: block
   width: 80%
   max-width: 700px
+
 
 .data-entry
   text-align: center
@@ -431,17 +434,29 @@ a
 .day-wrapper
   display: flex
   justify-content: space-between
-  width: 30%
-  margin: 5px 35%
+  margin: 2px
 
 .day-box
   color: main-white
   background-color: main-red
-  border-radius 3px
-  height: 23px
-  width: 23px
-  margin 5px
+  margin 0 5px 0 0
+  border main-grey
+  border-radius 5px
+  margin 2px
+  outline none
+  min-height 30px
+  min-width 30px
+  line-height 20px
+  display: flex
+  align-self: center
+  align-items center
+  justify-content center
   cursor pointer
+  +below(600px)
+    min-height 20px
+    min-width 20px
+    font-size 12px
+    margin-bottom 6px
 
 .deal-textarea
   width: 60%
@@ -451,6 +466,7 @@ a
 
 .bus-entry
   width: 100%
+  margin 15px
 
 .bus-name-input
   border-radius 15px
@@ -585,8 +601,15 @@ a
   background: #3a5795
   color: main-white
 
+
+.profile-title
+  font(400, 1.5)
+  margin 20px
+
 .profile-wrap
   text-align: center
+  margin auto
+  margin-top 10px
 
 .profilePic
   height: 200px
@@ -604,6 +627,9 @@ a
   text-align: center
   &:focus
     outline: none
+
+#user-name-input
+  width: 200px
 
 .edit-button
   border: 0
@@ -647,28 +673,33 @@ a
     position relative
     top: 4px
 
-#yellow
-  background yellow
+.pop-out-btn
+  box-shadow inset 0 0 10px gray
+
+
+#light-blue
+  background #00aecc
 
 #orange
-  background orange
+  background #fa9d58
 
 #red
   background main-red
 
 #green
-  background green
+  background #4bbf6b
 
 #blue
-  background blue
+  background #0079bf
 
 #purple
-  background purple
-  
+  background #89609e
+
+
 .admin-buttons
     height: 10%
     width: 100%
-    
+
 .admin-ear
     display: inline-block
     height: 20px
