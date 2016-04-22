@@ -4,8 +4,8 @@
 
         <div class="deal" ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)'
              ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data track by $index">
-            <img ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow"
-                 height="275px" width="125px">
+              <img ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow change-border"
+                 height="300px" width="60px">
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
             <section class="admin-buttons-details">
                 <div class="admin-buttons">
@@ -42,10 +42,8 @@
                 {{showDetail}}
                 <span class='small-text'>at</span><br>{{deal.bus.busName}}
             </div>
-
             <img ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', title, $event)"
-                 class="rightArrow" height="275px" width="125px">
-
+                 class="rightArrow change-border" height="300px" width="60px">
         </div>
 
         <deal-detail-dir show="showDealDetail" deal="selectedDeal"></deal-detail-dir>
