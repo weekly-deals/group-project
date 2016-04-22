@@ -13,7 +13,7 @@ var busSchema = new mongoose.Schema({
     },
     busHours: [String],
     placeId: {type: String, required: true},
-    picture: {type: String},
+    picture: {type: String, default: null},
     phone: {type: String},
     website: {type: String}
 });
