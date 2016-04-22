@@ -44,12 +44,13 @@ angular.module('app')
 
                 function svg() {
                     svgService.getSvg().then(function (svgs) {
-                        svgs.splice((svgs.length-2), 1); //splicing out unwanted svgs (e.g. edit, delete, approve svgs)
-                        svgs.splice((svgs.length-7), 2);
+                        svgs.splice((svgs.length - 2), 1); //splicing out unwanted svgs (e.g. edit, delete, approve svgs)
+                        svgs.splice((svgs.length - 7), 2);
 
                         vm.svgs = svgs;
                     });
                 }
+
                 svg();
 
                 vm.selectSvg = function (svg) {
@@ -78,10 +79,8 @@ angular.module('app')
                 };
 
                 vm.addBusiness = function () {
-                    if (!vm.deal) {
-                        vm.deal = {}
-                    }
-                    if (vm.days) {
+                    $scope.message = '';
+                    if (vm.days && vm.deal) {
                         vm.deal.day = vm.days
                     }
                     if (vm.dealSvg) {
@@ -90,9 +89,54 @@ angular.module('app')
                     if (vm.dealCat) {
                         vm.deal.dealCat = vm.dealCat;
                     }
+                    if (!vm.deal) {
+                        vm.deal = {}
+                    }
+                    var dayCheck = 0;
+                    if (vm.days) {
+                        dayCheck = vm.days.length
+                    }
+                    if (!vm.place || !vm.deal.name || dayCheck === 0 || !vm.days || !vm.dealCat || !vm.deal.description || !vm.deal.details || !vm.dealSvg || !vm.deal) {
+                        $scope.message += 'Please correct : \n';
+                        if (!vm.deal) {
+                            $scope.message += 'EVERYTHING';
+                            return;
+                        }
+                        if (!vm.deal.name) {
+                            $scope.message += 'Deal Name \n';
+                        }
+                        if (!vm.days || dayCheck === 0) {
+                            $scope.message += 'Days deal is available \n';
+                        }
+                        if (!vm.dealCat) {
+                            $scope.message += 'Category \n';
+                        }
+                        if (!vm.deal.description) {
+                            $scope.message += 'Description \n';
+                        }
+                        if (!vm.deal.details) {
+                            $scope.message += ' Details \n';
+                        }
+                        if (!vm.deal.dealSvg) {
+                            $scope.message += 'Emoji \n';
+                        }
+                        if (!vm.place) {
+                            $scope.message += 'Business \n';
+                        }
+                        if (!vm.place.opening_hours.weekday_text[6]) {
+                            $scope.message += 'Find a business with hours listed \n';
+                        }
+                        return;
+                    }
                     vm.place.picture = geoService.busPic;
                     geoService.newBusiness(vm.place, vm.deal).then(function (res) {
                         $scope.addedBus = res;
+                        $scope.message = '';
+                        vm.days = {};
+                        vm.dealSvg = '';
+                        vm.place = '';
+                        vm.dealCat = '';
+                        vm.deal = {};
                     });
                 };
 

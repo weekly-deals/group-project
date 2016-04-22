@@ -47,7 +47,7 @@ angular.module('app')
         vm.selectOption = function (cat) {
             var body = angular.element(document.getElementById('body'));
             if (cat === 'All') {
-                body.scrollTo(0, 0, 0, 250);
+                body.scrollTo(0, 0, 250)
             } else {
                 var category = angular.element(document.getElementById(cat));
                 body.scrollTo(category, -25, 250);

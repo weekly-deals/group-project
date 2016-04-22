@@ -58,6 +58,7 @@ angular.module('app')
                 $scope.showDealDetail = false;
 
                 $scope.openDealDetail = function (deal) {
+                    deal.hideDesc = false;
                     $scope.showDealDetail = true;
                     var body = document.getElementById('body');
                     body.style.overflow = 'hidden';

@@ -12,7 +12,7 @@ angular.module('app')
                 scope.closeDetails = function(){
                     scope.show = false;
                     var body = document.getElementById('body');
-                    body.style.overflow = 'auto';
+                    body.style.overflow = '';
                     var leftArrows = document.getElementsByClassName('leftArrow');
                     var rightArrows = document.getElementsByClassName('rightArrow');
                     Array.prototype.forEach.call(leftArrows, function (e) {
