@@ -15,7 +15,7 @@
                     <use xlink:href="sprite.svg#icon-signs" width="20px" height="20px"></use>
                     </svg>
                 </div>
-                <div ng-if="isAuthenticated() === 'admin'" id="approve" ng-show='deal.showButtons' ng-click='expandEdit()' >
+                <div ng-if="isAuthenticated() === 'admin'" id="approve" ng-show='deal.showButtons' ng-click='expandEdit(deal)' >
                     <svg class="admin-ear">
                     <use xlink:href="sprite.svg#icon-tool" width="20px" height="20px"></use>
                     </svg>
@@ -39,5 +39,6 @@
 
         </div>
         <deal-detail-dir show="showDealDetail" deal="selectedDeal"></deal-detail-dir>
+        <edit-deal-dir show="showDealDetail" deal="selectedDeal"></edit-deal-dir>
     </div>
 </div>

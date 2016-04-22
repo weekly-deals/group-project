@@ -16,12 +16,12 @@
             <span>
                 {{deal.bus.busName}}
             </span>
-                <div>Deal Name: {{deal.dealsName}}</div>
-                <div>Address : {{deal.bus.address}}</div>
+                <div>Deal Name: <input ng-model='updatedDeal.dealsName' autocomplete='off' value="{{deal.dealsName}}" maxlength='50' size="25" placeholder='edit the deal name'></div>
+                <div>Address: {{deal.bus.address}}</div>
             </div>
             <div>
-                <div>Description: {{deal.description}}</div>
-                <div>Exceptions: {{deal.exceptions}}</div>
+                <div>Description: <input ng-model='updatedDeal.description' autocomplete='off' value='{{deal.description}}' maxlength='50' size="25" placeholder='edit the description'></div>
+                <div>Exceptions: <input ng-model='updatedDeal.exceptions' autocomplete='off' value="{{deal.exceptions}}" maxlength='50' size="25" placeholder='edit the exceptions'></div>
             </div>
             <div>
                 <div>Hours:</div>
@@ -49,8 +49,11 @@
                 <div>Phone: {{deal.bus.phone}}</div>
             </div>
         </div>
+        <button type='submit' class='edit-button' ng-click='updateDeal(deal._id, updatedDeal)'>Submit updated info</button>
 
 
     </div>
 </div>
 
+
+         

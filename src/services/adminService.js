@@ -17,5 +17,13 @@ angular.module('app')
             data: data
     })
         
+    };
+    this.updateDeal = function(dealId, data) {
+           $http({
+            method: "PUT",
+            url: "/api/deal/" + dealId,
+            data: data
+            
+        }) 
     }
     });

@@ -51,11 +51,12 @@ angular.module('app')
             })
         });
 
-        (function svgs() {
+        function svgs() {
             svgService.getSvg().then(function (res) {
                 vm.svgs = res;
             })
-        })();
+        }
+        svgs();
 
         vm.days = [
             {
