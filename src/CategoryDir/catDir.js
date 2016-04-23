@@ -33,7 +33,7 @@ angular.module('app')
                         if (ind === 0) {
                             return (ind + 1) * 260 + 'px'
                         } else {
-                            return (ind + 1) * 325 + 'px'
+                            return (ind + 1) * 320 + 'px'
                         }
                     }
                 };
@@ -58,10 +58,19 @@ angular.module('app')
                 $scope.showDealDetail = false;
 
                 $scope.openDealDetail = function (deal) {
+                    deal.hideDesc = false;
                     $scope.showDealDetail = true;
                     var body = document.getElementById('body');
                     body.style.overflow = 'hidden';
                     $scope.selectedDeal = deal;
+                    var leftArrows = document.getElementsByClassName('leftArrow');
+                    var rightArrows = document.getElementsByClassName('rightArrow');
+                    Array.prototype.forEach.call(leftArrows, function (e) {
+                        e.style.display = 'none';
+                    });
+                    Array.prototype.forEach.call(rightArrows, function (e) {
+                        e.style.display = 'none';
+                    });
                 };
 
                 $scope.showDesc = function (deal) {
