@@ -7,7 +7,8 @@ angular.module('app')
             scope: {
                 data: '=',
                 ind: '=',
-                title: '='
+                title: '=',
+                cat: '='
             },
             link: function (scope) {
                 scope.toggle = function () {
@@ -45,12 +46,12 @@ angular.module('app')
                     var scrollDiv = angular.element(document.getElementById(elem));
                     e.stopPropagation();
                     if (dir === 'right') {
-                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() + $scope.windowWidth - 25), 425);
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() + $scope.windowWidth - 125), 425);
                         if (scrollDiv.scrollLeft() >= scrollDiv[0].scrollWidth - $scope.windowWidth - 25) {
                             scrollDiv.scrollLeft(+0, 425);
                         }
                     } else {
-                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() - $scope.windowWidth + 25), 425);
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() - $scope.windowWidth + 125), 425);
                         if (scrollDiv.scrollLeft() <= 25) {
                             scrollDiv.scrollLeft(scrollDiv[0].scrollWidth, 425);
                         }

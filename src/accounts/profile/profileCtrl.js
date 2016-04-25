@@ -52,7 +52,7 @@ angular.module('app')
                     Account.getProfile()
                         .then(function (response) {
                             $scope.user = response.data;
-                            $timeout($scope.setColor, 200);
+                            $timeout($scope.setColor, 300);
                         })
                         .catch(function (err) {
                             // console.log(err);

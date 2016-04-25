@@ -180,6 +180,8 @@ font(x, y)
   align-items: flex-end
   flex-direction row
   justify-content space-around
+  +below(800px)
+    max-width 70%
 
 .location-filter
   background: transparent
@@ -214,7 +216,7 @@ font(x, y)
 
 .cat-option
   color: inherit
-  border 1px solid main-red
+  border 0px
   background-color transparent
   outline none
   border-radius 5px
@@ -300,7 +302,7 @@ a
 .main-deals-container
   margin 250px 0 0 0
   +below(675px)
-    margin-top -90px
+    margin-top 160px
 // .details
 //   min-width 100%
 //   max-width: 100%
@@ -551,6 +553,11 @@ a
   text-align: center
   color: main-white
   margin-top: 0
+
+.login-container
+  margin-top 225px
+  +below(650px)
+    margin-top 200px
 
 .login-footer
   font(200, 1.25)

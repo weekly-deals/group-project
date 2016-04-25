@@ -8,10 +8,11 @@ angular.module('app')
             return $auth.isAuthenticated();
         };
 
-        document.querySelector('.location-filter').focus();
+        function init(){
+          document.querySelector('.location-filter').focus();
+        }
 
         var vm = this;
-
 
         function printCity(city){
                     document.querySelector('.location-filter').focus();
