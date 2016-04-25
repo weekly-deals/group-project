@@ -32,7 +32,7 @@ angular.module('app')
                   }
                     var backgroundsToChange = document.getElementsByClassName('change-color');
                     var gradientChange = document.getElementsByClassName('gradient-change');
-                    gradientChange[0].style.background = 'linear-gradient(' + color + ', transparent)';
+                    gradientChange[0].style.background = 'linear-gradient(' + color + ',' + color + ',' + color +', transparent)';
                     var changeTextColor = document.getElementsByClassName('change-text-color');
                     var borderChange = document.getElementsByClassName('change-border');
                     Array.prototype.forEach.call(borderChange, function(elem) {
