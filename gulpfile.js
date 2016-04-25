@@ -23,6 +23,7 @@ const
     , inject = require('gulp-inject')
     , plumber = require('gulp-plumber')
     , watch = require('gulp-watch')
+    , serveStatic = require('serve-static')
     , processors = [autoprefixer()];
 
 var config = {

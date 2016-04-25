@@ -21,13 +21,23 @@ angular.module('app')
                     });
                 }
             },
-            controller: function ($scope, $auth, Account) {
+            controller: function ($scope, $auth, Account, $timeout) {
 
-                $scope.setColor = function (color) {
+                $scope.setColor = function () {
+                  var color;
+                  if(arguments[0]) {
+                    color = arguments[0];
+                  } else {
+                    color = $scope.user.color;
+                  }
                     var backgroundsToChange = document.getElementsByClassName('change-color');
                     var gradientChange = document.getElementsByClassName('gradient-change');
                     gradientChange[0].style.background = 'linear-gradient(' + color + ', transparent)';
                     var changeTextColor = document.getElementsByClassName('change-text-color');
+                    var borderChange = document.getElementsByClassName('change-border');
+                    Array.prototype.forEach.call(borderChange, function(elem) {
+                      elem.style.boxShadow = '-10px 0 30px -2px ' + color;
+                    });
                     Array.prototype.forEach.call(changeTextColor, function (elemText) {
                         elemText.style.color = color;
                     });
@@ -42,7 +52,7 @@ angular.module('app')
                     Account.getProfile()
                         .then(function (response) {
                             $scope.user = response.data;
-                            $scope.setColor(response.data.color);
+                            $timeout($scope.setColor, 200);
                         })
                         .catch(function (err) {
                             // console.log(err);
