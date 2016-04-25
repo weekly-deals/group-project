@@ -218,11 +218,15 @@ font(x, y)
 
 .cat-option
   color: inherit
-  border 0px
+  border transparent
   background-color transparent
   outline none
-  border-radius 5px
+  border-radius 10px
   margin 5px
+
+#cat-choose
+  border 1px solid main-red
+  background-color rgb(193, 193, 193)
 
 .day
   display: flex
@@ -370,7 +374,7 @@ a
   height: 80vh
   overflow auto
   overflow-x hidden
-  background-color: main-white
+  background-color: rgb(224, 224, 224)
   text-align: center
   margin: 5vw 20vh
   border-radius: 10px
@@ -437,6 +441,7 @@ a
   display: block
   width: 80%
   max-width: 700px
+  padding-bottom 45px
 
 
 .data-entry
@@ -490,7 +495,7 @@ a
 
 .bus-entry
   width: 100%
-  margin 15px
+  margin 30px 0 30px 0
 
 .bus-name-input
   border-radius 15px
@@ -634,6 +639,9 @@ a
 .profile-title
   font(400, 1.5)
   margin 20px
+
+.profile-div
+  width 40%
 
 .profile-wrap
   text-align: center
