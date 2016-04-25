@@ -1,31 +1,23 @@
 <div class="cat-container">
 
     <div class="deals-container" id="{{title}}">
-        <img ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow"
-             height="275px" width="125px">
-        <div class="deal" ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)'
-             ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data track by $index">
-
-              <img ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow change-border"
-                 height="300px" width="60px">
+        <img ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow change-border" height="300px" width="60px">
+        <div class="deal" ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)' ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data track by $index">
 
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
             <section class="admin-buttons-details">
                 <div class="admin-buttons">
-                    <div ng-if="isAuthenticated() === 'admin'" id='edit' ng-show='deal.showButtons'
-                         ng-click='aproveDeal(deal)'>
+                    <div ng-if="isAuthenticated() === 'admin'" id='edit' ng-show='deal.showButtons' ng-click='aproveDeal(deal)'>
                         <svg class="admin-ear">
                             <use xlink:href="sprite.svg#icon-shapes" width="20px" height="20px"></use>
                         </svg>
                     </div>
-                    <div ng-if="isAuthenticated() === 'admin'" id="remove" ng-show='deal.showButtons'
-                         ng-click="removeDeal(deal._id)">
+                    <div ng-if="isAuthenticated() === 'admin'" id="remove" ng-show='deal.showButtons' ng-click="removeDeal(deal._id)">
                         <svg class="admin-ear">
                             <use xlink:href="sprite.svg#icon-signs" width="20px" height="20px"></use>
                         </svg>
                     </div>
-                    <div ng-if="isAuthenticated() === 'admin'" id="approve" ng-show='deal.showButtons'
-                         ng-click='expandEdit()'>
+                    <div ng-if="isAuthenticated() === 'admin'" id="approve" ng-show='deal.showButtons' ng-click='expandEdit()'>
                         <svg class="admin-ear">
                             <use xlink:href="sprite.svg#icon-tool" width="20px" height="20px"></use>
                         </svg>
@@ -38,22 +30,17 @@
                             <use xlink:href="{{deal.svg}}" width="110px" height="110px"></use>
                         </svg>
                     </div>
-            </section>
+                </section>
 
+                <div class="deal-footer" ng-show='!deal.hideDesc'>
+                    {{showDetail}}
+                    <span class='small-text'>at</span><br>{{deal.bus.busName}}
+                </div>
 
-            <div class="deal-footer" ng-show='!deal.hideDesc'>
-                {{showDetail}}
-                <span class='small-text'>at</span><br>{{deal.bus.busName}}
             </div>
 
-            <img ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', title, $event)"
-                 class="rightArrow change-border" height="300px" width="60px">
+            <img ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', title, $event)" class="rightArrow change-border" height="300px" width="60px">
 
+            <deal-detail-dir show="showDealDetail" deal="selectedDeal"></deal-detail-dir>
         </div>
-
-        <img ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', title, $event)"
-             class="rightArrow" height="275px" width="125px">
-
-        <deal-detail-dir show="showDealDetail" deal="selectedDeal"></deal-detail-dir>
     </div>
-</div>
