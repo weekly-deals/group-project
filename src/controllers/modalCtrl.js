@@ -8,14 +8,14 @@ angular.module('app')
             return $auth.isAuthenticated();
         };
 
-        document.querySelector('.location-filter').focus();
+        function init(){
+          document.querySelector('.location-filter').focus();
+        }
 
         var vm = this;
 
-
         function printCity(city){
                     document.querySelector('.location-filter').focus();
-
             var count = 1;
             var print = function () {
                 if (count) {
@@ -32,7 +32,6 @@ angular.module('app')
         }
 
         function removePending(data) {
-
             if (vm.isAuthenticated() !== "admin") {
                 $rootScope.deals = data.data;
                 $rootScope.deals.forEach(function (cat) {

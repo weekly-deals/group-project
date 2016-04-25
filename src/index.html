@@ -50,7 +50,7 @@
                 <span class='light-text'>  in</span>
 
                 <form name="cityForm" class="locationSearch" ng-controller="ModalCtrl" ng-submit="geoCode(city)">
-                    <input name="cityInput" class='location-filter' type='text' ng-model='city' pu-elastic-input>
+                    <input name="cityInput" class='location-filter' type='text' ng-model='city' ng-init="init()" pu-elastic-input>
 
                 </form>
                 <span class='light-text'>on</span>

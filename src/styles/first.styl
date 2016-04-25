@@ -118,6 +118,8 @@ font(x, y)
     height 225px
 
 .gradient-change
+  position fixed
+  height 300px
   +below(675px)
     height 225px
 
@@ -181,6 +183,8 @@ font(x, y)
   align-items: flex-end
   flex-direction row
   justify-content space-around
+  +below(800px)
+    max-width 70%
 
 .location-filter
   background: transparent
@@ -215,11 +219,15 @@ font(x, y)
 
 .cat-option
   color: inherit
-  border 1px solid main-red
+  border transparent
   background-color transparent
   outline none
-  border-radius 5px
+  border-radius 10px
   margin 5px
+
+#cat-choose
+  border 1px solid main-red
+  background-color rgb(193, 193, 193)
 
 .day
   display: flex
@@ -301,7 +309,7 @@ a
 .main-deals-container
   margin 250px 0 0 0
   +below(675px)
-    margin-top -90px
+    margin-top 160px
 // .details
 //   min-width 100%
 //   max-width: 100%
@@ -367,7 +375,7 @@ a
   height: 80vh
   overflow auto
   overflow-x hidden
-  background-color: main-white
+  background-color: rgb(224, 224, 224)
   text-align: center
   margin: 5vw 20vh
   border-radius: 10px
@@ -407,11 +415,31 @@ a
     width 100vw
     height 100vh
 
-.column-1
-  width: 40%
-.column-2
-  width: 40%
-  display: block
+.detail-header
+  font-size 36px
+  margin 20px
+
+.deal-info
+  width: 90%
+  background main-red
+  border-radius 10px
+  margin 15px auto 15px 25px
+  padding 10px
+  color white
+
+.business-info
+  width 90%
+  background white
+  border-radius 10px
+  margin-left 25px
+  padding 10px
+
+.highlight
+  text-decoration underline
+
+.space
+ margin-top 10px
+
 .weblink
   color: blue
 
@@ -434,6 +462,7 @@ a
   display: block
   width: 80%
   max-width: 700px
+  padding-bottom 45px
 
 
 .data-entry
@@ -487,7 +516,7 @@ a
 
 .bus-entry
   width: 100%
-  margin 15px
+  margin 30px 0 30px 0
 
 .bus-name-input
   border-radius 15px
@@ -552,6 +581,11 @@ a
   text-align: center
   color: main-white
   margin-top: 0
+
+.login-container
+  margin-top 225px
+  +below(650px)
+    margin-top 200px
 
 .login-footer
   font(200, 1.25)
@@ -626,6 +660,9 @@ a
 .profile-title
   font(400, 1.5)
   margin 20px
+
+.profile-div
+  width 40%
 
 .profile-wrap
   text-align: center

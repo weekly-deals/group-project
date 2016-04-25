@@ -1,6 +1,7 @@
 angular.module('app')
-    .service('adminService', function ($http, $q) {
+    .service('adminService', function($http) {
         this.deleteDeal = function(dealId) {
+
          $http({
             method: "DELETE",
             url: "/api/deal/" + dealId
@@ -27,3 +28,4 @@ angular.module('app')
         }) 
     }
     });
+

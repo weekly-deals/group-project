@@ -3,27 +3,46 @@
     <div class="modal">
         <span id='close' ng-click='closeDetails()'>&times;</span>
 
-        <div class="column-1">
-            <img ng-src="{{deal.bus.picture}}"/>
-            <svg class='svg' width="75px" height="75px">
-                <use xlink:href="{{deal.svg}}" width="75px" height="75px"></use>
-            </svg>
-        </div>
 
-        <div class="column-2">
-            <div>
-            <span>
-                {{deal.bus.busName}}
-            </span>
-                <div>Deal Name: {{deal.dealsName}}</div>
-                <div>Address : {{deal.bus.address}}</div>
+
+
+
+
+            <div class='detail-header'>
+
+                <span>{{deal.dealsName}} @</span><span>
+                    {{deal.bus.busName}}
+                </span><br>
+
             </div>
+
+                <img ng-src="{{deal.bus.picture}}"/>
+                <svg class='svg' width="75px" height="75px">
+                    <use xlink:href="{{deal.svg}}" width="75px" height="75px"></use>
+                </svg>
+                <div class="deal-info">
+                <div>
+                    <div class='highlight'>DEAL DAYS</div>
+                    <div ng-if="deal.day.indexOf(0) !== -1">Monday</div>
+                    <div ng-if="deal.day.indexOf(1) !== -1">Tuesday</div>
+                    <div ng-if="deal.day.indexOf(2) !== -1">Wednesday</div>
+                    <div ng-if="deal.day.indexOf(3) !== -1">Thursday</div>
+                    <div ng-if="deal.day.indexOf(4) !== -1">Friday</div>
+                    <div ng-if="deal.day.indexOf(5) !== -1">Saturday</div>
+                    <div ng-if="deal.day.indexOf(6) !== -1">Sunday</div>
+                </div>
+                <div>
+                    <div>Description: {{deal.description}}</div>
+                    <div>Exceptions: {{deal.exceptions}}</div>
+                </div>
+                </div>
+                <div class='business-info'>
+                <div class='highlight'>Address</div>
+                <div>{{deal.bus.address}}</div>
+
+
             <div>
-                <div>Description: {{deal.description}}</div>
-                <div>Exceptions: {{deal.exceptions}}</div>
-            </div>
-            <div>
-                <div>Hours:</div>
+                <div class='highlight space'>Business hours:</div>
                 <div>{{deal.bus.busHours[0]}}</div>
                 <div>{{deal.bus.busHours[1]}}</div>
                 <div>{{deal.bus.busHours[2]}}</div>
@@ -32,22 +51,14 @@
                 <div>{{deal.bus.busHours[5]}}</div>
                 <div>{{deal.bus.busHours[6]}}</div>
             </div>
+
             <div>
-                <div>DEAL DAYS</div>
-                {{deal.day}}
-                <div ng-if="deal.day.indexOf(0) !== -1">Monday</div>
-                <div ng-if="deal.day.indexOf(1) !== -1">Tuesday</div>
-                <div ng-if="deal.day.indexOf(2) !== -1">Wednesday</div>
-                <div ng-if="deal.day.indexOf(3) !== -1">Thursday</div>
-                <div ng-if="deal.day.indexOf(4) !== -1">Friday</div>
-                <div ng-if="deal.day.indexOf(5) !== -1">Saturday</div>
-                <div ng-if="deal.day.indexOf(6) !== -1">Sunday</div>
+                <div><a class="weblink highlight" href="{{deal.bus.website}}">Visit this Business' Website!</a></div>
+                <div>Business' Phone Number: {{deal.bus.phone}}</div>
             </div>
-            <div>
-                <div><a class="weblink" href="{{deal.bus.website}}">Visit the Website!</a></div>
-                <div>Phone: {{deal.bus.phone}}</div>
-            </div>
-        </div>
+          </div>
+
+
 
 
     </div>
