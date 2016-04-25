@@ -21,9 +21,9 @@
                     </div>
                     <span ng-hide='vm.selectedCat'>Select a Category:
                     <span class='cat-options' ng-hide="vm.hideDropdown">
-                      <button ng-click='vm.selectCat("Food")' class='cat-option change-color'>Food</button>
-                      <button ng-click='vm.selectCat("Entertainment")' class='cat-option change-color'>Entertainment</button>
-                      <button ng-click='vm.selectCat("Transportation")' class='cat-option change-color'>Transportation</button>
+                      <button ng-click='vm.selectCat("Food")' class='cat-option change-color' id='cat-choose'>Food</button>
+                      <button ng-click='vm.selectCat("Entertainment")' class='cat-option change-color' id='cat-choose'>Entertainment</button>
+                      <button ng-click='vm.selectCat("Transportation")' class='cat-option change-color' id='cat-choose'>Transportation</button>
                     </span>
                     </span>
                     <span ng-show='vm.selectedCat'>Current Category: {{vm.dealCat}}
