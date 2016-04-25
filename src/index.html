@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/lib.min.css">
     <link rel="stylesheet" type="text/css" href="css/css.min.css">
@@ -18,7 +18,7 @@
         <div class='top-nav-tabs'>
             <ul>
                 <li><a ui-sref="home" class="style-nav">Home</a></li>
-                <li ng-if="vm.isAuthenticated() === 'user'" class="style-nav"><span ng-click="vm.openProfile()">Profile</span></li>
+                <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-click="vm.openProfile()">Profile</span></li>
                 <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="login">Login </a></li>
                 <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="signup">Sign up</a></li>
                 <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-click="vm.openAddDeal()">Submit a Deal</span></li>

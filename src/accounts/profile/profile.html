@@ -9,9 +9,10 @@
                 <!-- <span class='small-font'>Edit My Profile</span> -->
                 <form class='edit-form little-text' ng-submit="updateProfile()">
 
+
+                    <!-- <input id='user-name-input' type="text" ng-model="user.displayName" class="edit-inputs"/><br/> -->
                     Change Username:
-                    <!-- <input id='user-name-input' type="text" ng-if="user.displayName" ng-model="user.displayName" class="edit-inputs"/><br/> -->
-                    <input id='user-name-input' type="text" ng-if="user.username" ng-model="user.username" class="edit-inputs"/><br/>
+                    <input id='user-name-input' type="text" ng-model="user.username" class="edit-inputs"/><br/>
                     Change Email:
                     <input type="email" ng-model="user.email" class="edit-inputs"/> <br/>
 
