@@ -1,6 +1,8 @@
 angular.module('app')
     .controller('loginCtrl', function ($scope, $location, $auth, $window) {
 
+      $window.scrollTo(0,0)
+
         $scope.login = function () {
             $auth.login($scope.user)
                 .then(function () {
