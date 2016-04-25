@@ -113,7 +113,7 @@ angular.module('app')
                     });
                 };
 
-                $scope.showDesc = function(deal) {
+                $scope.showDesc = function (deal) {
                     var desc = document.getElementById('deal-desc');
                     desc.style.opacity = '1 !important';
                     deal.hideDesc = true;
@@ -123,45 +123,45 @@ angular.module('app')
                     deal.hideDesc = false;
                 };
 
-                // nat buttons on admin
-                $scope.showButton = function(deal) {
+
+                $scope.showButton = function (deal) {
                     deal.showButtons = true;
-                    var edit = document.getElementById('edit');
-                    var remove = document.getElementById('remove');
                 };
 
                 $scope.hideButton = function(deal) {
                     deal.showButtons = false;
-                    var edit = document.getElementById('edit');
-                    var remove = document.getElementById('remove');
+              
                 };
 
-                //remove a deal nat
-                $scope.removeDeal = function(dealId) {
+                $scope.removeDeal = function (dealId) {
                     adminService.deleteDeal(dealId);
                     location.reload();
                 };
 
-                $scope.isAuthenticated = function() {
-                    // console.log($auth.isAuthenticated())
+                $scope.isAuthenticated = function () {
+
                     return $auth.isAuthenticated();
                 };
 
+                $scope.aproveDeal = function (deal) {
 
-                $scope.aproveDeal = function(deal) {
                     deal.pending = false;
                     adminService.aproveDeal(deal._id, deal);
                 };
 
-                //         $scope.expandEdit = function () {
-                //             var modalEdit = document.getElementById('modal-edit');
-                //             var bodyEdit = document.getElementById('body');
-                //             var curtainEdit = document.getElementById('modal-curtain');
-                //             curtainEdit.style.display = 'block';
-                //             bodyEdit.style.overflow = 'hidden';
-                //             modalEdit.style.display = 'block';
-                //     // google.maps.event.trigger(vm.map, 'resize');
-                // };
+
+                $scope.showDealEdit = false;
+
+                $scope.expandEdit = function (deal) {
+                    $scope.showDealEdit = true;
+                    var body = document.getElementById('body');
+                    body.style.overflow = 'hidden';
+                    $scope.selectedDeal = deal;
+
+                };
+
+
+
 
             }
 

@@ -163,5 +163,21 @@ angular.module('app')
                 $scope.addedBus = res;
             });
         };
+        
+        vm.location = $location;
+        vm.ref = vm.location.path();
+        vm.home = function(state) {
+             if(state === "home") {
+                 vm.ref = '/';
+              
+             } else {
+                 
+                 vm.ref = '/' + state;
+             }
+             
+         }
+        //  vm.home();
+   
+
 
     });
