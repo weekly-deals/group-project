@@ -25,9 +25,11 @@ angular.module('app')
                 $scope.pix = function (ind) {
                     if ($scope.windowWidth > 675) {
                         if (ind === 0) {
-                            return (ind + 1) * 392 + 'px'
-                        } else {
-                            return (ind + 1) * 402 + 'px'
+                            return (ind + 1) * 338 + 'px'
+                        } else if (ind === 1){
+                            return (ind + 1) * 363 + 'px'
+                        } else if (ind === 2) {
+                          return (ind + 1) * 371.25 + 'px'
                         }
                     } else {
                         if (ind === 0) {
