@@ -1,7 +1,7 @@
 <div class="cat-container">
 
     <div class="deals-container" id="{{title}}">
-        <img ng-show="ind >= 0" ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow change-border" height="300px" width="60px">
+        <img ng-style="{'top': pix(ind)}" ng-click="scroll('left', title, $event)" src="arrow.png" class="leftArrow change-border" height="300px" width="60px">
         <div class="deal" ng-show='!deal.hideDeal' ng-mouseenter='showDesc(deal); showButton(deal)' ng-mouseleave='hideDesc(deal); hideButton(deal)' ng-repeat="deal in data track by $index">
 
             <div class="deal-header" ng-show='!deal.hideDesc'>{{deal.dealsName}}</div>
@@ -39,7 +39,7 @@
 
             </div>
 
-            <img ng-show="ind >= 0" ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', title, $event)" class="rightArrow change-border" height="300px" width="60px">
+            <img ng-style="{'top': pix(ind)}" src="arrow.png" ng-click="scroll('right', title, $event)" class="rightArrow change-border" height="300px" width="60px">
 
             <deal-detail-dir show="showDealDetail" deal="selectedDeal"></deal-detail-dir>
         </div>

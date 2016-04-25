@@ -7,7 +7,8 @@ angular.module('app')
             scope: {
                 data: '=',
                 ind: '=',
-                cat: '='
+                cat: '=',
+                title: '='
             },
             link: function(scope) {
                 scope.toggle = function() {
@@ -70,9 +71,9 @@ angular.module('app')
                         }
                     } else {
                         if (ind === 0) {
-                            return (ind + 1) * 260 + 'px'
+                            return (ind + 1) * 220 + 'px'
                         } else {
-                            return (ind + 1) * 320 + 'px'
+                            return (ind + 1) * 305 + 'px'
                         }
                     }
                 };
