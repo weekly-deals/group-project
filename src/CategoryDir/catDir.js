@@ -24,7 +24,11 @@ angular.module('app')
                 angular.element($window).bind('resize', function() {
                     $scope.windowWidth = $window.innerWidth;
                     $scope.numDeals = Math.floor(($window.innerWidth-100)/270);
-                    $scope.scrollWidth = ($scope.numDeals * 270);
+                    if ($scope.numDeals > 0) {
+                        $scope.scrollWidth = ($scope.numDeals * 270);
+                    } else {
+                        $scope.scrollWidth = 270;
+                    }
                 });
 
                 if (!$rootScope.arr) {
