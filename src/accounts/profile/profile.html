@@ -1,6 +1,6 @@
 <div ng-if="show">
     <div id="modal-curtain" ng-click='closeProfile()'></div>
-    <div class='modal profile-div'>
+    <div class='modal'>
         <span id='close' ng-click='closeProfile()'>&times;</span>
 
         <div class='profile-wrap modal-content'>
@@ -35,6 +35,9 @@
                       Update Information
                     </button>
                 </form>
+                <div ng-if="profileUpdated">
+                    Profile successfully updated!
+                </div>
             </div>
         </div>
     </div>

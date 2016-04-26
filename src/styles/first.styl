@@ -2,38 +2,17 @@ main-red = #DD2E44;
 main-grey = #58595B;
 main-white = #F2F2F2;
 
-/** Ultra Light */
-@font-face {
-  font-family: "San Francisco";
-  font-weight: 100;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
-}
-
-/** Thin */
-@font-face {
-  font-family: "San Francisco";
-  font-weight: 200;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
-}
-
-/** Regular */
-@font-face {
-  font-family: "San Francisco";
-  font-weight: 400;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-}
-
 @keyframes fade-out
   from {
     background-color: main-white;
   }
   to {
-    background-color: #909295;
+    background-color: main-white;
   }
 
 @keyframes fade-in
   from {
-    opacity: .2
+    opacity: 1
   }
   to {
     opacity: 1
@@ -56,9 +35,10 @@ html {
 
 body
   height 100%
-   width 100%
+  width 100%
+  padding-bottom 50px
   overflow-x hidden
-  font-family: 'San Francisco'
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto","Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans","Helvetica Neue", Arial, sans-serif;
   +below(675px)
     font-size 8px
 
@@ -103,13 +83,14 @@ font(x, y)
   color: main-white
   position: fixed
   width: 100%
-  top: 0
+  top: 50px
   z-index: 20
 
 .gradient
+  transition: transform 0.4s;
   position fixed
   z-index 19
-  top 0
+  top 50px
   height 300px
   width 100%
   background: linear-gradient(main-red, transparent)
@@ -127,15 +108,20 @@ font(x, y)
 
 .top-nav-tabs
   font(100, 1.75)
+  width 100%
+  z-index 20
+  top 0
+  color main-white
+  position absolute
   display: flex
-  justify-content: space-around
+  justify-content flex-end
   a
     margin 0
   ul
     padding 0
     margin 10px
   li
-    margin 0 60px 0 60px
+    margin 0 20px 0 60px
     cursor pointer
     +below(900px)
       margin 0 30px 0 30px
@@ -149,10 +135,10 @@ font(x, y)
   background transparent
   left -17px
   cursor pointer
-  z-index 45
+  z-index 1
   padding 120px 0 120px 0
   padding-right 20px
-  box-shadow -10px 0 30px -2px main-red
+  box-shadow -10px 0 30px -2px transparent
 
 
 .rightArrow
@@ -160,10 +146,10 @@ font(x, y)
   right -17px
   margin auto
   cursor pointer
-  z-index 45
+  z-index 1
   padding 120px 0 120px 0
   padding-right 20px
-  box-shadow -10px 0 30px -2px main-red
+  box-shadow -10px 0 30px -2px transparent
 
 
 
@@ -287,6 +273,7 @@ a
 
 .deal
   min-width 220px
+  padding 15px
   max-width: 220px
   height: 300px
   margin 25px
@@ -299,6 +286,7 @@ a
   font-size: 24px
   font-weight: ultralight
   padding-bottom 18px
+  overflow hidden
   &:hover
     animation-fill-mode: forwards
     animation-name: fade-out
@@ -309,31 +297,27 @@ a
   margin 250px 0 0 0
   +below(675px)
     margin-top 160px
-// .details
-//   min-width 100%
-//   max-width: 100%
-//   height: 200px
+
+.details
+  display flex
+  align-items center
+  justify-content center
+  height 100%
 
 .deal-desc
   display flex
-  flex-direction column
-  text-align center
-  justify-content center
-  width 220px
-  height 300px
-  color main-white
+  color black
   z-index 20
   &:hover
     animation-fill-mode: forwards
     animation-name: fade-in
-    animation-duration .6s
+    animation-duration .4s
     cursor pointer
 
 .deal-header
   text-align: center
   width: 100%
   height: 20%
-  margin-top: 5%
 
 .deal-pic
   display flex
@@ -361,22 +345,20 @@ a
   margin-left 50px
   margin-right 50px
 
-
-
 /*maps-view*/
 .modal
   position: fixed
   color: black
   z-index: 100
-  left: 0
-  top: 0
+  left: 20vw
+  top: 10vh
   width: 60vw
   height: 80vh
   overflow auto
   overflow-x hidden
   background-color: rgb(224, 224, 224)
   text-align: center
-  margin: 5vw 20vh
+  margin: auto
   border-radius: 10px
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   +below(600px)
@@ -422,7 +404,7 @@ a
   width: 90%
   background main-red
   border-radius 10px
-  margin 15px auto 15px 25px
+  margin 15px auto 15px auto
   padding 10px
   color white
 
@@ -430,7 +412,8 @@ a
   width 90%
   background white
   border-radius 10px
-  margin-left 25px
+  margin auto
+  margin-bottom 15px
   padding 10px
 
 .highlight
@@ -448,6 +431,7 @@ a
   margin auto
   background white
   border-radius 10px
+  cursor pointer
 
 
 .svgDisplay
@@ -472,7 +456,6 @@ a
   margin: auto
   border-radius 10px
 
-
 .deal-title-input
   border-radius 15px
   height: 30px
@@ -491,7 +474,6 @@ a
   margin 0 5px 0 0
   border main-grey
   border-radius 5px
-  margin 2px
   outline none
   min-height 30px
   min-width 30px
@@ -508,7 +490,7 @@ a
     margin-bottom 6px
 
 .deal-textarea
-  width: 60%
+  width: 85%
   border-radius: 15px
   margin 5px
   border: none
@@ -522,12 +504,12 @@ a
   height: 30px
   border: none
   margin: 5px
-  width: 50%
+  width: 80%
 
 #close
-  position: absolute
-  top: 15px
-  right: 35px
+  position: fixed
+  top: 9vh
+  right: 22vw
   color: #bbb
   font(400, 2.5)
   transition: 0.3s
@@ -594,6 +576,7 @@ a
 
 .login-header
   font(400, 3.75)
+  padding-bottom 20px
   text-align: center
   color: main-white
 
@@ -659,9 +642,6 @@ a
 .profile-title
   font(400, 1.5)
   margin 20px
-
-.profile-div
-  width 40%
 
 .profile-wrap
   text-align: center
@@ -754,6 +734,8 @@ a
 
 
 .admin-buttons
+    justify-content space-around
+    display flex
     height: 10%
     width: 100%
 
@@ -761,6 +743,7 @@ a
     display: inline-block
     height: 20px
     width: 20px
+
 .admin-buttons-details
     display: flex
     flex-direction: column

@@ -1,5 +1,6 @@
 angular.module('app')
     .service('adminService', function($http) {
+      
         this.deleteDeal = function(dealId) {
             $http({
                 method: "DELETE",
@@ -12,6 +13,15 @@ angular.module('app')
                 method: "PUT",
                 url: "/api/deal/" + dealId,
                 data: data
+            })
+        };
+
+        this.updateDeal = function(dealId, data) {
+            $http({
+                method: "PUT",
+                url: "/api/deal/" + dealId,
+                data: data
+
             })
         };
 

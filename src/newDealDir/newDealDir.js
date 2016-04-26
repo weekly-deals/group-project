@@ -20,6 +20,7 @@ angular.module('app')
                     Array.prototype.forEach.call(rightArrows, function (e) {
                         e.style.display = 'block';
                     });
+                    scope.addedBus = false;
                 }
             },
             controller: function (NgMap, geoService, svgService, $scope) {

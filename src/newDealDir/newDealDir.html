@@ -8,8 +8,8 @@
                 <div class='deal-entry'>
                     <!--added an input with cat to pass into the server nat -->
                     Deal Name:
-                    <input class='deal-title-input' type="text" ng-model='vm.deal.name' placeholder="  2 or 3 word title for your deal" />
-                    <br> Please select the day(s) that this deal is available.
+                    <input class='deal-title-input' type="text" ng-model='vm.deal.name' placeholder="  2 or 3 word deal title" />
+                    <br> What days does this deal happen?
                     <div class='day-wrapper'>
                         <div id='0' width='25px' height='25px' ng-click='vm.selectDay("0")' class='day-box change-color'>M</div>
                         <div id='1' width='25px' height='25px' ng-click='vm.selectDay("1")' class='day-box change-color'>Tu</div>
@@ -23,21 +23,21 @@
                     <span class='cat-options' ng-hide="vm.hideDropdown">
                       <button ng-click='vm.selectCat("Food")' class='cat-option change-color' id='cat-choose'>Food</button>
                       <button ng-click='vm.selectCat("Entertainment")' class='cat-option change-color' id='cat-choose'>Entertainment</button>
-                      <button ng-click='vm.selectCat("Transportation")' class='cat-option change-color' id='cat-choose'>Transportation</button>
+                      <button ng-click='vm.selectCat("Education")' class='cat-option change-color' id='cat-choose'>Education</button>
                     </span>
                     </span>
                     <span ng-show='vm.selectedCat'>Current Category: {{vm.dealCat}}
                     <select class='cat-selector' ng-click='vm.openCat()'></select>
                   </span>
-                    <br> Tell us why this is such a good deal!
+                    <br> Give a description of the deal.
                     <br>
 
                     <textarea class='deal-textarea' ng-model='vm.deal.description' placeholder='  Enter description...'></textarea>
-                    <br> Let us know about any special hours or exceptions! <br>
+                    <br> Any special hours or exceptions? <br>
 
                     <textarea class='deal-textarea' ng-model='vm.deal.details'
                               placeholder='  Enter hours or exceptions...'></textarea>
-                        <br>Choose an emoji for your deal!
+                        <br>Pick an emoji for your deal!
                         <div class="svg-wrapper">
                             <div class="svgDisplay">
                                 <svg class='svg' id="{{svg}}" ng-click='vm.selectSvg(svg)' width="2em" height="2em"
@@ -55,8 +55,8 @@
                         <div>
                             Search for the business that offers this deal:
 
-                            <input class='bus-name-input' places-auto-complete size=80 types="{{types}}" on-place-changed="vm.placeChanged()" placeholder="  Enter business name and search for a business" />
-                            <br/> Can you find a picture
+                            <input class='bus-name-input' places-auto-complete size=80 types="{{types}}" on-place-changed="vm.placeChanged()" placeholder="  Business search..." />
+                            <br/> Add a picture if you'd like
                             <input class='bus-pic-input' fileread type='file'>
                         </div>
 
@@ -66,36 +66,37 @@
     {{message}}
 </div>
 
-                    <div ng-if="vm.place" class='business-info'>
+                    <div ng-if="addedBus" class='business-info'>
 
+                        <span>Thanks for submitting a deal! It will be reviewed and added shortly.</span>
 
-                        <span>{{vm.place.name}}</span>
-                        <br/>
-                        <span>{{vm.place.formatted_address}}</span>
-                        <br/>
-                        <span>{{vm.place.formatted_phone_number}}</span>
-                        <br/>
-                        <span><a ng-href="{{vm.place.website}}">{{vm.place.name}}</a> </href></span>
-                        <br/>
-                        <span>{{vm.place.opening_hours.weekday_text[6]}}</span>
-                        <br/>
-                        <span>{{vm.place.opening_hours.weekday_text[0]}}</span>
-                        <br/>
-                        <span>{{vm.place.opening_hours.weekday_text[1]}}</span>
-                        <br/>
-                        <span>{{vm.place.opening_hours.weekday_text[2]}}</span>
-                        <br/>
-                        <span>{{vm.place.opening_hours.weekday_text[3]}}</span>
-                        <br/>
-                        <span>{{vm.place.opening_hours.weekday_text[4]}}</span>
-                        <br/>
-                        <span>{{vm.place.opening_hours.weekday_text[5]}}</span>
-                        <br/>
+                        <!--<span>{{vm.place.name}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.formatted_address}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.formatted_phone_number}}</span>-->
+                        <!--<br/>-->
+                        <!--<span><a ng-href="{{vm.place.website}}">{{vm.place.name}}</a> </href></span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.opening_hours.weekday_text[6]}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.opening_hours.weekday_text[0]}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.opening_hours.weekday_text[1]}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.opening_hours.weekday_text[2]}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.opening_hours.weekday_text[3]}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.opening_hours.weekday_text[4]}}</span>-->
+                        <!--<br/>-->
+                        <!--<span>{{vm.place.opening_hours.weekday_text[5]}}</span>-->
+                        <!--<br/>-->
 
                     </div>
 
 
-                    <input type="submit" ng-click="vm.addBusiness()" value="Submit">Submit Business</input>
+                    <input type="submit" class="edit-button" ng-click="vm.addBusiness()" value="Submit"></input>
                 </form>
             </section>
             <ng-map scrollwheel="false"></ng-map>

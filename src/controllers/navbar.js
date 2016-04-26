@@ -53,9 +53,9 @@ angular.module('app')
             if (cat === 'All') {
                 body.scrollTo(0, 0, 250)
             } else {
-                var category = angular.element(document.getElementById(cat));
+                var category = angular.element(document.getElementById(cat))[0].offsetTop;
                 if (!isEmpty(category)) {
-                    body.scrollTo(category, -25, 250);
+                    body.scrollTo(0, category-250, 250);
                     //elem to scroll to, offset, duration
                 }
             }
@@ -67,6 +67,13 @@ angular.module('app')
             return !(/login|signup/.test($location.url()))
         };
 
+        $scope.$on('$locationChangeStart', function(event) {
+            if ($location.url() === '/') {
+              vm.notHome = false;
+            } else {
+              vm.notHome = true;
+            }
+        });
 
         vm.isAuthenticated = function() {
             return $auth.isAuthenticated();
@@ -163,5 +170,14 @@ angular.module('app')
                 $scope.addedBus = res;
             });
         };
+
+        angular.element($window).bind('scroll', function() {
+            var grad1 = document.getElementsByClassName('gradient')[0];
+            if ($window.pageYOffset >= 50) {
+                grad1.style.transform = "translateY(-100px)";
+            } else {
+                grad1.style.transform = "translateY(-50px)";
+            }
+        });
 
     });
