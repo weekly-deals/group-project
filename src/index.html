@@ -12,20 +12,21 @@
 
 <body class='main-container change-color' id="body" ng-cloak>
 
+<div ng-controller="NavbarCtrl as vm">
+<div class='top-nav-tabs'>
+    <ul>
+        <li ng-if="vm.notHome"><a ui-sref="home" class="style-nav">Back to Deals</a></li>
+        <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-click="vm.openProfile()">Profile</span></li>
+        <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="login">Login </a></li>
+        <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="signup">Sign up</a></li>
+        <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-click="vm.openAddDeal()">Submit a Deal</span></li>
+        <li ng-if="vm.isAuthenticated()" class="style-nav"><a ui-sref="logout">Logout</a></li>
+    </ul>
+</div>
+
 <div class="gradient gradient-change">
 
-    <div class='main-nav-bar' ng-controller="NavbarCtrl as vm">
-
-        <div class='top-nav-tabs'>
-            <ul>
-                <li ng-if="vm.notHome"><a ui-sref="home" class="style-nav">Back to Deals</a></li>
-                <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-click="vm.openProfile()">Profile</span></li>
-                <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="login">Login </a></li>
-                <li ng-if="!vm.isAuthenticated()" class="style-nav"><a ui-sref="signup">Sign up</a></li>
-                <li ng-if="vm.isAuthenticated()" class="style-nav"><span ng-click="vm.openAddDeal()">Submit a Deal</span></li>
-                <li ng-if="vm.isAuthenticated()" class="style-nav"><a ui-sref="logout">Logout</a></li>
-            </ul>
-        </div>
+    <div class='main-nav-bar'>
 
         <div class='nav-filter' ng-if="vm.hideDealBar()">
             <div class='large-text'>
@@ -81,6 +82,7 @@
 
 
 
+</div>
 </div>
 <ui-view></ui-view>
 

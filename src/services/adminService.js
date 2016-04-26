@@ -1,5 +1,6 @@
 angular.module('app')
     .service('adminService', function($http) {
+      
         this.deleteDeal = function(dealId) {
             $http({
                 method: "DELETE",

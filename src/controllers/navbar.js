@@ -171,4 +171,13 @@ angular.module('app')
             });
         };
 
+        angular.element($window).bind('scroll', function() {
+            var grad1 = document.getElementsByClassName('gradient')[0];
+            if ($window.pageYOffset >= 50) {
+                grad1.style.transform = "translateY(-100px)";
+            } else {
+                grad1.style.transform = "translateY(-50px)";
+            }
+        });
+
     });

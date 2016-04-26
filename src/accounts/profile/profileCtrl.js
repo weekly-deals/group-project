@@ -19,6 +19,7 @@ angular.module('app')
                     Array.prototype.forEach.call(rightArrows, function (e) {
                         e.style.display = 'block';
                     });
+                    scope.profileUpdated = false;
                 }
             },
             controller: function ($scope, $auth, Account, $timeout) {
@@ -65,7 +66,9 @@ angular.module('app')
                     if (Account.userPic) {
                         $scope.user.picture = Account.userPic;
                     }
-                    Account.updateProfile($scope.user);
+                    Account.updateProfile($scope.user).then(function(res){
+                        $scope.profileUpdated = true;
+                    });
                 };
 
             }
