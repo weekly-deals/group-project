@@ -98,6 +98,7 @@ angular.module('app')
                 $scope.showDealDetail = false;
 
                 $scope.openDealDetail = function(deal) {
+                    console.log('1')
                     deal.hideDesc = false;
                     $scope.showDealDetail = true;
                     var body = document.getElementById('body');
@@ -153,15 +154,26 @@ angular.module('app')
                     adminService.aproveDeal(deal._id, deal);
                 };
 
-                //         $scope.expandEdit = function () {
-                //             var modalEdit = document.getElementById('modal-edit');
-                //             var bodyEdit = document.getElementById('body');
-                //             var curtainEdit = document.getElementById('modal-curtain');
-                //             curtainEdit.style.display = 'block';
-                //             bodyEdit.style.overflow = 'hidden';
-                //             modalEdit.style.display = 'block';
-                //     // google.maps.event.trigger(vm.map, 'resize');
-                // };
+                $scope.showDealEdit = false;
+
+                $scope.expandEdit = function (deal) {
+                    console.log('2')
+                    deal.hideDesc = false;
+                    $scope.selectedDeal = deal;
+                    var leftArrows = document.getElementsByClassName('leftArrow');
+                    var rightArrows = document.getElementsByClassName('rightArrow');
+                    Array.prototype.forEach.call(leftArrows, function(e) {
+                        e.style.display = 'none';
+                    });
+                    Array.prototype.forEach.call(rightArrows, function(e) {
+                        e.style.display = 'none';
+                    });
+
+                    $scope.showDealEdit = true;
+                    var body = document.getElementById('body');
+                    body.style.overflow = 'hidden';
+                    $scope.selectedDeal = deal;
+                };
 
             }
 
