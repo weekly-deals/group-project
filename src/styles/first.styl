@@ -2,27 +2,6 @@ main-red = #DD2E44;
 main-grey = #58595B;
 main-white = #F2F2F2;
 
-/** Ultra Light */
-@font-face {
-  font-family: "San Francisco";
-  font-weight: 100;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
-}
-
-/** Thin */
-@font-face {
-  font-family: "San Francisco";
-  font-weight: 200;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
-}
-
-/** Regular */
-@font-face {
-  font-family: "San Francisco";
-  font-weight: 400;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-}
-
 @keyframes fade-out
   from {
     background-color: main-white;
@@ -56,9 +35,9 @@ html {
 
 body
   height 100%
-   width 100%
+  width 100%
   overflow-x hidden
-  font-family: 'San Francisco'
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto","Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans","Helvetica Neue", Arial, sans-serif;
   +below(675px)
     font-size 8px
 
@@ -659,9 +638,6 @@ a
 .profile-title
   font(400, 1.5)
   margin 20px
-
-.profile-div
-  width 40%
 
 .profile-wrap
   text-align: center

@@ -11,6 +11,8 @@ const express = require('express'),
     accounts = require('./endpoints/accounts.js'),
     checkRole = require('./checkRole.js'),
     data = require('./endpoints/data.js'),
+    https =  require('https'),
+    fs = require('fs'),
     protectJSON = require('./protectJSON.js'),
     s3Ctrl = require('./controllers/s3controller.js');
 
