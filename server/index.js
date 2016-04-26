@@ -11,7 +11,7 @@ const express = require('express'),
     accounts = require('./endpoints/accounts.js'),
     checkRole = require('./checkRole.js'),
     data = require('./endpoints/data.js'),
-    https =  require('https'),
+    https = require('https'),
     fs = require('fs'),
     protectJSON = require('./protectJSON.js'),
     s3Ctrl = require('./controllers/s3controller.js');
@@ -19,20 +19,24 @@ const express = require('express'),
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/weekly');
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-mongoose.connection.once('open', function () {
+mongoose.connection.once('open', function() {
     console.log('Connected to MongoDB!');
 });
 
-app.use(helmet());
+// app.use(helmet());
 // app.use(protectJSON);
-app.use(compression());
+// app.use(compression());
 app.use(express.static(__dirname + '/../dist'));
+// app.use(cors({origin: "https://whatsyourdeal.today"}));
+// app.options('*', cors());
 app.use(cors());
-app.options('*', cors());
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-
-
+app.use(bodyParser.json({
+    limit: '5mb'
+}));
+app.use(bodyParser.urlencoded({
+    limit: '5mb',
+    extended: true
+}));
 
 //amazon s3
 app.post('/api/newimage', s3Ctrl.postImage);
@@ -53,9 +57,9 @@ app.delete('/api/bus/:id', checkRole('user'), data.deleteBus);
 app.post('/api/deal', checkRole('user'), data.addDeal);
 app.put('/api/deal/:id', checkRole('admin'), data.editDeal);
 app.delete('/api/deal/:id', checkRole('admin'), data.deleteDeal);
-app.get('/api/deal', data.getDeal);  //nat endpoint to get the deal
+app.get('/api/deal', data.getDeal); //nat endpoint to get the deal
 
-app.listen(port, function () {
+app.listen(port, function() {
     console.log('Listening on port ' + port);
 });
 
