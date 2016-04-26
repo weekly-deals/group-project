@@ -67,6 +67,13 @@ angular.module('app')
             return !(/login|signup/.test($location.url()))
         };
 
+        $scope.$on('$locationChangeStart', function(event) {
+            if ($location.url() === '/') {
+              vm.notHome = false;
+            } else {
+              vm.notHome = true;
+            }
+        });
 
         vm.isAuthenticated = function() {
             return $auth.isAuthenticated();
