@@ -54,7 +54,6 @@ angular.module('app')
                 body.scrollTo(0, 0, 250)
             } else {
                 var category = angular.element(document.getElementById(cat))[0].offsetTop;
-                console.log(category);
                 if (!isEmpty(category)) {
                     body.scrollTo(0, category-250, 250);
                     //elem to scroll to, offset, duration
