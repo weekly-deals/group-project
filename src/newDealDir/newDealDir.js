@@ -10,6 +10,8 @@ angular.module('app')
             link: function (scope) {
                 scope.closeAddDeal = function () {
                     scope.show = false;
+                    var topNav = document.getElementsByClassName('top-nav-tabs')[0];
+                    topNav.style.zIndex = 20;
                     var body = document.getElementById('body');
                     body.style.overflow = 'auto';
                     var leftArrows = document.getElementsByClassName('leftArrow');

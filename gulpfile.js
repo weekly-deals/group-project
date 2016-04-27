@@ -23,7 +23,6 @@ const
     , inject = require('gulp-inject')
     , plumber = require('gulp-plumber')
     , watch = require('gulp-watch')
-    , serveStatic = require('serve-static')
     , processors = [autoprefixer()];
 
 var config = {
@@ -66,12 +65,12 @@ gulp.task('server', function () {
 
 gulp.task('bowerCss', function () {
     return gulp.src(mainBowerFiles('**/*.css'))
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('lib.min.css'))
-        // .pipe(uncss({html: ['src/**/*.html']}))
-        .pipe(sourcemaps.write('/maps'))
+        .pipe(uncss({html: ['src/**/*.html']}))
+        // .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/css'))
         .pipe(reload({stream: true, match: '**/*.css'}));
 });
@@ -81,7 +80,7 @@ var bowerFiles = mainBowerFiles('**/*.js').concat(['src/**/satellizer.js']);
 gulp.task('bowerJs', function () {
     return gulp.src(bowerFiles)
         .pipe(sourcemaps.init())
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(concat('lib.min.js'))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/js'))
@@ -91,14 +90,14 @@ gulp.task('bowerJs', function () {
 gulp.task('stylus', function () {
     return gulp.src('src/**/*.styl')
         .pipe(flatten())
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(stylus({use: rupture()}))
         .pipe(plumber())
-        // .pipe(uncss({html: ['src/**/*.html']}))
+        .pipe(uncss({html: ['src/**/*.html']}))
         .pipe(cleanCSS())
         .pipe(postcss(processors))
         .pipe(concat('css.min.css'))
-        .pipe(sourcemaps.write('/maps'))
+        // .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./dist/css'))
         .pipe(reload({stream: true, match: '**/*.css'}));
 });
@@ -125,7 +124,7 @@ gulp.task('js', ['inject'], function () {
         .pipe(flatten())
         .pipe(sourcemaps.init())
         .pipe(annotate())
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(order([
             "app.js",
             'navbar.js',

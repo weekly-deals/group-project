@@ -349,11 +349,11 @@ a
 .modal
   position: fixed
   color: black
-  z-index: 100
+  z-index: 150
   left: 20vw
-  top: 10vh
+  top: 0
   width: 60vw
-  height: 80vh
+  height: 100vh
   overflow auto
   overflow-x hidden
   background-color: rgb(224, 224, 224)
@@ -361,7 +361,9 @@ a
   margin: auto
   border-radius: 10px
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  +below(600px)
+  +below(675px)
+    top 0
+    left 0
     margin 0
     width 100vw
     height 100vh
@@ -373,7 +375,7 @@ a
   left 0
   background-color rgba(50, 50, 50, 0.92)
   position fixed
-  z-index 20
+  z-index 100
   font(200, 1)
 
 .admin-edit-modal  //nat
@@ -508,15 +510,18 @@ a
 
 #close
   position: fixed
-  top: 9vh
+  top: .5vh
   right: 22vw
   color: #bbb
   font(400, 2.5)
-  transition: 0.3s
   &:hover, &:focus
     color: main-grey
     text-decoration: none
     cursor: pointer
+  +below(675px)
+    font(400, 5)
+    top 1vh
+    right 1vh
 
 .signup-form
   width: 400px
@@ -748,12 +753,11 @@ a
     display: flex
     flex-direction: column
 
-.loader {
+.loader
   position: fixed
   left: 0px;
-	top: 100px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('../page-loader.gif') 50% 50% no-repeat transparent;
-}
+  top: 100px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('../page-loader.gif') 50% 50% no-repeat transparent;
