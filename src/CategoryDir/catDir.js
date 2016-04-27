@@ -19,8 +19,16 @@ angular.module('app')
             controller: function($scope, $auth, $window, Account, adminService, $timeout, $rootScope) {
 
                 $scope.windowWidth = $window.innerWidth;
+                $scope.numDeals = Math.floor(($window.innerWidth+100)/270);
+                $scope.scrollWidth = ($scope.numDeals * 270);
                 angular.element($window).bind('resize', function() {
                     $scope.windowWidth = $window.innerWidth;
+                    $scope.numDeals = Math.floor(($window.innerWidth-100)/270);
+                    if ($scope.numDeals > 0) {
+                        $scope.scrollWidth = ($scope.numDeals * 270);
+                    } else {
+                        $scope.scrollWidth = 270;
+                    }
                 });
 
                 if (!$rootScope.arr) {
@@ -46,7 +54,7 @@ angular.module('app')
                     });
                 }
 
-                var locationChange = document.getElementsByClassName('location-filter')[0]
+                var locationChange = document.getElementsByClassName('location-filter')[0];
                 angular.element(locationChange).bind('change', function() {
                     $timeout(arrMakr, 200);
                 });
@@ -78,17 +86,16 @@ angular.module('app')
                     }
                 };
 
-                //each deal is 270px wide including all border and margin
                 $scope.scroll = function(dir, elem, e) {
                     var scrollDiv = angular.element(document.getElementById(elem));
                     e.stopPropagation();
                     if (dir === 'right') {
-                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() + $scope.windowWidth - 125), 425);
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() + $scope.scrollWidth), 425);
                         if (scrollDiv.scrollLeft() >= scrollDiv[0].scrollWidth - $scope.windowWidth - 25) {
                             scrollDiv.scrollLeft(+0, 425);
                         }
                     } else {
-                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() - $scope.windowWidth + 125), 425);
+                        scrollDiv.scrollLeft(+(scrollDiv.scrollLeft() - $scope.scrollWidth), 425);
                         if (scrollDiv.scrollLeft() <= 25) {
                             scrollDiv.scrollLeft(scrollDiv[0].scrollWidth, 425);
                         }
@@ -98,7 +105,6 @@ angular.module('app')
                 $scope.showDealDetail = false;
 
                 $scope.openDealDetail = function(deal) {
-                    console.log('1')
                     deal.hideDesc = false;
                     $scope.showDealDetail = true;
                     var body = document.getElementById('body');
@@ -157,7 +163,6 @@ angular.module('app')
                 $scope.showDealEdit = false;
 
                 $scope.expandEdit = function (deal) {
-                    console.log('2')
                     deal.hideDesc = false;
                     $scope.selectedDeal = deal;
                     var leftArrows = document.getElementsByClassName('leftArrow');
