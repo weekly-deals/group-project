@@ -12,8 +12,6 @@ angular.module('app')
           document.querySelector('.location-filter').focus();
         }
 
-        var vm = this;
-
         function printCity(city){
                     document.querySelector('.location-filter').focus();
             var count = 1;
@@ -48,9 +46,16 @@ angular.module('app')
 
         geoService.getCurrentPosition().then(function (latlng) {
             geoService.reverseGeoCode(latlng).then(function (city) {
+                $scope.loading = false;
                 printCity(city);
             });
             geoService.getDeal(latlng).then(function (data) {
+                removePending(data);
+            });
+        }).catch(function(){
+            $scope.loading = false;
+            printCity('Provo');
+            geoService.getDeal({lat: 40.2262019, lng: -111.66072919999999}).then(function (data) {
                 removePending(data);
             });
         });

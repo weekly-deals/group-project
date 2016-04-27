@@ -81,7 +81,7 @@
   </div>
 
 
-  <div class='loader' ng-show='!vm.loading'></div>
+  <div ng-controller="ModalCtrl" class='loader' ng-show='loading' ng-init="loading = true"></div>
 
 </div>
 </div>

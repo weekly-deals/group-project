@@ -8,6 +8,8 @@ angular.module('app')
         vm.showProfile = false;
 
         vm.openProfile = function() {
+            var topNav = document.getElementsByClassName('top-nav-tabs')[0];
+            topNav.style.zIndex = 18;
             vm.showProfile = true;
             var body = document.getElementById('body');
             body.style.overflow = 'hidden';
@@ -24,6 +26,8 @@ angular.module('app')
         vm.showAddDeal = false;
 
         vm.openAddDeal = function() {
+            var topNav = document.getElementsByClassName('top-nav-tabs')[0];
+            topNav.style.zIndex = 18;
             vm.showAddDeal = true;
             var body = document.getElementById('body');
             var leftArrows = document.getElementsByClassName('leftArrow');
@@ -82,6 +86,7 @@ angular.module('app')
         vm.types = "['establishment']";
 
         geoService.getCurrentPosition().then(function(latlng) {
+            vm.loading = false;
             geoService.reverseGeoCode(latlng).then(function(city) {
                 vm.city = city;
             })
@@ -170,10 +175,6 @@ angular.module('app')
                 $scope.addedBus = res;
             });
         };
-
-        $scope.$on('$stateChangeSuccess', function() {
-          vm.loading = 'done';
-        });
 
         angular.element($window).bind('scroll', function() {
             var grad1 = document.getElementsByClassName('gradient')[0];
