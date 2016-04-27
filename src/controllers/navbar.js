@@ -171,6 +171,10 @@ angular.module('app')
             });
         };
 
+        $scope.$on('$stateChangeSuccess', function() {
+          vm.loading = 'done';
+        });
+
         angular.element($window).bind('scroll', function() {
             var grad1 = document.getElementsByClassName('gradient')[0];
             if ($window.pageYOffset >= 50) {
