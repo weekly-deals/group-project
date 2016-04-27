@@ -7,11 +7,6 @@ angular.module('app')
 
         vm.showProfile = false;
 
-        vm.loading = true;
-        $scope.$on('page-load', function(){
-          vm.loading = false;
-        })
-
         vm.openProfile = function() {
             vm.showProfile = true;
             var body = document.getElementById('body');
@@ -175,6 +170,10 @@ angular.module('app')
                 $scope.addedBus = res;
             });
         };
+
+        $scope.$on('$stateChangeSuccess', function() {
+          vm.loading = 'done';
+        });
 
         angular.element($window).bind('scroll', function() {
             var grad1 = document.getElementsByClassName('gradient')[0];
