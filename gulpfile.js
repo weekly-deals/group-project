@@ -8,6 +8,7 @@ const
     annotate = require('gulp-ng-annotate'),
     mainBowerFiles = require('main-bower-files'),
     cleanCSS = require('gulp-clean-css'),
+    inlinesource = require('gulp-inline-source'),
     sourcemaps = require('gulp-sourcemaps'),
     print = require('gulp-print'),
     postcss = require('gulp-postcss'),
