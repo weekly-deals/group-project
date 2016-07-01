@@ -65,7 +65,7 @@ gulp.task('server', function() {
     });
 });
 
-gulp.task('stylus', function() {
+gulp.task('stylus', function(done) {
     return gulp.src(mainBowerFiles('**/*.css').concat(['src/**/*.styl']))
         .pipe(flatten())
         // .pipe(sourcemaps.init())
@@ -80,11 +80,8 @@ gulp.task('stylus', function() {
         .pipe(postcss(processors))
         .pipe(concat('css.min.css'))
         // .pipe(sourcemaps.write('/maps'))
-        .pipe(gulp.dest('./dist/css'))
-        .pipe(reload({
-            stream: true,
-            match: '**/*.css'
-        }));
+        .pipe(gulp.dest('./src/css'))
+        done();
 });
 
 gulp.task('inject', function(done) {
@@ -110,7 +107,6 @@ gulp.task('inject', function(done) {
 
 gulp.task('js', ['inject'], function() {
     return gulp.src(mainBowerFiles('**/*.js').concat(['src/**/*.js']))
-        .pipe(print())
         .pipe(order([
             "**/angular.js",
             "**/angular-ui-router.js",
@@ -135,9 +131,12 @@ gulp.task('js', ['inject'], function() {
         }));
 });
 
-gulp.task('html', function() {
+gulp.task('html', ['stylus'], function() {
     return gulp.src('src/**/*.html')
         .pipe(flatten())
+        .pipe(inlinesource({
+          compress: false
+        }))
         .pipe(newer('./dist'))
         .pipe(gulp.dest('./dist'))
         .pipe(reload({
@@ -147,10 +146,10 @@ gulp.task('html', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/**/*.styl', ['stylus']);
+    gulp.watch('src/**/*.styl', ['html']);
     gulp.watch('src/**/*.js', ['js']);
     gulp.watch('src/**/*.html', ['html']);
     gulp.watch('src/icons/*.svg', ['svg', 'js']).on('change', reload);
 });
 
-gulp.task('default', ['js', 'stylus', 'html', 'svg', 'server', 'watch']);
+gulp.task('default', ['js', 'html', 'svg', 'server', 'watch']);
